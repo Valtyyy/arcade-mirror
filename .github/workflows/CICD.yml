@@ -58,7 +58,7 @@ jobs:
   #      continue-on-error: false
 
   mirror:
-    if: github.repository == 'Valtyyy/arcade-mirror'
+    if: github.repository == 'Valtyyy/arcade-mirror' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     steps:
