@@ -1,0 +1,62 @@
+\doxysection{gfx.\+hpp}
+\hypertarget{gfx_8hpp_source}{}\label{gfx_8hpp_source}\index{include/gfx.hpp@{include/gfx.hpp}}
+\mbox{\hyperlink{gfx_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2026}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ GFX}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ GFX\ header}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{shape_8hpp}{shape.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}{SHAPE\_TYPE}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba8c3b537d3960e767a7d714c89078e508}{RECT}},}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391baa79c827759ea48f0735386c4b1188911}{CIRCLE}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba9a4a47c1606e295076055a9cc4373197}{TEXT}},}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ to\ delete}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00027\ std::stack<std::tuple<SHAPE\_TYPE,\ T>>\ \mbox{\hyperlink{gfx_8hpp_a919839163d2769dbb3bb506bae616e5a}{gfxInstructions}};}
+\DoxyCodeLine{00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGfxInstruction}{GfxInstruction}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structGfxInstruction_a2c59f9270bef1044e99be52907af416a}{x}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structGfxInstruction_ab954fe5df71ddb5de791269a84d88050}{y}};}
+\DoxyCodeLine{00034\ \ \ \ \ std::optional<std::string>\ \mbox{\hyperlink{structGfxInstruction_a6c0e6b8d8f84993899eec5475266fd6b}{asset\_location}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structGfxInstruction_ac57ba8cb56d03be6a2c417059eebdf53}{color\_hex}};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}{SHAPE\_TYPE}}\ \mbox{\hyperlink{structGfxInstruction_a91f2e70d5f62544ac19970f1428d2a6c}{type}};}
+\DoxyCodeLine{00037\ \ \ \ \ std::optional<std::function<T()>>\ \mbox{\hyperlink{structGfxInstruction_a6ee4e0a80ea8f8ca7a77d48c5b3838a7}{callback}};}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00041\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrectInstr}{rectInstr}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{structGfxInstruction}{GfxInstruction}}<T>\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structrectInstr_a58440272c058df36f828b2a73abbdf59}{length}};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structrectInstr_a11335c25b9ac2f26fa7601a1eca4432a}{width}};}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcircleInstr}{circleInstr}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{structGfxInstruction}{GfxInstruction}}<T>\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structcircleInstr_aaf7be504d5f16944d24a0da92722229b}{radius}};}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00052\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtextInstr}{textInstr}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{structGfxInstruction}{GfxInstruction}}<T>\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ std::string\ \mbox{\hyperlink{structtextInstr_a0131ebb5d145d26de6a4b05108280cc6}{text}};}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }gfx\_s\ \mbox{\hyperlink{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702}{gfx\_instr\_t}};}
+
+\end{DoxyCode}
