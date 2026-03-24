@@ -51,7 +51,6 @@ target_compile_definitions(test_binary PRIVATE
 target_include_directories(test_lib
     PRIVATE
         ${PROJECT_SOURCE_DIR}/libtest/
-        ${PROJECT_SOURCE_DIR}/shared/include
 )
 
 target_link_libraries(test_binary PRIVATE criterion)
