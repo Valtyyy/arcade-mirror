@@ -5,11 +5,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(DEBUG "Compile with -g3" OFF)
 
-set(SOURCES
-    
+set(CORE
+    core/src/main.cpp
 )
 
-add_executable(arcade ${SOURCES} src/main.cpp)
+add_executable(arcade ${CORE})
 
 target_compile_options(arcade PRIVATE
     -Wall
@@ -22,10 +22,10 @@ endif()
 
 target_include_directories(arcade
     PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/shared/include
 )
 
-# Tests
+# ===== Tests =====
 
 enable_testing()
 
@@ -42,7 +42,7 @@ target_compile_options(test_binary PRIVATE
 
 target_include_directories(test_binary
     PRIVATE
-        ${PROJECT_SOURCE_DIR}/include
+        ${PROJECT_SOURCE_DIR}/shared/include
 )
 
 target_link_libraries(test_binary PRIVATE criterion)

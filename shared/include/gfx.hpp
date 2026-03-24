@@ -9,10 +9,6 @@
 
 #include <cstddef>
 #include <functional>
-#include <map>
-#include <tuple>
-#include <vector>
-#include <stack>
 #include "shape.hpp"
 #include <optional>
 
@@ -21,11 +17,6 @@ enum SHAPE_TYPE {
     CIRCLE,
     TEXT,
 };
-
-// to delete
-template <typename T>
-std::stack<std::tuple<SHAPE_TYPE, T>> gfxInstructions;
-//
 
 template <typename T>
 struct GfxInstruction {
