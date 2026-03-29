@@ -5,15 +5,23 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(DEBUG "Compile with -g3" OFF)
 
+include_directories(${PROJECT_SOURCE_DIR}/shared/include)
+
 set(SHARED
     shared/src/DlLoader.cpp
 )
 
 set(CORE
     ${SHARED}
+    core/src/Display.cpp
+    core/src/Game.cpp
 )
 
 add_executable(arcade ${CORE} core/src/main.cpp)
+
+target_include_directories(arcade PRIVATE
+    ${PROJECT_SOURCE_DIR}/core/include
+)
 
 target_compile_options(arcade PRIVATE
     -Wall
@@ -23,8 +31,6 @@ target_compile_options(arcade PRIVATE
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
-
-include_directories(${PROJECT_SOURCE_DIR}/shared/include)
 
 # ===== Tests =====
 
@@ -51,6 +57,11 @@ target_compile_definitions(test_binary PRIVATE
 target_include_directories(test_lib
     PRIVATE
         ${PROJECT_SOURCE_DIR}/libtest/
+)
+
+target_include_directories(test_binary
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/core/include
 )
 
 target_link_libraries(test_binary PRIVATE criterion)
