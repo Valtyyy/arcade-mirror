@@ -39,6 +39,6 @@ void Core::run()
 
 void Core::doIteration()
 {
-    _display.render(_game.getGfxInstructions());
     _game.update(_display.pollEvents());
+    _display.render(_game.getGfxInstructions());
 }
