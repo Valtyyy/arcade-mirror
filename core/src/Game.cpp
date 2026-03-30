@@ -22,6 +22,7 @@ Game::Game(const std::string &_lib_location) : _lib(_lib_location)
         throw std::runtime_error("Error: " + _lib_location + " not a game library\n");
 
     _self = std::unique_ptr<IGame>(create());
+    _self->init();
 }
 
 Game::~Game()

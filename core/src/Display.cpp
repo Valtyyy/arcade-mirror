@@ -23,6 +23,7 @@ Display::Display(const std::string &_lib_location) : _lib(_lib_location)
         throw std::runtime_error("Error: " + _lib_location + " not a graphical library\n");
 
     _self = std::unique_ptr<IDisplay>(create());
+    _self->init();
 }
 
 Display::~Display()
