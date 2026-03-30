@@ -46,6 +46,10 @@ target_include_directories(arcade_sdl2 PRIVATE
     ${PROJECT_SOURCE_DIR}/graphics/SDL2/include
 )
 
+find_package(SDL2 REQUIRED)
+
+target_link_libraries(arcade_sdl2 PRIVATE SDL2::SDL2)
+
 # ===== =====
 
 if(DEBUG)

@@ -31,11 +31,8 @@ void DlLoader::load()
 
     _handle = dlopen(_location.c_str(), RTLD_LAZY);
     
-    if (!_handle) {
-        std::cout << "LOAD" << std::endl;
+    if (!_handle)
         throw std::runtime_error(dlerror());
-        std::cout << "END" << std::endl;
-    }
 }
 
 void DlLoader::unload()

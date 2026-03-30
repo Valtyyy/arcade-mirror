@@ -8,8 +8,10 @@
 #include "Arcade.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "gfx.hpp"
 #include <chrono>
 #include <cstdio>
+#include <queue>
 #include <thread>
 #include <iostream>
 
@@ -26,9 +28,12 @@ void Core::run()
     while (running) {
         auto start = std::chrono::steady_clock::now();
 
+        rectInstr rectangle = {0, 0, "", 252, 100, 100};
+        AnyInstruction any = rectangle;
+        std::queue<AnyInstruction> instructions = {};
+        instructions.push(any);
+        _display.render(instructions);
        // doIteration();
-
-       std::cout << "RUN " << std::endl;
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
             std::this_thread::sleep_for(interval - elapsed);
