@@ -10,6 +10,7 @@
 #include <dlfcn.h>
 #include <exception>
 #include <iostream>
+#include <ostream>
 #include <stdexcept>
 #include "DlLoader.hpp"
 
@@ -29,9 +30,12 @@ void DlLoader::load()
         return;
 
     _handle = dlopen(_location.c_str(), RTLD_LAZY);
-
-    if (!_handle)
+    
+    if (!_handle) {
+        std::cout << "LOAD" << std::endl;
         throw std::runtime_error(dlerror());
+        std::cout << "END" << std::endl;
+    }
 }
 
 void DlLoader::unload()
@@ -47,6 +51,7 @@ void *DlLoader::sym(const std::string &symbol) const
 {
     if (_handle == nullptr)
         return nullptr;
+
 
     void *result = dlsym(_handle, symbol.c_str());
     if (result == nullptr)

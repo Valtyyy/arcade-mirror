@@ -24,6 +24,6 @@ class Core {
         void doIteration();
 
     private:
-        Game _game;
+        //Game _game;
         Display _display;
 };

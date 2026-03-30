@@ -11,10 +11,11 @@
 #include <chrono>
 #include <cstdio>
 #include <thread>
+#include <iostream>
 
-Core::Core(const std::string &display_lib, const std::string &game_lib) : _game(game_lib), _display(display_lib)
+Core::Core(const std::string &display_lib, const std::string &game_lib) : _display(display_lib)
 {
-
+    std::cout << game_lib << std::endl;
 }
 
 void Core::run()
@@ -25,9 +26,9 @@ void Core::run()
     while (running) {
         auto start = std::chrono::steady_clock::now();
 
-        doIteration();
-        std::printf("AA\n");
+       // doIteration();
 
+       std::cout << "RUN " << std::endl;
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
             std::this_thread::sleep_for(interval - elapsed);
@@ -39,6 +40,6 @@ void Core::run()
 
 void Core::doIteration()
 {
-    _game.update(_display.pollEvents());
-    _display.render(_game.getGfxInstructions());
+    //_game.update(_display.pollEvents());
+    //_display.render(_game.getGfxInstructions());
 }

@@ -33,6 +33,21 @@ target_compile_definitions(arcade PRIVATE
     LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
 
+# ===== Libraries =====
+
+set(SDL2
+    ${SHARED}
+    graphics/SDL2/src/SDL2.cpp
+)
+
+add_library(arcade_sdl2 SHARED ${SDL2})
+
+target_include_directories(arcade_sdl2 PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/SDL2/include
+)
+
+# ===== =====
+
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
