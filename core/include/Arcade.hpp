@@ -19,6 +19,11 @@
 
 class Core {
     public:
-        static int run(const std::string &display_lib);
-        static void doIteration(Display, Game);
+        Core(const std::string &, const std::string &);
+        void run();
+        void doIteration();
+
+    private:
+        Game _game;
+        Display _display;
 };

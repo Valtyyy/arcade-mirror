@@ -44,9 +44,9 @@ void Display::clear()
     return func();
 }
 
-void Display::render(std::stack<AnyInstruction> instructions)
+void Display::render(std::queue<AnyInstruction> instructions)
 {
-    std::function<void(std::stack<AnyInstruction>)> func = reinterpret_cast<void(*)(std::stack<AnyInstruction>)>(_lib.sym("render"));
+    std::function<void(std::queue<AnyInstruction>)> func = reinterpret_cast<void(*)(std::queue<AnyInstruction>)>(_lib.sym("render"));
 
     return func(instructions);
 }
