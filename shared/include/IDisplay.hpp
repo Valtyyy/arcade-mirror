@@ -13,10 +13,10 @@
 
 class IDisplay {
     public:
+        virtual ~IDisplay() = default;
         virtual void init() = 0;
         virtual void close() = 0;
         virtual void clear() = 0;
         virtual void render(std::queue<AnyInstruction>) = 0;
         virtual std::queue<Event> pollEvents() = 0;
-        virtual LIB_TYPE getLibType() = 0;
 };

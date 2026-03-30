@@ -6,15 +6,23 @@
 */
 
 #include "Display.hpp"
+#include "IDisplay.hpp"
 #include "IGame.hpp"
 #include <functional>
+#include <memory>
 #include <stdexcept>
 
 Display::Display(const std::string &_lib_location) : _lib(_lib_location)
 {
     _lib.load();
+
+    std::function<LIB_TYPE()> getLibType = reinterpret_cast<LIB_TYPE(*)()>(_lib.sym("getLibType"));
+    std::function<IDisplay*()> create = reinterpret_cast<IDisplay*(*)()>(_lib.sym("create"));
+
     if (getLibType() != LIB_TYPE::DISPLAY)
-        throw std::runtime_error("Error: " + _lib_location + " not a grapical library\n");
+        throw std::runtime_error("Error: " + _lib_location + " not a graphical library\n");
+
+    _self = std::unique_ptr<IDisplay>(create());
 }
 
 Display::~Display()
@@ -25,42 +33,25 @@ Display::~Display()
 
 void Display::init()
 {
-    std::function<void()> func = reinterpret_cast<void(*)()>(_lib.sym("init"));
-
-    return func();
+    _self->init();
 }
 
 void Display::close()
 {
-    std::function<void()> func = reinterpret_cast<void(*)()>(_lib.sym("close"));
-
-    return func();
+    _self->close();
 }
 
 void Display::clear()
 {
-    std::function<void()> func = reinterpret_cast<void(*)()>(_lib.sym("clear"));
-
-    return func();
+    _self->clear();
 }
 
 void Display::render(std::queue<AnyInstruction> instructions)
 {
-    std::function<void(std::queue<AnyInstruction>)> func = reinterpret_cast<void(*)(std::queue<AnyInstruction>)>(_lib.sym("render"));
-
-    return func(instructions);
+    _self->render(instructions);
 }
 
 std::queue<Event> Display::pollEvents()
 {
-    std::function<std::queue<Event>()> func = reinterpret_cast<std::queue<Event>(*)()>(_lib.sym("pollEvents"));
-
-    return func();
-}
-
-LIB_TYPE Display::getLibType()
-{
-    std::function<LIB_TYPE()> func = reinterpret_cast<LIB_TYPE(*)()>(_lib.sym("getLibType"));
-
-    return func();
+    return _self->pollEvents();
 }

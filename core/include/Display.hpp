@@ -9,6 +9,7 @@
 
 #include "IDisplay.hpp"
 #include "DlLoader.hpp"
+#include <memory>
 #include <queue>
 
 class Display : public IDisplay {
@@ -21,8 +22,8 @@ class Display : public IDisplay {
         void clear() override;
         void render(std::queue<AnyInstruction>) override;
         std::queue<Event> pollEvents() override;
-        LIB_TYPE getLibType() override;
 
     private:
         DlLoader _lib;
+        std::unique_ptr<IDisplay> _self;
 };
