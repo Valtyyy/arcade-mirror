@@ -5,6 +5,8 @@
 ** DlLoader
 */
 
+#pragma once
+
 #include <string>
 
 class DlLoader {

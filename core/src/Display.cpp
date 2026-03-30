@@ -6,11 +6,15 @@
 */
 
 #include "Display.hpp"
+#include "IGame.hpp"
 #include <functional>
+#include <stdexcept>
 
 Display::Display(const std::string &_lib_location) : _lib(_lib_location)
 {
     _lib.load();
+    if (getLibType() != LIB_TYPE::DISPLAY)
+        throw std::runtime_error("Error: " + _lib_location + " not a grapical library\n");
 }
 
 Display::~Display()
@@ -50,6 +54,13 @@ void Display::render(std::stack<AnyInstruction> instructions)
 std::queue<Event> Display::pollEvents()
 {
     std::function<std::queue<Event>()> func = reinterpret_cast<std::queue<Event>(*)()>(_lib.sym("pollEvents"));
+
+    return func();
+}
+
+LIB_TYPE Display::getLibType()
+{
+    std::function<LIB_TYPE()> func = reinterpret_cast<LIB_TYPE(*)()>(_lib.sym("getLibType"));
 
     return func();
 }

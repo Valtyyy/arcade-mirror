@@ -15,6 +15,7 @@ set(CORE
     ${SHARED}
     core/src/Display.cpp
     core/src/Game.cpp
+    core/src/Arcade.cpp
 )
 
 add_executable(arcade ${CORE} core/src/main.cpp)
@@ -26,6 +27,10 @@ target_include_directories(arcade PRIVATE
 target_compile_options(arcade PRIVATE
     -Wall
     -Wextra
+)
+
+target_compile_definitions(arcade PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
 
 if(DEBUG)

@@ -20,6 +20,7 @@ class Display : public IDisplay {
         void clear() override;
         void render(std::stack<AnyInstruction>) override;
         std::queue<Event> pollEvents() override;
+        LIB_TYPE getLibType() override;
 
     private:
         DlLoader _lib;

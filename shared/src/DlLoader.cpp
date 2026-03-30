@@ -5,6 +5,8 @@
 ** DlLoader
 */
 
+#include <cstddef>
+#include <cstdio>
 #include <dlfcn.h>
 #include <exception>
 #include <iostream>
@@ -47,8 +49,9 @@ void *DlLoader::sym(const std::string &symbol) const
         return nullptr;
 
     void *result = dlsym(_handle, symbol.c_str());
-    if (!result)
+    if (result == nullptr)
         throw std::runtime_error(dlerror());
+
     return result;
 }
 

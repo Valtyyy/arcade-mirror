@@ -6,11 +6,15 @@
 */
 
 #include "Game.hpp"
+#include "IGame.hpp"
 #include <functional>
+#include <stdexcept>
 
 Game::Game(const std::string &_lib_location) : _lib(_lib_location)
 {
     _lib.load();
+    if (getLibType() != LIB_TYPE::GAME)
+        throw std::runtime_error("Error: " + _lib_location + " not a game library\n");
 }
 
 Game::~Game()
@@ -43,6 +47,13 @@ void Game::update(std::queue<Event> events)
 std::queue<AnyInstruction> Game::getGfxInstructions()
 {
     std::function<std::queue<AnyInstruction>()> func = reinterpret_cast<std::queue<AnyInstruction>(*)()>(_lib.sym("getGfxInstructions"));
+
+    return func();
+}
+
+LIB_TYPE Game::getLibType()
+{
+    std::function<LIB_TYPE()> func = reinterpret_cast<LIB_TYPE(*)()>(_lib.sym("getLibType"));
 
     return func();
 }
