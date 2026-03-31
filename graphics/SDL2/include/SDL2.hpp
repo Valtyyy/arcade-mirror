@@ -8,19 +8,13 @@
 #pragma once
 
 #include "IDisplay.hpp"
-#include <queue>
 #include <SDL2/SDL.h>
-#include <vector>
+#include <SDL2/SDL_test_font.h>
+#include <cstdio>
 
 
 class SDL2 : public IDisplay {
 public:
-    struct rgba_t {
-        int r;
-        int g;
-        int b;
-        int a;
-    };
     SDL2();
     void init() override;
     void close() override;
@@ -33,8 +27,12 @@ private:
     SDL_Window *_window;
     SDL_Renderer* _renderer;
     std::vector<SDL_Texture*> _textures;
+    std::queue<Event> _events;
+    
+    void addEvents(SDL_KeyboardEvent &);
+    void addEvents(SDL_MouseButtonEvent &);
     void DrawCircle(int x, int y, float radius, SDL_Renderer *renderer);
-    rgba_t convert_rgba(int hexValue);
+    SDL_Color convert_rgba(int hexValue);
     void create_texture(const int width, const int height);
     void display_instruction(rectInstr &rectangle);
     void display_instruction(circleInstr &circle);

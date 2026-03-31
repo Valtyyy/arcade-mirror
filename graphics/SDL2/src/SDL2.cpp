@@ -1,16 +1,15 @@
 #include "SDL2.hpp"
 #include "IDisplay.hpp"
-#include "IGame.hpp"
-#include <SDL.h>
-#include <SDL_error.h>
+#include "gfx.hpp"
+#include <SDL2/SDL_ttf.h>
 #include <SDL_render.h>
 #include <cstddef>
+#include <cstdio>
 #include <numbers>
 #include <ostream>
 #include <stdexcept>
-#include <iostream>
-#include <utility>
 #include <variant>
+#include <iostream>
 
 extern "C" IDisplay *create()
 {
@@ -21,6 +20,9 @@ SDL2::SDL2() : _window(nullptr)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
         throw std::runtime_error(SDL_GetError());
+    if (TTF_Init() != 0)
+        throw std::runtime_error(SDL_GetError());
+    _events = {};
 }
 
 void SDL2::init()
@@ -51,9 +53,9 @@ void SDL2::clear()
 
 }
 
-SDL2::rgba_t SDL2::convert_rgba(int hex_color)
+SDL_Color SDL2::convert_rgba(int hex_color)
 {
-    rgba_t color;
+    SDL_Color color;
 
     color.r = ((hex_color >> 24) & 0xFF) ;
     color.g = ((hex_color >> 16) & 0xFF);
@@ -77,13 +79,15 @@ void SDL2::create_texture(const int width, const int height)
 
 void SDL2::display_instruction(rectInstr &rectangle)
 {
-    rgba_t color = convert_rgba(rectangle.color_hex);
+    SDL_Color color = convert_rgba(rectangle.color_hex);
     SDL_SetRenderDrawColor(_renderer, color.r, color.g, color.b, color.a);
     SDL_Rect rect = {(int)rectangle.x, 
-        (int)rectangle.y, (int)rectangle.width, (int)rectangle.length};
+        (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
     SDL_RenderFillRect(_renderer, &rect);
-    if (rectangle.asset_location)
-        create_texture(rectangle.width, rectangle.length);
+    if (!rectangle.asset_location->empty()) {
+        create_texture(rectangle.w, rectangle.h);
+        SDL_SetRenderTarget(_renderer, _textures[_textures.size() - 1]);
+    }
 }
 
 void SDL2::DrawCircle(int x, int y, float radius, SDL_Renderer *renderer)
@@ -103,7 +107,8 @@ void SDL2::DrawCircle(int x, int y, float radius, SDL_Renderer *renderer)
 
 void SDL2::display_instruction(circleInstr &circle)
 {
-    rgba_t color = convert_rgba(circle.color_hex);
+    SDL_Color color = convert_rgba(circle.color_hex);
+
     SDL_SetRenderDrawColor(_renderer, color.r, color.g, color.b, color.a);
     DrawCircle(
         circle.x, 
@@ -113,7 +118,20 @@ void SDL2::display_instruction(circleInstr &circle)
 
 void SDL2::display_instruction(textInstr &text)
 {
-    std::cout << "TEXT" << std::endl;
+    SDL_Color color = convert_rgba(text.color_hex);
+    TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
+    if (!font)
+        throw std::runtime_error(SDL_GetError());
+    SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.text.c_str(), color);
+    if (!textSurface)
+        throw std::runtime_error(SDL_GetError());
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, textSurface);
+    if (!textTexture)
+        throw std::runtime_error(SDL_GetError());
+    SDL_Rect textRect = {(int)text.x, (int)text.y, textSurface->w, textSurface->h};
+
+    _textures.push_back(textTexture);
+    SDL_RenderCopy(_renderer, textTexture, NULL, &textRect);
 }
 
 void SDL2::render(std::queue<AnyInstruction> instructions)
@@ -129,8 +147,32 @@ void SDL2::render(std::queue<AnyInstruction> instructions)
     SDL_RenderPresent(_renderer);
 }
 
+void SDL2::addEvents(SDL_KeyboardEvent &touch)
+{
+    size_t key = touch.keysym.sym;;
+    Event event = (int)key;
+
+    printf("Key: %ld\n", key);
+    _events.push(event);
+}
+
+void SDL2::addEvents(SDL_MouseButtonEvent &click)
+{
+    point_t point = {click.x, click.y};
+    Event event = point;
+    printf("X: %d Y: %d\n", point.x, point.y);
+    _events.push(event);
+}
+
 std::queue<Event> SDL2::pollEvents()
 {
+    SDL_Event sdl_event = {0};
+
+    if (SDL_PollEvent(&sdl_event)) {
+        addEvents(sdl_event.key);
+        addEvents(sdl_event.button);
+        return _events;
+    }
     return {};
 }
 

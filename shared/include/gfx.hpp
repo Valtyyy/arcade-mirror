@@ -12,6 +12,7 @@
 #include <optional>
 #include <variant>
 
+typedef struct gfx_s gfx_instr_t;
 typedef struct point_s {
     int x;
     int y;
@@ -25,18 +26,18 @@ struct GfxInstruction {
 };
 
 struct rectInstr : public GfxInstruction {
-    size_t length;
-    size_t width;
+    size_t w;
+    size_t h;
 };
 
 struct circleInstr : public GfxInstruction {
     size_t radius;
 };
 
-struct textInstr : public GfxInstruction {
+struct  textInstr : public rectInstr {
     std::string text;
+    size_t fontSize;
 };
 
 using Event = std::variant<int, point_t>;
-
 using AnyInstruction = std::variant<rectInstr, circleInstr, textInstr>;
