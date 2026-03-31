@@ -34,6 +34,8 @@ private:
     void DrawCircle(int x, int y, float radius, SDL_Renderer *renderer);
     SDL_Color convert_rgba(int hexValue);
     void create_texture(const int width, const int height);
+    void createTextureFromSurface(SDL_Surface *surface,
+        int x, int y, int w, int h);
     void display_instruction(rectInstr &rectangle);
     void display_instruction(circleInstr &circle);
     void display_instruction(textInstr &text);

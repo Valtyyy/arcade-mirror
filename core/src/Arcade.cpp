@@ -28,7 +28,9 @@ void Core::run()
 
     while (running) {
         auto start = std::chrono::steady_clock::now();
-        rectInstr rectangle = {{1000, 100, "", 252}, 100, 100};
+        rectInstr rectangle = {{1000, 100,
+            "/home/rayan/delivery/arcade/arcade-mirror/games/Snake/assets/apple.jpg", 252},
+            100, 100};
         AnyInstruction rect = rectangle;
         circleInstr circle = {{1500, 600, "", 120}, 100};
         AnyInstruction circ = circle;

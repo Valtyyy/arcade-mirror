@@ -2,14 +2,13 @@
 #include "IDisplay.hpp"
 #include "gfx.hpp"
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
 #include <SDL_render.h>
 #include <cstddef>
 #include <cstdio>
 #include <numbers>
-#include <ostream>
 #include <stdexcept>
 #include <variant>
-#include <iostream>
 
 extern "C" IDisplay *create()
 {
@@ -50,7 +49,6 @@ void SDL2::close()
 
 void SDL2::clear()
 {
-
 }
 
 SDL_Color SDL2::convert_rgba(int hex_color)
@@ -77,6 +75,19 @@ void SDL2::create_texture(const int width, const int height)
     _textures.push_back(std::move(texture));
 }
 
+void SDL2::createTextureFromSurface(SDL_Surface *surface, int x, int y, int w, int h)
+{
+    if (!surface)
+        throw std::runtime_error(SDL_GetError());
+    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
+    if (!textTexture)
+        throw std::runtime_error(SDL_GetError());
+    SDL_Rect textRect = {x, y, w, h};
+
+    _textures.push_back(textTexture);
+    SDL_RenderCopy(_renderer, textTexture, NULL, &textRect);
+}
+
 void SDL2::display_instruction(rectInstr &rectangle)
 {
     SDL_Color color = convert_rgba(rectangle.color_hex);
@@ -85,8 +96,8 @@ void SDL2::display_instruction(rectInstr &rectangle)
         (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
     SDL_RenderFillRect(_renderer, &rect);
     if (!rectangle.asset_location->empty()) {
-        create_texture(rectangle.w, rectangle.h);
-        SDL_SetRenderTarget(_renderer, _textures[_textures.size() - 1]);
+        SDL_Surface *surface = IMG_Load(rectangle.asset_location->c_str());
+        createTextureFromSurface(surface, rect.x, rect.y, rect.w, rect.h);
     }
 }
 
@@ -125,13 +136,7 @@ void SDL2::display_instruction(textInstr &text)
     SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.text.c_str(), color);
     if (!textSurface)
         throw std::runtime_error(SDL_GetError());
-    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, textSurface);
-    if (!textTexture)
-        throw std::runtime_error(SDL_GetError());
-    SDL_Rect textRect = {(int)text.x, (int)text.y, textSurface->w, textSurface->h};
-
-    _textures.push_back(textTexture);
-    SDL_RenderCopy(_renderer, textTexture, NULL, &textRect);
+    createTextureFromSurface(textSurface, text.x, text.y, textSurface->w, textSurface->h);
 }
 
 void SDL2::render(std::queue<AnyInstruction> instructions)
@@ -158,10 +163,12 @@ void SDL2::addEvents(SDL_KeyboardEvent &touch)
 
 void SDL2::addEvents(SDL_MouseButtonEvent &click)
 {
-    point_t point = {click.x, click.y};
-    Event event = point;
-    printf("X: %d Y: %d\n", point.x, point.y);
-    _events.push(event);
+    if (click.button) {
+        point_t point = {click.x, click.y};
+        Event event = point;
+        printf("X: %d Y: %d\n", point.x, point.y);
+        _events.push(event);
+    }
 }
 
 std::queue<Event> SDL2::pollEvents()
