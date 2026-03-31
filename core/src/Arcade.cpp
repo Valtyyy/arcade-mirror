@@ -28,10 +28,13 @@ void Core::run()
     while (running) {
         auto start = std::chrono::steady_clock::now();
 
-        rectInstr rectangle = {0, 0, "", 252, 100, 100};
-        AnyInstruction any = rectangle;
+        rectInstr rectangle = {1000, 100, "", 252, 100, 100};
+        AnyInstruction rect = rectangle;
+        circleInstr circle = {1500, 600, "", 120, 100};
+        AnyInstruction circ = circle;
         std::queue<AnyInstruction> instructions = {};
-        instructions.push(any);
+        instructions.push(rect);
+        instructions.push(circ);
         _display.render(instructions);
        // doIteration();
         auto elapsed = std::chrono::steady_clock::now() - start;
