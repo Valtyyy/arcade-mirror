@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y doxygen graphviz libcriterion-dev cmake build-essential
+          sudo apt-get install -y doxygen graphviz libcriterion-dev cmake build-essential libsdl2-2.0-0 libsdl2-ttf-dev
 
       - name: Configure CMake
         run: |
