@@ -47,8 +47,12 @@ target_include_directories(arcade_sdl2 PRIVATE
 )
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 
-target_link_libraries(arcade_sdl2 PRIVATE SDL2::SDL2)
+target_link_libraries(arcade_sdl2 PRIVATE
+    SDL2::SDL2
+    SDL2_ttf::SDL2_ttf
+)
 
 # ===== =====
 
