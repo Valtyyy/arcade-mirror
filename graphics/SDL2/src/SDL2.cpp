@@ -176,8 +176,10 @@ std::queue<Event> SDL2::pollEvents()
     SDL_Event sdl_event = {0};
 
     if (SDL_PollEvent(&sdl_event)) {
-        addEvents(sdl_event.key);
-        addEvents(sdl_event.button);
+        if ((sdl_event.type == SDL_KEYUP) ||  (sdl_event.type  == SDL_KEYDOWN))
+            addEvents(sdl_event.key);
+        if ((sdl_event.type == SDL_MOUSEBUTTONUP) || (sdl_event.type == SDL_MOUSEBUTTONDOWN))
+            addEvents(sdl_event.button);
         return _events;
     }
     return {};
