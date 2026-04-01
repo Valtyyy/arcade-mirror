@@ -1,15 +1,19 @@
 cmake_minimum_required(VERSION 3.13)
 project(arcade)
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(DEBUG "Compile with -g3" OFF)
 
-set(CORE
-    core/src/main.cpp
+set(SHARED
+    shared/src/DlLoader.cpp
 )
 
-add_executable(arcade ${CORE})
+set(CORE
+    ${SHARED}
+)
+
+add_executable(arcade ${CORE} core/src/main.cpp)
 
 target_compile_options(arcade PRIVATE
     -Wall
@@ -20,19 +24,19 @@ if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
 
-target_include_directories(arcade
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/shared/include
-)
+include_directories(${PROJECT_SOURCE_DIR}/shared/include)
 
 # ===== Tests =====
 
 enable_testing()
 
 add_executable(test_binary
-    ${SOURCES}
+    ${CORE}
     tests/test_void.cpp
+    tests/test_shared.cpp
 )
+
+add_library(test_lib SHARED tests/libtest/lib_test.cpp)
 
 target_compile_options(test_binary PRIVATE
     -Wall
@@ -40,9 +44,13 @@ target_compile_options(test_binary PRIVATE
     -g3
 )
 
-target_include_directories(test_binary
+target_compile_definitions(test_binary PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+)
+
+target_include_directories(test_lib
     PRIVATE
-        ${PROJECT_SOURCE_DIR}/shared/include
+        ${PROJECT_SOURCE_DIR}/libtest/
 )
 
 target_link_libraries(test_binary PRIVATE criterion)
