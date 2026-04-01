@@ -40,7 +40,7 @@ class Core {
         int _apply_command(int);
         static size_t _findIndex(const std::vector<std::string> &, const std::string &);
 
-      //  Game _game;
+        Game _game;
         Display _display;
         size_t _currentGame;
         size_t _currentDisplay;
