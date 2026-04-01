@@ -27,13 +27,8 @@ struct GfxInstruction {
 };
 
 struct rectInstr : public GfxInstruction {
-<<<<<<< HEAD
-    size_t w;
-    size_t h;
-=======
     size_t h;
     size_t w;
->>>>>>> feat/core
 };
 
 struct circleInstr : public GfxInstruction {
@@ -43,12 +38,6 @@ struct circleInstr : public GfxInstruction {
 struct  textInstr : public rectInstr {
     std::string text;
     size_t fontSize;
-<<<<<<< HEAD
-};
-
-using Event = std::variant<int, point_t>;
-using AnyInstruction = std::variant<rectInstr, circleInstr, textInstr>;
-=======
 };
 
 struct dimensionInstr {
@@ -59,4 +48,3 @@ struct dimensionInstr {
 using Event = std::variant<int, point_t>;
 
 using AnyInstruction = std::variant<rectInstr, circleInstr, textInstr, dimensionInstr>;
->>>>>>> feat/core
