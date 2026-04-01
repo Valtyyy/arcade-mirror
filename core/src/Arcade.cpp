@@ -36,7 +36,7 @@ void Core::run()
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
             std::this_thread::sleep_for(interval - elapsed);
-            continue;;
+            continue;
         }
         std::this_thread::sleep_for(interval);
     }
