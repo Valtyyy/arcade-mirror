@@ -20,13 +20,14 @@ typedef struct point_s {
 struct GfxInstruction {
     size_t x;
     size_t y;
+    char txt;
     std::optional<std::string> asset_location;
     size_t color_hex;
 };
 
 struct rectInstr : public GfxInstruction {
-    size_t length;
-    size_t width;
+    size_t h;
+    size_t w;
 };
 
 struct circleInstr : public GfxInstruction {
@@ -35,8 +36,14 @@ struct circleInstr : public GfxInstruction {
 
 struct textInstr : public GfxInstruction {
     std::string text;
+    size_t fontSize;
+};
+
+struct dimensionInstr {
+    size_t h;
+    size_t w;
 };
 
 using Event = std::variant<int, point_t>;
 
-using AnyInstruction = std::variant<rectInstr, circleInstr, textInstr>;
+using AnyInstruction = std::variant<rectInstr, circleInstr, textInstr, dimensionInstr>;

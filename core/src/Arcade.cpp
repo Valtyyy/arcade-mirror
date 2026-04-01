@@ -10,12 +10,17 @@
 #include "Game.hpp"
 #include <chrono>
 #include <queue>
+#include <string>
 #include <thread>
 #include <variant>
 
 Core::Core(const std::string &display_lib, const std::string &game_lib) : _game(game_lib), _display(display_lib)
 {
+    _displayList = getDisplayList();
+    _gamesList = getGamesList();
 
+    _currentDisplay = _findIndex(_displayList, display_lib);
+    _currentGame = _findIndex(_gamesList, game_lib);
 }
 
 void Core::run()
@@ -65,14 +70,15 @@ int Core::_apply_command(int cmd)
 {
     switch (cmd) {
         case ASCII_P:
-            _display = Display(_);
+            _currentDisplay = (_currentDisplay + 1) % _displayList.size();
+            _display = Display(_displayList[_currentDisplay]);
             break;
         case ASCII_M:
-            _game = Game("ll");
+            _currentGame = (_currentGame + 1) % _gamesList.size();
+            _game = Game(_gamesList[_currentGame]);
             break;
         case ASCII_O:
-            _game.close();
-            _game.init();
+            _game = Game(_gamesList[_currentGame]);
             break;
         case ASCII_L:
             _game = Game(MENU_GAME);
@@ -80,4 +86,24 @@ int Core::_apply_command(int cmd)
         case ASCII_I:
             return -1;
     }
+    return 0;
+}
+
+size_t Core::_findIndex(const std::vector<std::string> &list, const std::string &value)
+{
+    for (size_t i = 0; i < list.size(); ++i) {
+        if (list[i] == value)
+            return i;
+    }
+    return 0;
+}
+
+std::vector<std::string> Core::getGamesList()
+{
+    return {"to_fill"};
+}
+
+std::vector<std::string> Core::getDisplayList()
+{
+    return {"to_fill"};
 }

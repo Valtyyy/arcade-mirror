@@ -10,7 +10,6 @@
 #include "Display.hpp"
 #include "Game.hpp"
 #include "gfx.hpp"
-#include <map>
 #include <queue>
 #include <string>
 #include <vector>
@@ -33,18 +32,18 @@ class Core {
         void run();
         void doIteration();
 
+        static std::vector<std::string> getGamesList();
+        static std::vector<std::string> getDisplayList();
+
     private:
         int _handle_command(std::queue<Event>);
         int _apply_command(int);
-
-        std::map<std::string, std::string> _gamesList;
-        std::map<std::string, std::string> _displayList;
-
-        static std::map<std::string, std::string> _getGamesList;
-        static std::map<std::string, std::string> _getDisplayList;
+        static size_t _findIndex(const std::vector<std::string> &, const std::string &);
 
         Game _game;
         Display _display;
-        size_t currentGame;
-        size_t currentDisplay;
+        size_t _currentGame;
+        size_t _currentDisplay;
+        std::vector<std::string> _gamesList;
+        std::vector<std::string> _displayList;
 };
