@@ -15,7 +15,7 @@
 #include <thread>
 #include <variant>
 
-Core::Core(const std::string &display_lib, const std::string &game_lib) : _display(display_lib)
+Core::Core(const std::string &display_lib, const std::string &game_lib) : /*_game(game_lib), */ _display(display_lib)
 {
     _displayList = getDisplayList();
     _gamesList = getGamesList();
@@ -31,14 +31,14 @@ void Core::run()
 
     while (running) {
         auto start = std::chrono::steady_clock::now();
-        rectInstr rectangle = {{1000, 100,
+        rectInstr rectangle = {{1000, 100, '\0',
             "/home/rayan/delivery/arcade/arcade-mirror/games/Snake/assets/apple.jpg", 252},
             100, 100};
         AnyInstruction rect = rectangle;
-        circleInstr circle = {{1500, 600, "", 120}, 100};
+        circleInstr circle = {{1500, 600, '\0', "", 120}, 100};
         AnyInstruction circ = circle;
         textInstr text = {
-            {{500, 400, "games/Snake/assets/wild-jungle-font/WildJungleRegular-vnop9.ttf", 16777215},
+            {{500, 400,'\0', "games/Snake/assets/wild-jungle-font/WildJungleRegular-vnop9.ttf", 16777215},
             500, 500,},"Salut", 200};
         AnyInstruction text_inst = text;
         std::queue<AnyInstruction> instructions = {};
@@ -47,7 +47,7 @@ void Core::run()
         instructions.push(text_inst);
         _display.render(instructions);
         std::queue<Event> events = _display.pollEvents();
-        doIteration();
+        //doIteration();
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
             std::this_thread::sleep_for(interval - elapsed);
@@ -64,8 +64,8 @@ void Core::doIteration()
     if (_handle_command(events) < 0)
         return;
 
-    _game.update(events);
-    _display.render(_game.getGfxInstructions());
+    //_game.update(events);
+    //_display.render(_game.getGfxInstructions());
 }
 
 int Core::_handle_command(std::queue<Event> events)
@@ -90,13 +90,13 @@ int Core::_apply_command(int cmd)
             break;
         case ASCII_M:
             _currentGame = (_currentGame + 1) % _gamesList.size();
-            _game = Game(_gamesList[_currentGame]);
+          //  _game = Game(_gamesList[_currentGame]);
             break;
         case ASCII_O:
-            _game = Game(_gamesList[_currentGame]);
+          //  _game = Game(_gamesList[_currentGame]);
             break;
         case ASCII_L:
-            _game = Game(MENU_GAME);
+       //     _game = Game(MENU_GAME);
             break;
         case ASCII_I:
             return -1;

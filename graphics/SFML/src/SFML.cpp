@@ -81,11 +81,17 @@ void SFML::display_instruction(textInstr &text)
     _window.draw(Text);
 }
 
+void SFML::display_instruction(dimensionInstr &text)
+{
+    std::cout << "DIMENSTION" << std::endl;
+}
+
 void SFML::render(std::queue<AnyInstruction> instructions)
 {
     _window.clear(sf::Color::Transparent);
     while (!instructions.empty()) {
-        std::visit([this](auto &arg){ display_instruction(arg); },
+        std::visit(
+            [this](auto &arg) { display_instruction(arg); },
         instructions.front());
         instructions.pop();
     }

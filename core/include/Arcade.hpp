@@ -36,11 +36,14 @@ class Core {
         static std::vector<std::string> getDisplayList();
 
     private:
-        Game _game;
+        int _handle_command(std::queue<Event>);
+        int _apply_command(int);
+        static size_t _findIndex(const std::vector<std::string> &, const std::string &);
+
+      //  Game _game;
         Display _display;
         size_t _currentGame;
         size_t _currentDisplay;
         std::vector<std::string> _gamesList;
         std::vector<std::string> _displayList;
-        //Game _game;
 };

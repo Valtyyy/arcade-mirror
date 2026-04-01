@@ -9,6 +9,7 @@
 #include <numbers>
 #include <stdexcept>
 #include <variant>
+#include <iostream>
 
 extern "C" IDisplay *create()
 {
@@ -138,6 +139,12 @@ void SDL2::display_instruction(textInstr &text)
         throw std::runtime_error(SDL_GetError());
     createTextureFromSurface(textSurface, text.x, text.y, textSurface->w, textSurface->h);
 }
+
+void display_instruction(dimensionInstr &dimension)
+{
+    std::cout << "Dimension" << std::endl;
+}
+
 
 void SDL2::render(std::queue<AnyInstruction> instructions)
 {

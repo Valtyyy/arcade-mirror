@@ -39,4 +39,5 @@ private:
     void display_instruction(rectInstr &rectangle);
     void display_instruction(circleInstr &circle);
     void display_instruction(textInstr &text);
+    void display_instruction(dimensionInstr &text);
 };

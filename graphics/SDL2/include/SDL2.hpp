@@ -8,6 +8,7 @@
 #pragma once
 
 #include "IDisplay.hpp"
+#include "gfx.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_test_font.h>
 #include <cstdio>
@@ -36,7 +37,8 @@ private:
     void create_texture(const int width, const int height);
     void createTextureFromSurface(SDL_Surface *surface,
         int x, int y, int w, int h);
-    void display_instruction(rectInstr &rectangle);
-    void display_instruction(circleInstr &circle);
-    void display_instruction(textInstr &text);
+    void display_instruction(rectInstr &);
+    void display_instruction(circleInstr &);
+    void display_instruction(textInstr &);
+    void display_instruction(dimensionInstr &);
 };
