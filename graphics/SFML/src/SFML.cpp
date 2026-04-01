@@ -2,11 +2,14 @@
 #include "SFML.hpp"
 #include "gfx.hpp"
 #include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/System/String.hpp>
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/Event.hpp>
 #include <iostream>
+#include <ostream>
 
 extern "C" IDisplay *create()
 {
@@ -34,28 +37,37 @@ void SFML::clear()
 
 void SFML::display_instruction(rectInstr &rectangle)
 {
-    sf::RectangleShape rect(sf::Vector2f(rectangle.h, rectangle.w));
-    sf::Texture rectTexture;
+    sf::RectangleShape rect(sf::Vector2f(rectangle.w, rectangle.h));
+    rect.setPosition(sf::Vector2f(rectangle.x, rectangle.y));
 
-    rect.setFillColor(sf::Color(rectangle.color_hex));
-    rect.setOrigin(sf::Vector2f(rectangle.x, rectangle.y));
-
-    if (rectangle.asset_location)
-        rectTexture.loadFromFile(rectangle.asset_location->c_str());
-    rect.setTexture(&rectTexture);
-    _textures.push_back(std::move(rectTexture));
+    if (!rectangle.asset_location->empty()) {
+        _textures.emplace_back();
+        _textures.back().loadFromFile(rectangle.asset_location->c_str());
+        rect.setTexture(&_textures.back());
+        rect.setTextureRect(sf::IntRect(0, 0,
+            _textures.back().getSize().x,
+            _textures.back().getSize().y));
+    }
+    else
+        rect.setFillColor(sf::Color(rectangle.color_hex));
     _window.draw(rect);
 }
 
 void SFML::display_instruction(circleInstr &circle)
 {
     sf::CircleShape circ(circle.radius);
-    sf::Texture circTexture;
-
     circ.setFillColor(sf::Color(circle.color_hex));
-    circ.setOrigin(sf::Vector2f(circle.x, circle.y));
-    circ.setTexture(&circTexture);
-    _textures.push_back(std::move(circTexture));
+    circ.setPosition(sf::Vector2f(circle.x, circle.y));
+
+    if (!circle.asset_location->empty()) {
+        _textures.emplace_back();
+        _textures.back().loadFromFile(circle.asset_location->c_str());
+        circ.setTexture(&_textures.back());
+        circ.setTextureRect(sf::IntRect(0, 0,
+            _textures.back().getSize().x,
+            _textures.back().getSize().y));
+    }
+    _window.draw(circ);
 }
 
 void SFML::display_instruction(textInstr &text)
@@ -78,6 +90,7 @@ void SFML::render(std::queue<AnyInstruction> instructions)
         instructions.pop();
     }
     _window.display();
+    _textures.clear();
 }
 
 void SFML::addEvents(sf::Keyboard::Key touch)

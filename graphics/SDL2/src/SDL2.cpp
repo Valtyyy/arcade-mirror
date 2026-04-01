@@ -97,7 +97,7 @@ void SDL2::display_instruction(rectInstr &rectangle)
     SDL_RenderFillRect(_renderer, &rect);
     if (!rectangle.asset_location->empty()) {
         SDL_Surface *surface = IMG_Load(rectangle.asset_location->c_str());
-        createTextureFromSurface(surface, rect.x, rect.y, rect.w, rect.h);
+        createTextureFromSurface(surface, rect.x, rect.y, rect.h, rect.w);
     }
 }
 
