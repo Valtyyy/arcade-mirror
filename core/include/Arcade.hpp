@@ -20,11 +20,11 @@
 #define SECOND 1000000
 #define MENU_GAME LIB_PATH "libarcade_menu.so"
 
-#define ASCII_O 0
-#define ASCII_P 1
-#define ASCII_L 2
-#define ASCII_M 3
-#define ASCII_I 4
+#define ASCII_O 'o'
+#define ASCII_P 'p'
+#define ASCII_L 'l'
+#define ASCII_M 'm'
+#define ASCII_I 'i'
 
 class Core {
     public:
