@@ -10,8 +10,14 @@
 #include "gfx.hpp"
 #include <queue>
 
+enum LIB_TYPE {
+    GAME,
+    DISPLAY
+};
+
 class IGame {
     public:
+        virtual ~IGame() = default;
         virtual void init() = 0;
         virtual void close() = 0;
         virtual void update(std::queue<Event>) = 0;

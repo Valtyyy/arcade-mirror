@@ -100,3 +100,42 @@ Test(DlLoader, sym_callable_mul)
     auto fn = reinterpret_cast<int(*)(int, int)>(loader.sym("mul"));
     cr_assert_eq(fn(3, 4), 12);
 }
+
+Test(DlLoader, move_assign_transfers_handle)
+{
+    DlLoader src(TEST_LIB);
+    src.load();
+    DlLoader dst(INVALID_LIB);
+    dst = std::move(src);
+    cr_assert_eq(dst.is_loaded(), true);
+    cr_assert_eq(src.is_loaded(), false);
+}
+
+Test(DlLoader, move_assign_unloads_destination)
+{
+    DlLoader src(TEST_LIB);
+    DlLoader dst(TEST_LIB);
+    dst.load();
+    dst = std::move(src);
+    cr_assert_eq(dst.is_loaded(), false);
+    cr_assert_eq(src.is_loaded(), false);
+}
+
+Test(DlLoader, move_assign_self_is_safe)
+{
+    DlLoader loader(TEST_LIB);
+    loader.load();
+    DlLoader *ptr = &loader;
+    loader = std::move(*ptr);
+    cr_assert_eq(loader.is_loaded(), true);
+}
+
+Test(DlLoader, move_assigned_sym_still_works)
+{
+    DlLoader src(TEST_LIB);
+    src.load();
+    DlLoader dst(INVALID_LIB);
+    dst = std::move(src);
+    auto fn = reinterpret_cast<int(*)(int, int)>(dst.sym("sum"));
+    cr_assert_eq(fn(2, 3), 5);
+}

@@ -5,6 +5,8 @@
 ** DlLoader
 */
 
+#include <cstddef>
+#include <cstdio>
 #include <dlfcn.h>
 #include <exception>
 #include <iostream>
@@ -14,6 +16,17 @@
 DlLoader::DlLoader(const std::string &path) : _location(path), _handle(nullptr)
 {
 
+}
+
+DlLoader &DlLoader::operator=(DlLoader &&other) noexcept
+{
+    if (this != &other) {
+        unload();
+        const_cast<std::string &>(_location) = other._location;
+        _handle = other._handle;
+        other._handle = nullptr;
+    }
+    return *this;
 }
 
 DlLoader::~DlLoader()
@@ -47,8 +60,9 @@ void *DlLoader::sym(const std::string &symbol) const
         return nullptr;
 
     void *result = dlsym(_handle, symbol.c_str());
-    if (!result)
+    if (result == nullptr)
         throw std::runtime_error(dlerror());
+
     return result;
 }
 

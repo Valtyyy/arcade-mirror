@@ -5,26 +5,36 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(DEBUG "Compile with -g3" OFF)
 
+include_directories(${PROJECT_SOURCE_DIR}/shared/include)
+
 set(SHARED
     shared/src/DlLoader.cpp
 )
 
 set(CORE
     ${SHARED}
+    core/src/Display.cpp
+    core/src/Game.cpp
+    core/src/Arcade.cpp
 )
 
 add_executable(arcade ${CORE} core/src/main.cpp)
+target_include_directories(arcade PRIVATE
+    ${PROJECT_SOURCE_DIR}/core/include
+)
 
 target_compile_options(arcade PRIVATE
     -Wall
     -Wextra
 )
 
+target_compile_definitions(arcade PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+)
+
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
-
-include_directories(${PROJECT_SOURCE_DIR}/shared/include)
 
 # ===== Tests =====
 
@@ -34,9 +44,30 @@ add_executable(test_binary
     ${CORE}
     tests/test_void.cpp
     tests/test_shared.cpp
+    tests/test_core.cpp
+)
+target_include_directories(test_binary
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/core/include
 )
 
 add_library(test_lib SHARED tests/libtest/lib_test.cpp)
+target_include_directories(test_lib
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/libtest/
+)
+
+add_library(game_mock SHARED tests/libgame_mock/lib_game_mock.cpp)
+target_include_directories(game_mock PRIVATE
+    ${PROJECT_SOURCE_DIR}/tests/libgame_mock
+)
+
+add_library(display_mock SHARED tests/libdisplay_mock/lib_display_mock.cpp)
+target_include_directories(display_mock PRIVATE
+    ${PROJECT_SOURCE_DIR}/tests/libdisplay_mock
+)
+
+add_dependencies(test_binary game_mock display_mock)
 
 target_compile_options(test_binary PRIVATE
     -Wall
@@ -46,11 +77,6 @@ target_compile_options(test_binary PRIVATE
 
 target_compile_definitions(test_binary PRIVATE
     LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
-)
-
-target_include_directories(test_lib
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/libtest/
 )
 
 target_link_libraries(test_binary PRIVATE criterion)
