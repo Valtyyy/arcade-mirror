@@ -9,8 +9,9 @@
 #include "Display.hpp"
 #include "Game.hpp"
 #include <chrono>
-#include <cstdio>
+#include <queue>
 #include <thread>
+#include <variant>
 
 Core::Core(const std::string &display_lib, const std::string &game_lib) : _game(game_lib), _display(display_lib)
 {
@@ -26,7 +27,6 @@ void Core::run()
         auto start = std::chrono::steady_clock::now();
 
         doIteration();
-        std::printf("AA\n");
 
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
@@ -39,6 +39,45 @@ void Core::run()
 
 void Core::doIteration()
 {
-    _game.update(_display.pollEvents());
+    auto events = _display.pollEvents();
+
+    if (_handle_command(events) < 0)
+        return;
+
+    _game.update(events);
     _display.render(_game.getGfxInstructions());
+}
+
+int Core::_handle_command(std::queue<Event> events)
+{
+    Event curr;
+
+    while (!events.empty()) {
+        curr = events.front();
+        if (std::holds_alternative<int>(curr) && _apply_command(std::get<int>(curr)) < 0)
+            return -1;
+        events.pop();
+    }
+    return 0;
+}
+
+int Core::_apply_command(int cmd)
+{
+    switch (cmd) {
+        case ASCII_P:
+            _display = Display(_);
+            break;
+        case ASCII_M:
+            _game = Game("ll");
+            break;
+        case ASCII_O:
+            _game.close();
+            _game.init();
+            break;
+        case ASCII_L:
+            _game = Game(MENU_GAME);
+            break;
+        case ASCII_I:
+            return -1;
+    }
 }

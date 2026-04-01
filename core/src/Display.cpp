@@ -26,6 +26,17 @@ Display::Display(const std::string &_lib_location) : _lib(_lib_location)
     _self->init();
 }
 
+Display &Display::operator=(Display &&other) noexcept
+{
+    if (this != &other) {
+        if (_lib.is_loaded())
+            close();
+        _lib = std::move(other._lib);
+        _self = std::move(other._self);
+    }
+    return *this;
+}
+
 Display::~Display()
 {
     if (_lib.is_loaded())

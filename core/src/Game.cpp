@@ -25,6 +25,17 @@ Game::Game(const std::string &_lib_location) : _lib(_lib_location)
     _self->init();
 }
 
+Game &Game::operator=(Game &&other) noexcept
+{
+    if (this != &other) {
+        if (_lib.is_loaded())
+            close();
+        _lib = std::move(other._lib);
+        _self = std::move(other._self);
+    }
+    return *this;
+}
+
 Game::~Game()
 {
     if (_lib.is_loaded())

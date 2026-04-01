@@ -15,6 +15,7 @@
 class Display : public IDisplay {
     public:
         Display(const std::string &lib_location);
+        Display &operator=(Display &&other) noexcept;
         ~Display();
 
         void init() override;
