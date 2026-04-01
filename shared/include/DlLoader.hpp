@@ -12,6 +12,7 @@
 class DlLoader {
     public:
         DlLoader(const std::string &path);
+        DlLoader &operator=(DlLoader &&other) noexcept;
         ~DlLoader();
 
         void load();

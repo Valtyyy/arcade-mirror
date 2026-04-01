@@ -9,7 +9,10 @@
 
 #include "Display.hpp"
 #include "Game.hpp"
+#include "gfx.hpp"
+#include <queue>
 #include <string>
+#include <vector>
 
 #define EXIT_FAIL 84
 #define EXIT_SUCCESS 0
@@ -17,13 +20,27 @@
 #define SECOND 1000000
 #define MENU_GAME LIB_PATH "libarcade_menu.so"
 
+#define ASCII_O 'o'
+#define ASCII_P 'p'
+#define ASCII_L 'l'
+#define ASCII_M 'm'
+#define ASCII_I 'i'
+
 class Core {
     public:
         Core(const std::string &, const std::string &);
         void run();
         void doIteration();
 
+        static std::vector<std::string> getGamesList();
+        static std::vector<std::string> getDisplayList();
+
     private:
+        Game _game;
         Display _display;
+        size_t _currentGame;
+        size_t _currentDisplay;
+        std::vector<std::string> _gamesList;
+        std::vector<std::string> _displayList;
         //Game _game;
 };

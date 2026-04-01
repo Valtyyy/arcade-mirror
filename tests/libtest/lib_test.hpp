@@ -9,5 +9,7 @@
 
 #define EXPORT extern "C"
 
-EXPORT int sum(int a, int b);
-EXPORT int mul(int a, int b);
+EXPORT {
+    int sum(int a, int b);
+    int mul(int a, int b);
+}

@@ -10,15 +10,18 @@
 #include "Game.hpp"
 #include "gfx.hpp"
 #include <chrono>
-#include <cstddef>
-#include <cstdio>
 #include <queue>
+#include <string>
 #include <thread>
-#include <iostream>
+#include <variant>
 
 Core::Core(const std::string &display_lib, const std::string &game_lib) : _display(display_lib)
 {
-    std::cout << game_lib << std::endl;
+    _displayList = getDisplayList();
+    _gamesList = getGamesList();
+
+    _currentDisplay = _findIndex(_displayList, display_lib);
+    _currentGame = _findIndex(_gamesList, game_lib);
 }
 
 void Core::run()
@@ -48,7 +51,7 @@ void Core::run()
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
             std::this_thread::sleep_for(interval - elapsed);
-            continue;;
+            continue;
         }
         std::this_thread::sleep_for(interval);
     }
@@ -56,6 +59,66 @@ void Core::run()
 
 void Core::doIteration()
 {
-    //_game.update(_display.pollEvents());
-    //_display.render(_game.getGfxInstructions());
+    auto events = _display.pollEvents();
+
+    if (_handle_command(events) < 0)
+        return;
+
+    _game.update(events);
+    _display.render(_game.getGfxInstructions());
+}
+
+int Core::_handle_command(std::queue<Event> events)
+{
+    Event curr;
+
+    while (!events.empty()) {
+        curr = events.front();
+        if (std::holds_alternative<int>(curr) && _apply_command(std::get<int>(curr)) < 0)
+            return -1;
+        events.pop();
+    }
+    return 0;
+}
+
+int Core::_apply_command(int cmd)
+{
+    switch (cmd) {
+        case ASCII_P:
+            _currentDisplay = (_currentDisplay + 1) % _displayList.size();
+            _display = Display(_displayList[_currentDisplay]);
+            break;
+        case ASCII_M:
+            _currentGame = (_currentGame + 1) % _gamesList.size();
+            _game = Game(_gamesList[_currentGame]);
+            break;
+        case ASCII_O:
+            _game = Game(_gamesList[_currentGame]);
+            break;
+        case ASCII_L:
+            _game = Game(MENU_GAME);
+            break;
+        case ASCII_I:
+            return -1;
+    }
+    return 0;
+}
+
+size_t Core::_findIndex(const std::vector<std::string> &list, const std::string &value)
+{
+    for (size_t i = 0; i < list.size(); ++i) {
+        if (list[i] == value)
+            return i;
+    }
+    return 0;
+}
+
+std::vector<std::string> Core::getGamesList()
+{
+    return {"to_fill"};
+}
+
+std::vector<std::string> Core::getDisplayList()
+{
+    return {"to_fill"};
 }

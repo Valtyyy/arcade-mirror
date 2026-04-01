@@ -14,6 +14,7 @@
 class Game : public IGame {
     public:
         Game(const std::string &lib_location);
+        Game &operator=(Game &&other) noexcept;
         ~Game();
 
         void init() override;
