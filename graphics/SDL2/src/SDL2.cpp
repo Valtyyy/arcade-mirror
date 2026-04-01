@@ -154,10 +154,10 @@ void SDL2::render(std::queue<AnyInstruction> instructions)
 
 void SDL2::addEvents(SDL_KeyboardEvent &touch)
 {
-    size_t key = touch.keysym.sym;;
-    Event event = (int)key;
+    int key = touch.keysym.sym;;
+    Event event = key;
 
-    printf("Key: %ld\n", key);
+    printf("Key: %d\n", key);
     _events.push(event);
 }
 

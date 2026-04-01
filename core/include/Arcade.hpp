@@ -25,5 +25,5 @@ class Core {
 
     private:
         Display _display;
-        Game _game;
+        //Game _game;
 };
