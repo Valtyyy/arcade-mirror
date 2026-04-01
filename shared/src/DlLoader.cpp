@@ -18,17 +18,6 @@ DlLoader::DlLoader(const std::string &path) : _location(path), _handle(nullptr)
 
 }
 
-DlLoader::DlLoader(const DlLoader &other) : _location(other._location), _handle(nullptr)
-{
-    if (other._handle != nullptr)
-        load();
-}
-
-DlLoader::DlLoader(DlLoader &&other) noexcept : _location(other._location), _handle(other._handle)
-{
-    other._handle = nullptr;
-}
-
 DlLoader &DlLoader::operator=(DlLoader &&other) noexcept
 {
     if (this != &other) {
