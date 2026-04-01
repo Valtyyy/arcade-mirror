@@ -47,7 +47,6 @@ Display::~Display()
 
 void Display::init()
 {
-    std::cout << "CALL INIT" << std::endl;
     _self->init();
 }
 

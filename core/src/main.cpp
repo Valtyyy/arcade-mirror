@@ -8,7 +8,6 @@
 #include "Arcade.hpp"
 #include <exception>
 #include <iostream>
-#include <ostream>
 
 int main(int ac, char **av)
 {
