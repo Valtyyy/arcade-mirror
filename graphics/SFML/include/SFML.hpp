@@ -19,6 +19,7 @@
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "DisplayVariable.hpp"
 #include <vector>
 
 class SFML : public IDisplay {
@@ -32,11 +33,6 @@ public:
     ~SFML();
 
 private:
-    struct screen {
-        size_t h;
-        size_t w;
-        int ratio = 1;
-    };
     screen screenSize;
     sf::RenderWindow _window;
     std::queue<Event> _events;

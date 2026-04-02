@@ -1,4 +1,5 @@
 #include "SDL2.hpp"
+#include "DisplayVariable.hpp"
 #include "IDisplay.hpp"
 #include "gfx.hpp"
 #include <SDL2/SDL_ttf.h>
@@ -30,8 +31,8 @@ void SDL2::init()
     _window = SDL_CreateWindow("SDL",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        800,
-        800,
+        SCREEN_H,
+        SCREEN_W,
         SDL_WINDOW_RESIZABLE);
     if (!_window)
         throw std::runtime_error(SDL_GetError());

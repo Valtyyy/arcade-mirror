@@ -1,3 +1,4 @@
+#include "DisplayVariable.hpp"
 #include "IDisplay.hpp"
 #include "SFML.hpp"
 #include "gfx.hpp"
@@ -16,13 +17,13 @@ extern "C" IDisplay *create()
     return new SFML();
 }
 
-SFML::SFML() : _window(sf::VideoMode(800, 800), 
+SFML::SFML() : _window(sf::VideoMode(SCREEN_W, SCREEN_H), 
         "SFML",
         sf::Style::Default) {}
 
 void SFML::init()
 {
-    _window.setFramerateLimit(60);
+    _window.setFramerateLimit(FRAMELIMITS);
     _window.clear(sf::Color::Blue);
 }
 
