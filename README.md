@@ -2,4 +2,4 @@
 
 ## Documentation
 
-Doxygen diagram on this [github page](https://stunning-carnival-qj1nwrj.pages.github.io/html/)
+Doxygen diagram on this [github page](https://valtyyy.github.io/arcade-mirror/html)
