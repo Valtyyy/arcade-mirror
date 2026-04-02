@@ -10,6 +10,8 @@
 #include "IGame.hpp"
 #include <functional>
 #include <memory>
+#include <ostream>
+#include <iostream>
 #include <stdexcept>
 
 Display::Display(const std::string &_lib_location) : _lib(_lib_location)

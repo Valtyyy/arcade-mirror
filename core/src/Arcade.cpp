@@ -8,6 +8,7 @@
 #include "Arcade.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "gfx.hpp"
 #include <chrono>
 #include <queue>
 #include <string>

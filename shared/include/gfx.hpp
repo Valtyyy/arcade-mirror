@@ -12,6 +12,7 @@
 #include <optional>
 #include <variant>
 
+typedef struct gfx_s gfx_instr_t;
 typedef struct point_s {
     int x;
     int y;
@@ -34,7 +35,7 @@ struct circleInstr : public GfxInstruction {
     size_t radius;
 };
 
-struct textInstr : public GfxInstruction {
+struct  textInstr : public rectInstr {
     std::string text;
     size_t fontSize;
 };

@@ -32,6 +32,47 @@ target_compile_definitions(arcade PRIVATE
     LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
 
+# ===== Libraries =====
+    # SDL2
+set(SDL2
+    ${SHARED}
+    graphics/SDL2/src/SDL2.cpp
+)
+
+add_library(arcade_sdl2 SHARED ${SDL2})
+
+target_include_directories(arcade_sdl2 PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/SDL2/include
+)
+
+find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+find_package(SDL2_image REQUIRED)
+
+target_link_libraries(arcade_sdl2 PRIVATE
+    SDL2::SDL2
+    SDL2_ttf::SDL2_ttf
+    SDL2_image::SDL2_image
+)
+
+    # SFML
+set(SFML
+    ${SHARED}
+    graphics/SFML/src/SFML.cpp
+)
+
+add_library(arcade_sfml SHARED ${SFML})
+
+target_include_directories(arcade_sfml PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/SFML/include
+)
+
+find_package(SFML COMPONENTS graphics audio REQUIRED)
+
+target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
+
+# ===== =====
+
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
