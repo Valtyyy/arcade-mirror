@@ -12,6 +12,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_test_font.h>
 #include <cstddef>
+#include <DisplayVariable.hpp>
 #include <cstdio>
 #include <map>
 
@@ -27,11 +28,6 @@ public:
     ~SDL2();
 
 private:
-    struct screen {
-        size_t h = 1;
-        size_t w = 1;
-        int ratio = 1;
-    };
     SDL_Window *_window;
     SDL_Renderer* _renderer;
     std::map<std::string, SDL_Texture*> _textures;
