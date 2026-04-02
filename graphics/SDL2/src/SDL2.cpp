@@ -30,8 +30,8 @@ void SDL2::init()
     _window = SDL_CreateWindow("SDL",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        1920,
-        1080,
+        800,
+        800,
         SDL_WINDOW_RESIZABLE);
     if (!_window)
         throw std::runtime_error(SDL_GetError());
