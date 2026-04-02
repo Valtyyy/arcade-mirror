@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NanoTekSpice V&amp;V: include/IDisplay.hpp Source File</title>
+<title>NanoTekSpice V&amp;V: shared/include/IDisplay.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_9982052f7ce695d12571567315b2fafa.html">shared</a></li><li class="navelem"><a class="el" href="dir_f017f8d1aea2530cee9690020bbdf1df.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -91,22 +91,28 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="gfx_8hpp.html">gfx.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stack&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classIDisplay.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classIDisplay.html">IDisplay</a> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1">   15</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1">init</a>() = 0;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classIDisplay.html#a2d825ce63ce7fd5c967dd4900f7610de">   16</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#a2d825ce63ce7fd5c967dd4900f7610de">close</a>() = 0;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classIDisplay.html#a8cc6f2edc11a360efd88d1068fb151a1">   17</a></span>        <span class="keyword">virtual</span> std::stack&lt;int&gt; <a class="code hl_function" href="classIDisplay.html#a8cc6f2edc11a360efd88d1068fb151a1">getInput</a>() = 0;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classIDisplay.html#a632b30be9a9b3460b5f0622b3c8f8db4">   18</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#a632b30be9a9b3460b5f0622b3c8f8db4">render</a>(std::stack&lt;gfx_instr_t&gt;) = 0;  </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="IGame_8hpp.html">IGame.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classIDisplay.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="classIDisplay.html">IDisplay</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classIDisplay.html#a3f639a4bdb0ab42276fee151c99ea2d8">   16</a></span>        <span class="keyword">virtual</span> <a class="code hl_function" href="classIDisplay.html#a3f639a4bdb0ab42276fee151c99ea2d8">~IDisplay</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1">   17</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1">init</a>() = 0;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classIDisplay.html#a2d825ce63ce7fd5c967dd4900f7610de">   18</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#a2d825ce63ce7fd5c967dd4900f7610de">close</a>() = 0;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classIDisplay.html#affb8a8b5651d138058cdbd088ff3968d">   19</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#affb8a8b5651d138058cdbd088ff3968d">clear</a>() = 0;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa">   20</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa">render</a>(std::queue&lt;AnyInstruction&gt;) = 0;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classIDisplay.html#a5f79762f240a39eb92934c1b70a22905">   21</a></span>        <span class="keyword">virtual</span> std::queue&lt;Event&gt; <a class="code hl_function" href="classIDisplay.html#a5f79762f240a39eb92934c1b70a22905">pollEvents</a>() = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
 </div>
-<div class="ttc" id="aclassIDisplay_html"><div class="ttname"><a href="classIDisplay.html">IDisplay</a></div><div class="ttdef"><b>Definition</b> IDisplay.hpp:13</div></div>
+<div class="ttc" id="aIGame_8hpp_html"><div class="ttname"><a href="IGame_8hpp.html">IGame.hpp</a></div></div>
+<div class="ttc" id="aclassIDisplay_html"><div class="ttname"><a href="classIDisplay.html">IDisplay</a></div><div class="ttdef"><b>Definition</b> IDisplay.hpp:14</div></div>
 <div class="ttc" id="aclassIDisplay_html_a2d825ce63ce7fd5c967dd4900f7610de"><div class="ttname"><a href="classIDisplay.html#a2d825ce63ce7fd5c967dd4900f7610de">IDisplay::close</a></div><div class="ttdeci">virtual void close()=0</div></div>
-<div class="ttc" id="aclassIDisplay_html_a632b30be9a9b3460b5f0622b3c8f8db4"><div class="ttname"><a href="classIDisplay.html#a632b30be9a9b3460b5f0622b3c8f8db4">IDisplay::render</a></div><div class="ttdeci">virtual void render(std::stack&lt; gfx_instr_t &gt;)=0</div></div>
-<div class="ttc" id="aclassIDisplay_html_a8cc6f2edc11a360efd88d1068fb151a1"><div class="ttname"><a href="classIDisplay.html#a8cc6f2edc11a360efd88d1068fb151a1">IDisplay::getInput</a></div><div class="ttdeci">virtual std::stack&lt; int &gt; getInput()=0</div></div>
+<div class="ttc" id="aclassIDisplay_html_a3f639a4bdb0ab42276fee151c99ea2d8"><div class="ttname"><a href="classIDisplay.html#a3f639a4bdb0ab42276fee151c99ea2d8">IDisplay::~IDisplay</a></div><div class="ttdeci">virtual ~IDisplay()=default</div></div>
+<div class="ttc" id="aclassIDisplay_html_a3fa69d2efc5ec1820bcf16d109dd9ffa"><div class="ttname"><a href="classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa">IDisplay::render</a></div><div class="ttdeci">virtual void render(std::queue&lt; AnyInstruction &gt;)=0</div></div>
+<div class="ttc" id="aclassIDisplay_html_a5f79762f240a39eb92934c1b70a22905"><div class="ttname"><a href="classIDisplay.html#a5f79762f240a39eb92934c1b70a22905">IDisplay::pollEvents</a></div><div class="ttdeci">virtual std::queue&lt; Event &gt; pollEvents()=0</div></div>
 <div class="ttc" id="aclassIDisplay_html_ad5f1757ac3a2e74e27f892c09b887dc1"><div class="ttname"><a href="classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1">IDisplay::init</a></div><div class="ttdeci">virtual void init()=0</div></div>
+<div class="ttc" id="aclassIDisplay_html_affb8a8b5651d138058cdbd088ff3968d"><div class="ttname"><a href="classIDisplay.html#affb8a8b5651d138058cdbd088ff3968d">IDisplay::clear</a></div><div class="ttdeci">virtual void clear()=0</div></div>
 <div class="ttc" id="agfx_8hpp_html"><div class="ttname"><a href="gfx_8hpp.html">gfx.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

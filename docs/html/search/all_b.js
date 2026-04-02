@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['x_0',['x',['../structGfxInstruction.html#a2c59f9270bef1044e99be52907af416a',1,'GfxInstruction']]]
+  ['point_5fs_0',['point_s',['../structpoint__s.html',1,'']]],
+  ['point_5ft_1',['point_t',['../gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d',1,'gfx.hpp']]],
+  ['pollevents_2',['pollevents',['../classDisplay.html#a4b02d67bb1cc1f4d9ea91b7c3f70bcac',1,'Display::pollEvents()'],['../classSDL2.html#a0bf8656a9e20ebbbb21dce9697c46970',1,'SDL2::pollEvents()'],['../classSFML.html#a928f5bbd9f9c2a0f71cdd60a165a527b',1,'SFML::pollEvents()'],['../classIDisplay.html#a5f79762f240a39eb92934c1b70a22905',1,'IDisplay::pollEvents()']]]
 ];

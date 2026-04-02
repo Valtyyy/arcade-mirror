@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gfx_2ehpp_0',['gfx.hpp',['../gfx_8hpp.html',1,'']]]
+  ['arcade_2ecpp_0',['Arcade.cpp',['../Arcade_8cpp.html',1,'']]],
+  ['arcade_2ehpp_1',['Arcade.hpp',['../Arcade_8hpp.html',1,'']]]
 ];

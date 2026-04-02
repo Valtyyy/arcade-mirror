@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gfxinstructions_0',['gfxInstructions',['../gfx_8hpp.html#a919839163d2769dbb3bb506bae616e5a',1,'gfx.hpp']]]
+  ['fontsize_0',['fontSize',['../structtextInstr.html#ac4feed19312fa9372bdde608bb007f96',1,'textInstr']]]
 ];

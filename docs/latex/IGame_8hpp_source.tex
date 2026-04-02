@@ -1,5 +1,5 @@
 \doxysection{IGame.\+hpp}
-\hypertarget{IGame_8hpp_source}{}\label{IGame_8hpp_source}\index{include/IGame.hpp@{include/IGame.hpp}}
+\hypertarget{IGame_8hpp_source}{}\label{IGame_8hpp_source}\index{shared/include/IGame.hpp@{shared/include/IGame.hpp}}
 \mbox{\hyperlink{IGame_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{comment}{/*}}
@@ -12,15 +12,20 @@
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00009\ }
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gfx_8hpp}{gfx.hpp}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <queue>}}
 \DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIGame}{IGame}}\ \{}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_afd6f257cea0c2495a475e55b398787da}{init}}()\ =\ 0;}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_a255ba75b5ad8d7641045905516adee92}{close}}()\ =\ 0;}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_a51019f9c20ac3fe8d04d3f7efafe996e}{update}}()\ =\ 0;}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::stack<gfx\_instr\_t>\ \mbox{\hyperlink{classIGame_adcf70269b9eeb1b7647c903daf802ce7}{getGFX}}()\ =\ 0;}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_a20e1ccd07d846a46192c97fdbf088ebb}{applyInput}}(std::stack<int>)\ =\ 0;}
-\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{IGame_8hpp_acf842ea54187d25e58c4e06666c57f06}{LIB\_TYPE}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{IGame_8hpp_acf842ea54187d25e58c4e06666c57f06ad50cf309d7568040619ed26ee6835a84}{GAME}},}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{IGame_8hpp_acf842ea54187d25e58c4e06666c57f06ab853c1004c3396eaa2a89d575d12fa79}{DISPLAY}}}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIGame}{IGame}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIGame_a91b14c1b6019364120d5c5e4d4c64414}{\string~IGame}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_afd6f257cea0c2495a475e55b398787da}{init}}()\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_a255ba75b5ad8d7641045905516adee92}{close}}()\ =\ 0;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIGame_ad4e97984eeb22e7472e782392a851aca}{update}}(std::queue<Event>)\ =\ 0;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ std::queue<AnyInstruction>\ \mbox{\hyperlink{classIGame_a2c09179e6b001b16ce7fd497e6085143}{getGfxInstructions}}()\ =\ 0;}
+\DoxyCodeLine{00025\ \};}
 
 \end{DoxyCode}

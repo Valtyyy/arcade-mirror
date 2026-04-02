@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['y_0',['y',['../structGfxInstruction.html#ab954fe5df71ddb5de791269a84d88050',1,'GfxInstruction']]]
+  ['radius_0',['radius',['../structcircleInstr.html#a7f1bd154b9312d39cf9c326770f21737',1,'circleInstr']]],
+  ['ratio_1',['ratio',['../structscreen.html#a71fc386f89efc76d42cda39603904449',1,'screen']]],
+  ['rectinstr_2',['rectInstr',['../structrectInstr.html',1,'']]],
+  ['render_3',['render',['../classDisplay.html#a577b1ce6ec9e4168cce731b3a591f6bb',1,'Display::render()'],['../classSDL2.html#ad5a80717c7e27f938b2ef4a2ba09cc67',1,'SDL2::render()'],['../classSFML.html#a3c42dc8d94b81c6f87448aeab514df3c',1,'SFML::render()'],['../classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa',1,'IDisplay::render()'],['../classIShape.html#a0730215f9cd7bdc0e5da43bdd5984599',1,'IShape::render()']]],
+  ['run_4',['run',['../classCore.html#adcc93b561dfefacfe2bcbd60604ea7a6',1,'Core']]]
 ];

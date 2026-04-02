@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['render_0',['render',['../classIDisplay.html#a632b30be9a9b3460b5f0622b3c8f8db4',1,'IDisplay::render()'],['../classIShape.html#a0730215f9cd7bdc0e5da43bdd5984599',1,'IShape::render()']]]
+  ['load_0',['load',['../classDlLoader.html#aa2bf7716b648a0707bf9fc09cc15cd31',1,'DlLoader']]]
 ];

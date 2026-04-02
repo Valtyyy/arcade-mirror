@@ -78,23 +78,85 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="IDisplay_8hpp_source.html">IDisplay.hpp</a>&gt;</code></p>
 <div class="dynheader">
+Inheritance diagram for IDisplay:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classIDisplay__inherit__graph.svg" width="379" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
 Collaboration diagram for IDisplay:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classIDisplay__coll__graph.svg" width="104" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classIDisplay__coll__graph.svg" width="118" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a3f639a4bdb0ab42276fee151c99ea2d8" id="r_a3f639a4bdb0ab42276fee151c99ea2d8"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#a3f639a4bdb0ab42276fee151c99ea2d8">~IDisplay</a> ()=default</td></tr>
+<tr class="separator:a3f639a4bdb0ab42276fee151c99ea2d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f1757ac3a2e74e27f892c09b887dc1" id="r_ad5f1757ac3a2e74e27f892c09b887dc1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1">init</a> ()=0</td></tr>
 <tr class="separator:ad5f1757ac3a2e74e27f892c09b887dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d825ce63ce7fd5c967dd4900f7610de" id="r_a2d825ce63ce7fd5c967dd4900f7610de"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#a2d825ce63ce7fd5c967dd4900f7610de">close</a> ()=0</td></tr>
 <tr class="separator:a2d825ce63ce7fd5c967dd4900f7610de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cc6f2edc11a360efd88d1068fb151a1" id="r_a8cc6f2edc11a360efd88d1068fb151a1"><td class="memItemLeft" align="right" valign="top">virtual std::stack&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#a8cc6f2edc11a360efd88d1068fb151a1">getInput</a> ()=0</td></tr>
-<tr class="separator:a8cc6f2edc11a360efd88d1068fb151a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a632b30be9a9b3460b5f0622b3c8f8db4" id="r_a632b30be9a9b3460b5f0622b3c8f8db4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#a632b30be9a9b3460b5f0622b3c8f8db4">render</a> (std::stack&lt; <a class="el" href="gfx_8hpp.html#a41e7d658f3f7543f80ce99a139020702">gfx_instr_t</a> &gt;)=0</td></tr>
-<tr class="separator:a632b30be9a9b3460b5f0622b3c8f8db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb8a8b5651d138058cdbd088ff3968d" id="r_affb8a8b5651d138058cdbd088ff3968d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#affb8a8b5651d138058cdbd088ff3968d">clear</a> ()=0</td></tr>
+<tr class="separator:affb8a8b5651d138058cdbd088ff3968d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fa69d2efc5ec1820bcf16d109dd9ffa" id="r_a3fa69d2efc5ec1820bcf16d109dd9ffa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa">render</a> (std::queue&lt; <a class="el" href="gfx_8hpp.html#a5dc162b955e03805fd28d7c8c19e29e2">AnyInstruction</a> &gt;)=0</td></tr>
+<tr class="separator:a3fa69d2efc5ec1820bcf16d109dd9ffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f79762f240a39eb92934c1b70a22905" id="r_a5f79762f240a39eb92934c1b70a22905"><td class="memItemLeft" align="right" valign="top">virtual std::queue&lt; <a class="el" href="gfx_8hpp.html#ac9c3226d74c73afe0520d666d57a8e7b">Event</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIDisplay.html#a5f79762f240a39eb92934c1b70a22905">pollEvents</a> ()=0</td></tr>
+<tr class="separator:a5f79762f240a39eb92934c1b70a22905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3f639a4bdb0ab42276fee151c99ea2d8" name="a3f639a4bdb0ab42276fee151c99ea2d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f639a4bdb0ab42276fee151c99ea2d8">&#9670;&#160;</a></span>~IDisplay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual IDisplay::~IDisplay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="affb8a8b5651d138058cdbd088ff3968d" name="affb8a8b5651d138058cdbd088ff3968d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb8a8b5651d138058cdbd088ff3968d">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IDisplay::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classDisplay.html#a6e4dc43f1c034564ac82af9f1e093c21">Display</a>, <a class="el" href="classSDL2.html#a4f78f78e314048f75fa50ac4b0be8701">SDL2</a>, and <a class="el" href="classSFML.html#aca1ee78bdd7436e929a07f47f5ae7bfe">SFML</a>.</p>
+
+</div>
+</div>
 <a id="a2d825ce63ce7fd5c967dd4900f7610de" name="a2d825ce63ce7fd5c967dd4900f7610de"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d825ce63ce7fd5c967dd4900f7610de">&#9670;&#160;</a></span>close()</h2>
 
@@ -118,30 +180,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a8cc6f2edc11a360efd88d1068fb151a1" name="a8cc6f2edc11a360efd88d1068fb151a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cc6f2edc11a360efd88d1068fb151a1">&#9670;&#160;</a></span>getInput()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual std::stack&lt; int &gt; IDisplay::getInput </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Implemented in <a class="el" href="classDisplay.html#a8c1cce1a09fcf618af842bf0972dd7c0">Display</a>, <a class="el" href="classSDL2.html#a6b48c229f6c065ef1a0d2f77c4c59983">SDL2</a>, and <a class="el" href="classSFML.html#a32128b3a4bce090a0e9c24a88d4e84fa">SFML</a>.</p>
 
 </div>
 </div>
@@ -168,10 +207,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Implemented in <a class="el" href="classDisplay.html#a4a1faac567c7aa30e43a2b37c4086e03">Display</a>, <a class="el" href="classSDL2.html#a3801c7a65128056be15a0b37b96665c4">SDL2</a>, and <a class="el" href="classSFML.html#ac7d3cd8ba56cab233e22daf91cd7e4b0">SFML</a>.</p>
+
 </div>
 </div>
-<a id="a632b30be9a9b3460b5f0622b3c8f8db4" name="a632b30be9a9b3460b5f0622b3c8f8db4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a632b30be9a9b3460b5f0622b3c8f8db4">&#9670;&#160;</a></span>render()</h2>
+<a id="a5f79762f240a39eb92934c1b70a22905" name="a5f79762f240a39eb92934c1b70a22905"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f79762f240a39eb92934c1b70a22905">&#9670;&#160;</a></span>pollEvents()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -180,9 +221,8 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void IDisplay::render </td>
+          <td class="memname">virtual std::queue&lt; <a class="el" href="gfx_8hpp.html#ac9c3226d74c73afe0520d666d57a8e7b">Event</a> &gt; IDisplay::pollEvents </td>
           <td>(</td>
-          <td class="paramtype">std::stack&lt; <a class="el" href="gfx_8hpp.html#a41e7d658f3f7543f80ce99a139020702">gfx_instr_t</a> &gt;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -194,10 +234,40 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Implemented in <a class="el" href="classDisplay.html#a4b02d67bb1cc1f4d9ea91b7c3f70bcac">Display</a>, <a class="el" href="classSDL2.html#a0bf8656a9e20ebbbb21dce9697c46970">SDL2</a>, and <a class="el" href="classSFML.html#a928f5bbd9f9c2a0f71cdd60a165a527b">SFML</a>.</p>
+
+</div>
+</div>
+<a id="a3fa69d2efc5ec1820bcf16d109dd9ffa" name="a3fa69d2efc5ec1820bcf16d109dd9ffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa69d2efc5ec1820bcf16d109dd9ffa">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IDisplay::render </td>
+          <td>(</td>
+          <td class="paramtype">std::queue&lt; <a class="el" href="gfx_8hpp.html#a5dc162b955e03805fd28d7c8c19e29e2">AnyInstruction</a> &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classDisplay.html#a577b1ce6ec9e4168cce731b3a591f6bb">Display</a>, <a class="el" href="classSDL2.html#ad5a80717c7e27f938b2ef4a2ba09cc67">SDL2</a>, and <a class="el" href="classSFML.html#a3c42dc8d94b81c6f87448aeab514df3c">SFML</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="IDisplay_8hpp_source.html">IDisplay.hpp</a></li>
+<li>shared/include/<a class="el" href="IDisplay_8hpp_source.html">IDisplay.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
