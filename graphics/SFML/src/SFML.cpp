@@ -16,7 +16,7 @@ extern "C" IDisplay *create()
     return new SFML();
 }
 
-SFML::SFML() : _window(sf::VideoMode(1920, 1080), 
+SFML::SFML() : _window(sf::VideoMode(800, 800), 
         "SFML",
         sf::Style::Default) {}
 
@@ -37,16 +37,18 @@ void SFML::clear()
 
 void SFML::display_instruction(rectInstr &rectangle)
 {
-    sf::RectangleShape rect(sf::Vector2f(rectangle.w, rectangle.h));
+    sf::RectangleShape rect(sf::Vector2f(rectangle.w * screenSize.ratio, rectangle.h * screenSize.ratio));
     rect.setPosition(sf::Vector2f(rectangle.x, rectangle.y));
 
     if (!rectangle.asset_location->empty()) {
-        _textures.emplace_back();
-        _textures.back().loadFromFile(rectangle.asset_location->c_str());
-        rect.setTexture(&_textures.back());
+        if (!_textures.contains(rectangle.asset_location.value())) {
+            _textures.emplace();
+            _textures[rectangle.asset_location.value()].loadFromFile(rectangle.asset_location->c_str());
+        }
+        rect.setTexture(&_textures[rectangle.asset_location.value()]);
         rect.setTextureRect(sf::IntRect(0, 0,
-            _textures.back().getSize().x,
-            _textures.back().getSize().y));
+            _textures[rectangle.asset_location.value()].getSize().x,
+            _textures[rectangle.asset_location.value()].getSize().y));
     }
     else
         rect.setFillColor(sf::Color(rectangle.color_hex));
@@ -60,12 +62,14 @@ void SFML::display_instruction(circleInstr &circle)
     circ.setPosition(sf::Vector2f(circle.x, circle.y));
 
     if (!circle.asset_location->empty()) {
-        _textures.emplace_back();
-        _textures.back().loadFromFile(circle.asset_location->c_str());
-        circ.setTexture(&_textures.back());
+        if (_textures.contains(circle.asset_location.value())) {
+            _textures.emplace();
+            _textures[circle.asset_location.value()].loadFromFile(circle.asset_location->c_str());
+        }
+        circ.setTexture(&_textures[circle.asset_location.value()]);
         circ.setTextureRect(sf::IntRect(0, 0,
-            _textures.back().getSize().x,
-            _textures.back().getSize().y));
+            _textures[circle.asset_location.value()].getSize().x,
+            _textures[circle.asset_location.value()].getSize().y));
     }
     _window.draw(circ);
 }
@@ -81,9 +85,11 @@ void SFML::display_instruction(textInstr &text)
     _window.draw(Text);
 }
 
-void SFML::display_instruction(dimensionInstr &text)
+void SFML::display_instruction(dimensionInstr &dimension)
 {
-    std::cout << "DIMENSTION" << std::endl;
+    screenSize.w = dimension.w;
+    screenSize.h = dimension.h;
+    screenSize.ratio = (800 / dimension.h);
 }
 
 void SFML::render(std::queue<AnyInstruction> instructions)

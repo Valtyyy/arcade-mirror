@@ -42,7 +42,7 @@ void SDL2::init()
 void SDL2::close()
 {
     for (auto elem : _textures)
-        SDL_DestroyTexture(elem);
+        SDL_DestroyTexture(elem.second);
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     SDL_Quit();
@@ -63,30 +63,19 @@ SDL_Color SDL2::convert_rgba(int hex_color)
     return color;
 }
 
-void SDL2::create_texture(const int width, const int height)
-{
-    SDL_Texture *texture =
-    SDL_CreateTexture(_renderer,
-        SDL_PIXELFORMAT_RGBA8888, 
-        SDL_TEXTUREACCESS_TARGET,
-    width,
-    height);
-    if (!texture)
-        throw std::runtime_error(SDL_GetError());
-    _textures.push_back(std::move(texture));
-}
-
-void SDL2::createTextureFromSurface(SDL_Surface *surface, int x, int y, int w, int h)
+void SDL2::createTextureFromSurface(SDL_Surface *surface, std::string &assets, int x, int y, int w, int h)
 {
     if (!surface)
         throw std::runtime_error(SDL_GetError());
-    SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
-    if (!textTexture)
-        throw std::runtime_error(SDL_GetError());
-    SDL_Rect textRect = {x, y, w, h};
+    if (!_textures.contains(assets)) {
+        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
+        if (!textTexture)
+            throw std::runtime_error(SDL_GetError());
+        _textures[assets] = std::move(textTexture);
 
-    _textures.push_back(textTexture);
-    SDL_RenderCopy(_renderer, textTexture, NULL, &textRect);
+    }
+    SDL_Rect textRect = {x, y, w * screenSize.ratio, h * screenSize.ratio};
+    SDL_RenderCopy(_renderer, _textures[assets], NULL, &textRect);
 }
 
 void SDL2::display_instruction(rectInstr &rectangle)
@@ -94,11 +83,11 @@ void SDL2::display_instruction(rectInstr &rectangle)
     SDL_Color color = convert_rgba(rectangle.color_hex);
     SDL_SetRenderDrawColor(_renderer, color.r, color.g, color.b, color.a);
     SDL_Rect rect = {(int)rectangle.x, 
-        (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
+        (int)rectangle.y, (int)rectangle.w * screenSize.ratio, (int)rectangle.h * screenSize.ratio};
     SDL_RenderFillRect(_renderer, &rect);
     if (!rectangle.asset_location->empty()) {
         SDL_Surface *surface = IMG_Load(rectangle.asset_location->c_str());
-        createTextureFromSurface(surface, rect.x, rect.y, rect.w, rect.h);
+        createTextureFromSurface(surface, rectangle.asset_location.value(), rect.x , rect.y, rect.w, rect.h);
     }
 }
 
@@ -125,7 +114,7 @@ void SDL2::display_instruction(circleInstr &circle)
     DrawCircle(
         circle.x, 
         circle.y, 
-        circle.radius, _renderer);
+        circle.radius * screenSize.ratio, _renderer);
 }
 
 void SDL2::display_instruction(textInstr &text)
@@ -137,14 +126,20 @@ void SDL2::display_instruction(textInstr &text)
     SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.text.c_str(), color);
     if (!textSurface)
         throw std::runtime_error(SDL_GetError());
-    createTextureFromSurface(textSurface, text.x, text.y, textSurface->w, textSurface->h);
+    createTextureFromSurface(textSurface,
+        text.asset_location.value(),
+        text.x,
+        text.y,
+        textSurface->w * screenSize.ratio,
+        textSurface->h * screenSize.ratio);
 }
 
-void display_instruction(dimensionInstr &dimension)
+void SDL2::display_instruction(dimensionInstr &dimension)
 {
-    std::cout << "Dimension" << std::endl;
+    screenSize.h = dimension.h;
+    screenSize.w = dimension.w;
+    screenSize.ratio = (800 / dimension.h);
 }
-
 
 void SDL2::render(std::queue<AnyInstruction> instructions)
 {
@@ -161,7 +156,7 @@ void SDL2::render(std::queue<AnyInstruction> instructions)
 
 void SDL2::addEvents(SDL_KeyboardEvent &touch)
 {
-    int key = touch.keysym.sym;;
+    int key = touch.keysym.scancode;
     Event event = key;
 
     printf("Key: %d\n", key);

@@ -11,7 +11,9 @@
 #include "gfx.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_test_font.h>
+#include <cstddef>
 #include <cstdio>
+#include <map>
 
 
 class SDL2 : public IDisplay {
@@ -25,17 +27,21 @@ public:
     ~SDL2();
 
 private:
+    struct screen {
+        size_t h = 1;
+        size_t w = 1;
+        int ratio = 1;
+    };
     SDL_Window *_window;
     SDL_Renderer* _renderer;
-    std::vector<SDL_Texture*> _textures;
+    std::map<std::string, SDL_Texture*> _textures;
     std::queue<Event> _events;
-    
+    screen screenSize;
     void addEvents(SDL_KeyboardEvent &);
     void addEvents(SDL_MouseButtonEvent &);
     void DrawCircle(int x, int y, float radius, SDL_Renderer *renderer);
     SDL_Color convert_rgba(int hexValue);
-    void create_texture(const int width, const int height);
-    void createTextureFromSurface(SDL_Surface *surface,
+    void createTextureFromSurface(SDL_Surface *surface, std::string &assets,
         int x, int y, int w, int h);
     void display_instruction(rectInstr &);
     void display_instruction(circleInstr &);

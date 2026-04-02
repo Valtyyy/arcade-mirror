@@ -9,6 +9,7 @@
 
 #include "IDisplay.hpp"
 #include <SFML/Window/Mouse.hpp>
+#include <cstddef>
 #include <cstdio>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics/Color.hpp>
@@ -17,6 +18,7 @@
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Mouse.hpp>
 #include <SFML/Graphics.hpp>
+#include <string>
 #include <vector>
 
 class SFML : public IDisplay {
@@ -30,9 +32,15 @@ public:
     ~SFML();
 
 private:
+    struct screen {
+        size_t h;
+        size_t w;
+        int ratio = 1;
+    };
+    screen screenSize;
     sf::RenderWindow _window;
     std::queue<Event> _events;
-    std::vector<sf::Texture> _textures;
+    std::map<std::string, sf::Texture> _textures;
     void addEvents(sf::Keyboard::Key touch);
     void addEvents(sf::Event::MouseButtonEvent click);
     void create_texture(const int width, const int height);
