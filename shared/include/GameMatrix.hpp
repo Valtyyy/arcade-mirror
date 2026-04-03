@@ -13,6 +13,7 @@
 #include <exception>
 #include <sstream>
 #include <iostream>
+#include <stack>
 
 
 template <typename T>
@@ -94,7 +95,7 @@ class GameMatrix {
         void printMatrix()
         {
             for (std::vector<T> line : _matrix){
-                for (T &elem : line){
+                for (T &elem : line) {
                     std::cout << elem;
                 }
                 std::cout << std::endl;

@@ -84,7 +84,7 @@ void SDL2::display_instruction(rectInstr &rectangle)
     SDL_Color color = convert_rgba(rectangle.color_hex);
     SDL_SetRenderDrawColor(_renderer, color.r, color.g, color.b, color.a);
     SDL_Rect rect = {(int)rectangle.x, 
-        (int)rectangle.y, (int)rectangle.w * screenSize.ratio, (int)rectangle.h * screenSize.ratio};
+        (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
     SDL_RenderFillRect(_renderer, &rect);
     if (!rectangle.asset_location->empty()) {
         SDL_Surface *surface = IMG_Load(rectangle.asset_location->c_str());
@@ -129,8 +129,8 @@ void SDL2::display_instruction(textInstr &text)
         throw std::runtime_error(SDL_GetError());
     createTextureFromSurface(textSurface,
         text.asset_location.value(),
-        text.x,
-        text.y,
+        text.x * screenSize.ratio,
+        text.y * screenSize.ratio,
         textSurface->w * screenSize.ratio,
         textSurface->h * screenSize.ratio);
 }
