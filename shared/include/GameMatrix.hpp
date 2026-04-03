@@ -8,12 +8,12 @@
 #pragma once
 
 #include "IGame.hpp"
-#include "gfx.hpp"
 #include <vector>
 #include <exception>
 #include <sstream>
 #include <iostream>
-
+#include "gfx.hpp"
+#include <stack>
 
 template <typename T>
 class GameMatrix {
@@ -31,23 +31,32 @@ class GameMatrix {
         };
 
 
-        GfxInstruction<void> createTileGFX()
+        rectInstr createTileGFX(char txt)
         {
-            rectInstr<void> tileGFX;
+            rectInstr tileGFX;
 
-            tileGFX.type = SHAPE_TYPE::RECT;
-            tileGFX.length = _tileSize;
-            tileGFX.width = _tileSize;
+            tileGFX.h = _tileSize;
+            tileGFX.w = _tileSize;
+            tileGFX.txt = txt;
             return tileGFX;
+        };
+
+
+        void clearInstruct() 
+        {
+            while (!instruct.empty()) {
+                instruct.pop();
+            }
         }
 
-        std::stack<GfxInstruction<void>> &matrixToGFX(std::size_t color = 0)
+        std::stack<rectInstr> &matrixToGFX(std::size_t color = 0, char txt = ' ')
         {
-            GfxInstruction<void> tileGFX;
+            rectInstr tileGFX;
+            clearInstruct();
 
-            for (std::size_t y; y < _matrix.size(); y++){
-                for (std::size_t x; x < _matrix.size(); x++){
-                    tileGFX = createTileGFX();
+            for (std::size_t y = 0; y < _matrix.size(); y++){
+                for (std::size_t x = 0; x < _matrix[y].size(); x++){
+                    tileGFX = createTileGFX(txt);
                     tileGFX.color_hex = color;
                     tileGFX.x = x * _tileSize;
                     tileGFX.y = y * _tileSize;
@@ -57,13 +66,14 @@ class GameMatrix {
             return instruct;
         };
 
-        std::stack<GfxInstruction<void>> matrixToGFX(std::string asset)
+        std::stack<rectInstr> &matrixToGFX(std::string asset, char txt = ' ')
         {
-            GfxInstruction<void> tileGFX;
+            rectInstr tileGFX;
+            clearInstruct();
 
-            for (std::size_t y; y < _matrix.size(); y++){
-                for (std::size_t x; x < _matrix.size(); x++){
-                    tileGFX = createTileGFX();
+            for (std::size_t y = 0; y < _matrix.size(); y++){
+                for (std::size_t x = 0; x < _matrix[y].size(); x++){
+                    tileGFX = createTileGFX(txt);
                     tileGFX.asset_location = asset;
                     tileGFX.x = x * _tileSize;
                     tileGFX.y = y * _tileSize;
@@ -85,7 +95,7 @@ class GameMatrix {
 
         T& operator()(std::size_t x, std::size_t y) 
         {
-            if (x > (_columns - 1) || y > (_lines - 1)){
+            if (x >= _columns || y >= _lines){
                 throw SizeError(x, y);
             }
             return _matrix[y][x];
@@ -99,7 +109,6 @@ class GameMatrix {
                 }
                 std::cout << std::endl;
             }
-
         };
 
         class SizeError : public std::exception
@@ -118,8 +127,18 @@ class GameMatrix {
                     return msg.c_str();
                 }
         };
+
+        void onTileClick(point_t EventPoint, const std::function<void(T &cell)> &func)
+        {
+            std::size_t cellX = EventPoint.x / _tileSize;
+            std::size_t cellY = EventPoint.y / _tileSize;
+
+            if (cellX >= _columns || cellY >= _lines)
+                return;
+            func(_matrix[cellY][cellX]);
+        }
     private:
-        std::stack<GfxInstruction<void>> instruct;
+        std::stack<rectInstr> instruct;
         std::vector<std::vector<T>> _matrix;
         std::size_t _lines;
         std::size_t _columns;
