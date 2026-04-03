@@ -2,8 +2,8 @@ name: Arcade CI/CD
 
 on:
   push:
-    branches-ignore:
-      - "ga-ignore-*"
+    branches:
+      - main
   pull_request:
     branches-ignore:
       - "ga-ignore-*"
@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y doxygen graphviz libcriterion-dev cmake build-essential
+          sudo apt-get install -y doxygen graphviz libcriterion-dev cmake build-essential libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsfml-dev
 
       - name: Configure CMake
         run: |
@@ -31,36 +31,35 @@ jobs:
         run: |
           cmake --build build
 
-  #test:
-  #  name: Run tests
-  #  runs-on: ubuntu-latest
-  #  needs: build
-  #  steps:
-  #    - uses: actions/checkout@v4
-#
-  #    - name: Install dependencies
-  #      run: |
-  #        sudo apt-get update
-  #        sudo apt-get install -y doxygen graphviz libcriterion-dev cmake build-essential
-#
-  #    - name: Configure CMake
-  #      run: |
-  #        cmake -B build -S .
-#
-  #    - name: Build project
-  #      run: |
-  #        cmake --build build
-#
-  #    - name: Run tests
-  #      run: |
-  #        cd build
-  #        ./test_nanotekspice
-  #      continue-on-error: false
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz libcriterion-dev cmake build-essential libsdl2-dev libsdl2-ttf-dev libsdl2-image-dev libsfml-dev
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -S .
+
+      - name: Build project
+        run: |
+          cmake --build build
+
+      - name: Run tests
+        run: |
+          ./build/test_binary
+        continue-on-error: false
 
   mirror:
     if: github.repository == 'Valtyyy/arcade-mirror' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
     steps:
       - uses: actions/checkout@v4
         with:

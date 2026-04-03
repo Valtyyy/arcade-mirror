@@ -1,0 +1,55 @@
+\doxysection{Arcade.\+hpp}
+\hypertarget{Arcade_8hpp_source}{}\label{Arcade_8hpp_source}\index{core/include/Arcade.hpp@{core/include/Arcade.hpp}}
+\mbox{\hyperlink{Arcade_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{**\ EPITECH\ PROJECT,\ 2026}}
+\DoxyCodeLine{00003\ \textcolor{comment}{**\ Arcade}}
+\DoxyCodeLine{00004\ \textcolor{comment}{**\ File\ description:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{**\ Arcade\ header}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Display_8hpp}{Display.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Game_8hpp}{Game.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gfx_8hpp}{gfx.hpp}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ EXIT\_FAIL\ 84}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ EXIT\_SUCCESS\ 0}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ IPS\ 15}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ SECOND\ 1000000}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ MENU\_GAME\ LIB\_PATH\ "{}libarcade\_menu.so"{}}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ ASCII\_O\ 'o'}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ ASCII\_P\ 'p'}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ ASCII\_L\ 'l'}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ ASCII\_M\ 'm'}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ ASCII\_I\ 'i'}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCore}{Core}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCore}{Core}}(\textcolor{keyword}{const}\ std::string\ \&,\ \textcolor{keyword}{const}\ std::string\ \&);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCore_adcc93b561dfefacfe2bcbd60604ea7a6}{run}}();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCore_aec9a71071fa65e6a81e8614376df26d7}{doIteration}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ \mbox{\hyperlink{classCore_a050def4f2658de79a75da1ff9e1924d1}{getGamesList}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ \mbox{\hyperlink{classCore_a10320cacf0b34a059a7ae186c9b65cc3}{getDisplayList}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_handle\_command(std::queue<Event>);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_apply\_command(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \_findIndex(\textcolor{keyword}{const}\ std::vector<std::string>\ \&,\ \textcolor{keyword}{const}\ std::string\ \&);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGame}{Game}}\ \_game;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDisplay}{Display}}\ \_display;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_currentGame;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_currentDisplay;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \_gamesList;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \_displayList;}
+\DoxyCodeLine{00049\ \};}
+
+\end{DoxyCode}

@@ -1,5 +1,5 @@
-<map id="circleInstr&lt; T &gt;" name="circleInstr&lt; T &gt;">
-<area shape="rect" id="Node000001" title=" " alt="" coords="19,219,135,284"/>
-<area shape="rect" id="Node000002" href="$structGfxInstruction.html" title=" " alt="" coords="5,5,149,171"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,184,80,219,75,219,75,184"/>
+<map id="circleInstr" name="circleInstr">
+<area shape="rect" id="Node000001" title=" " alt="" coords="27,199,106,264"/>
+<area shape="rect" id="Node000002" href="$structGfxInstruction.html" title=" " alt="" coords="5,5,128,151"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="69,164,69,198,64,198,64,164"/>
 </map>

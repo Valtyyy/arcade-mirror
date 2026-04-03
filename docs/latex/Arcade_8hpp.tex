@@ -1,0 +1,113 @@
+\doxysection{core/include/\+Arcade.hpp File Reference}
+\hypertarget{Arcade_8hpp}{}\label{Arcade_8hpp}\index{core/include/Arcade.hpp@{core/include/Arcade.hpp}}
+{\ttfamily \#include "{}Display.\+hpp"{}}\newline
+{\ttfamily \#include "{}Game.\+hpp"{}}\newline
+{\ttfamily \#include "{}gfx.\+hpp"{}}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for Arcade.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Arcade_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{Arcade_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classCore}{Core}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a3dd07a08f0f7a5fce39d6f4920d25bb3}{EXIT\+\_\+\+FAIL}}~84
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a687984f47d8cce148d1b914d2b79612a}{EXIT\+\_\+\+SUCCESS}}~0
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a4111cfe5bd52500d2177975ed8d92494}{IPS}}~15
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a94212be2394d2d37d9dfd33d07d82dba}{SECOND}}~1000000
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_aebfe3169ab060734fc1657a08d7cecea}{MENU\+\_\+\+GAME}}~LIB\+\_\+\+PATH "{}libarcade\+\_\+menu.\+so"{}
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a248a5835b08a0f8d30b0ecedf06b3e67}{ASCII\+\_\+O}}~\textquotesingle{}o\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a7c1435c38b9e89f94ee244ced74db469}{ASCII\+\_\+P}}~\textquotesingle{}p\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_ab40f6bb905b73c6935fdbc17ea5787a3}{ASCII\+\_\+L}}~\textquotesingle{}l\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a88cd9f07ea1b7f0e25a998b2c208bba5}{ASCII\+\_\+M}}~\textquotesingle{}m\textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{Arcade_8hpp_a68489bf97bcbe4a3aa8a1401e61d2122}{ASCII\+\_\+I}}~\textquotesingle{}i\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{Arcade_8hpp_a68489bf97bcbe4a3aa8a1401e61d2122}\label{Arcade_8hpp_a68489bf97bcbe4a3aa8a1401e61d2122} 
+\index{Arcade.hpp@{Arcade.hpp}!ASCII\_I@{ASCII\_I}}
+\index{ASCII\_I@{ASCII\_I}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{ASCII\_I}{ASCII\_I}}
+{\footnotesize\ttfamily \#define ASCII\+\_\+I~\textquotesingle{}i\textquotesingle{}}
+
+\Hypertarget{Arcade_8hpp_ab40f6bb905b73c6935fdbc17ea5787a3}\label{Arcade_8hpp_ab40f6bb905b73c6935fdbc17ea5787a3} 
+\index{Arcade.hpp@{Arcade.hpp}!ASCII\_L@{ASCII\_L}}
+\index{ASCII\_L@{ASCII\_L}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{ASCII\_L}{ASCII\_L}}
+{\footnotesize\ttfamily \#define ASCII\+\_\+L~\textquotesingle{}l\textquotesingle{}}
+
+\Hypertarget{Arcade_8hpp_a88cd9f07ea1b7f0e25a998b2c208bba5}\label{Arcade_8hpp_a88cd9f07ea1b7f0e25a998b2c208bba5} 
+\index{Arcade.hpp@{Arcade.hpp}!ASCII\_M@{ASCII\_M}}
+\index{ASCII\_M@{ASCII\_M}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{ASCII\_M}{ASCII\_M}}
+{\footnotesize\ttfamily \#define ASCII\+\_\+M~\textquotesingle{}m\textquotesingle{}}
+
+\Hypertarget{Arcade_8hpp_a248a5835b08a0f8d30b0ecedf06b3e67}\label{Arcade_8hpp_a248a5835b08a0f8d30b0ecedf06b3e67} 
+\index{Arcade.hpp@{Arcade.hpp}!ASCII\_O@{ASCII\_O}}
+\index{ASCII\_O@{ASCII\_O}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{ASCII\_O}{ASCII\_O}}
+{\footnotesize\ttfamily \#define ASCII\+\_\+O~\textquotesingle{}o\textquotesingle{}}
+
+\Hypertarget{Arcade_8hpp_a7c1435c38b9e89f94ee244ced74db469}\label{Arcade_8hpp_a7c1435c38b9e89f94ee244ced74db469} 
+\index{Arcade.hpp@{Arcade.hpp}!ASCII\_P@{ASCII\_P}}
+\index{ASCII\_P@{ASCII\_P}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{ASCII\_P}{ASCII\_P}}
+{\footnotesize\ttfamily \#define ASCII\+\_\+P~\textquotesingle{}p\textquotesingle{}}
+
+\Hypertarget{Arcade_8hpp_a3dd07a08f0f7a5fce39d6f4920d25bb3}\label{Arcade_8hpp_a3dd07a08f0f7a5fce39d6f4920d25bb3} 
+\index{Arcade.hpp@{Arcade.hpp}!EXIT\_FAIL@{EXIT\_FAIL}}
+\index{EXIT\_FAIL@{EXIT\_FAIL}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{EXIT\_FAIL}{EXIT\_FAIL}}
+{\footnotesize\ttfamily \#define EXIT\+\_\+\+FAIL~84}
+
+\Hypertarget{Arcade_8hpp_a687984f47d8cce148d1b914d2b79612a}\label{Arcade_8hpp_a687984f47d8cce148d1b914d2b79612a} 
+\index{Arcade.hpp@{Arcade.hpp}!EXIT\_SUCCESS@{EXIT\_SUCCESS}}
+\index{EXIT\_SUCCESS@{EXIT\_SUCCESS}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{EXIT\_SUCCESS}{EXIT\_SUCCESS}}
+{\footnotesize\ttfamily \#define EXIT\+\_\+\+SUCCESS~0}
+
+\Hypertarget{Arcade_8hpp_a4111cfe5bd52500d2177975ed8d92494}\label{Arcade_8hpp_a4111cfe5bd52500d2177975ed8d92494} 
+\index{Arcade.hpp@{Arcade.hpp}!IPS@{IPS}}
+\index{IPS@{IPS}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{IPS}{IPS}}
+{\footnotesize\ttfamily \#define IPS~15}
+
+\Hypertarget{Arcade_8hpp_aebfe3169ab060734fc1657a08d7cecea}\label{Arcade_8hpp_aebfe3169ab060734fc1657a08d7cecea} 
+\index{Arcade.hpp@{Arcade.hpp}!MENU\_GAME@{MENU\_GAME}}
+\index{MENU\_GAME@{MENU\_GAME}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{MENU\_GAME}{MENU\_GAME}}
+{\footnotesize\ttfamily \#define MENU\+\_\+\+GAME~LIB\+\_\+\+PATH "{}libarcade\+\_\+menu.\+so"{}}
+
+\Hypertarget{Arcade_8hpp_a94212be2394d2d37d9dfd33d07d82dba}\label{Arcade_8hpp_a94212be2394d2d37d9dfd33d07d82dba} 
+\index{Arcade.hpp@{Arcade.hpp}!SECOND@{SECOND}}
+\index{SECOND@{SECOND}!Arcade.hpp@{Arcade.hpp}}
+\doxysubsubsection{\texorpdfstring{SECOND}{SECOND}}
+{\footnotesize\ttfamily \#define SECOND~1000000}
+

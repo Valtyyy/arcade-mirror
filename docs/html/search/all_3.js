@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['idisplay_0',['IDisplay',['../classIDisplay.html',1,'']]],
-  ['idisplay_2ehpp_1',['IDisplay.hpp',['../IDisplay_8hpp.html',1,'']]],
-  ['igame_2',['IGame',['../classIGame.html',1,'']]],
-  ['igame_2ehpp_3',['IGame.hpp',['../IGame_8hpp.html',1,'']]],
-  ['init_4',['init',['../classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1',1,'IDisplay::init()'],['../classIGame.html#afd6f257cea0c2495a475e55b398787da',1,'IGame::init()']]],
-  ['ishape_5',['IShape',['../classIShape.html',1,'']]]
+  ['event_0',['Event',['../gfx_8hpp.html#ac9c3226d74c73afe0520d666d57a8e7b',1,'gfx.hpp']]],
+  ['exit_5ffail_1',['EXIT_FAIL',['../Arcade_8hpp.html#a3dd07a08f0f7a5fce39d6f4920d25bb3',1,'Arcade.hpp']]],
+  ['exit_5fsuccess_2',['EXIT_SUCCESS',['../Arcade_8hpp.html#a687984f47d8cce148d1b914d2b79612a',1,'Arcade.hpp']]]
 ];

@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['shape_2ehpp_0',['shape.hpp',['../shape_8hpp.html',1,'']]],
-  ['shape_5ftype_1',['SHAPE_TYPE',['../gfx_8hpp.html#a733713fb5a6f60fae1f1fe872b3e391b',1,'gfx.hpp']]]
+  ['idisplay_0',['IDisplay',['../classIDisplay.html',1,'']]],
+  ['idisplay_2ehpp_1',['IDisplay.hpp',['../IDisplay_8hpp.html',1,'']]],
+  ['igame_2',['IGame',['../classIGame.html',1,'']]],
+  ['igame_2ehpp_3',['IGame.hpp',['../IGame_8hpp.html',1,'']]],
+  ['init_4',['init',['../classDisplay.html#a4a1faac567c7aa30e43a2b37c4086e03',1,'Display::init()'],['../classGame.html#aac272ce2d7326151733e97c8a42ad31c',1,'Game::init()'],['../classSDL2.html#a3801c7a65128056be15a0b37b96665c4',1,'SDL2::init()'],['../classSFML.html#ac7d3cd8ba56cab233e22daf91cd7e4b0',1,'SFML::init()'],['../classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1',1,'IDisplay::init()'],['../classIGame.html#afd6f257cea0c2495a475e55b398787da',1,'IGame::init()']]],
+  ['ips_5',['IPS',['../Arcade_8hpp.html#a4111cfe5bd52500d2177975ed8d92494',1,'Arcade.hpp']]],
+  ['is_5floaded_6',['is_loaded',['../classDlLoader.html#a5cff22658a6168d2b5ddd040a7357ab1',1,'DlLoader']]],
+  ['ishape_7',['IShape',['../classIShape.html',1,'']]]
 ];

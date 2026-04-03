@@ -6,46 +6,66 @@
 
 
 
+Inheritance diagram for IGame\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classIGame__inherit__graph}
+\end{center}
+\end{figure}
+
+
 Collaboration diagram for IGame\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=161pt]{classIGame__coll__graph}
+\includegraphics[width=199pt]{classIGame__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+virtual \mbox{\hyperlink{classIGame_a91b14c1b6019364120d5c5e4d4c64414}{\texorpdfstring{$\sim$}{\string~}\+IGame}} ()=default
+\item 
 virtual void \mbox{\hyperlink{classIGame_afd6f257cea0c2495a475e55b398787da}{init}} ()=0
 \item 
 virtual void \mbox{\hyperlink{classIGame_a255ba75b5ad8d7641045905516adee92}{close}} ()=0
 \item 
-virtual void \mbox{\hyperlink{classIGame_a51019f9c20ac3fe8d04d3f7efafe996e}{update}} ()=0
+virtual void \mbox{\hyperlink{classIGame_ad4e97984eeb22e7472e782392a851aca}{update}} (std\+::queue$<$ \mbox{\hyperlink{gfx_8hpp_ac9c3226d74c73afe0520d666d57a8e7b}{Event}} $>$)=0
 \item 
-virtual std\+::stack$<$ \mbox{\hyperlink{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702}{gfx\+\_\+instr\+\_\+t}} $>$ \mbox{\hyperlink{classIGame_adcf70269b9eeb1b7647c903daf802ce7}{get\+GFX}} ()=0
-\item 
-virtual void \mbox{\hyperlink{classIGame_a20e1ccd07d846a46192c97fdbf088ebb}{apply\+Input}} (std\+::stack$<$ int $>$)=0
+virtual std\+::queue$<$ \mbox{\hyperlink{gfx_8hpp_a5dc162b955e03805fd28d7c8c19e29e2}{Any\+Instruction}} $>$ \mbox{\hyperlink{classIGame_a2c09179e6b001b16ce7fd497e6085143}{get\+Gfx\+Instructions}} ()=0
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Member Function Documentation}
-\Hypertarget{classIGame_a20e1ccd07d846a46192c97fdbf088ebb}\label{classIGame_a20e1ccd07d846a46192c97fdbf088ebb} 
-\index{IGame@{IGame}!applyInput@{applyInput}}
-\index{applyInput@{applyInput}!IGame@{IGame}}
-\doxysubsubsection{\texorpdfstring{applyInput()}{applyInput()}}
-{\footnotesize\ttfamily virtual void IGame\+::apply\+Input (\begin{DoxyParamCaption}\item[{std\+::stack$<$ int $>$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIGame_a91b14c1b6019364120d5c5e4d4c64414}\label{classIGame_a91b14c1b6019364120d5c5e4d4c64414} 
+\index{IGame@{IGame}!````~IGame@{\texorpdfstring{$\sim$}{\string~}IGame}}
+\index{````~IGame@{\texorpdfstring{$\sim$}{\string~}IGame}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IGame()}{\string~IGame()}}
+{\footnotesize\ttfamily virtual IGame\+::\texorpdfstring{$\sim$}{\string~}\+IGame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
 
+
+
+\doxysubsection{Member Function Documentation}
 \Hypertarget{classIGame_a255ba75b5ad8d7641045905516adee92}\label{classIGame_a255ba75b5ad8d7641045905516adee92} 
 \index{IGame@{IGame}!close@{close}}
 \index{close@{close}!IGame@{IGame}}
 \doxysubsubsection{\texorpdfstring{close()}{close()}}
 {\footnotesize\ttfamily virtual void IGame\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
-\Hypertarget{classIGame_adcf70269b9eeb1b7647c903daf802ce7}\label{classIGame_adcf70269b9eeb1b7647c903daf802ce7} 
-\index{IGame@{IGame}!getGFX@{getGFX}}
-\index{getGFX@{getGFX}!IGame@{IGame}}
-\doxysubsubsection{\texorpdfstring{getGFX()}{getGFX()}}
-{\footnotesize\ttfamily virtual std\+::stack$<$ \mbox{\hyperlink{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702}{gfx\+\_\+instr\+\_\+t}} $>$ IGame\+::get\+GFX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+Implemented in \mbox{\hyperlink{classGame_af57f6b659b923ac0bc9ae5110822bf50}{Game}}.
+
+\Hypertarget{classIGame_a2c09179e6b001b16ce7fd497e6085143}\label{classIGame_a2c09179e6b001b16ce7fd497e6085143} 
+\index{IGame@{IGame}!getGfxInstructions@{getGfxInstructions}}
+\index{getGfxInstructions@{getGfxInstructions}!IGame@{IGame}}
+\doxysubsubsection{\texorpdfstring{getGfxInstructions()}{getGfxInstructions()}}
+{\footnotesize\ttfamily virtual std\+::queue$<$ \mbox{\hyperlink{gfx_8hpp_a5dc162b955e03805fd28d7c8c19e29e2}{Any\+Instruction}} $>$ IGame\+::get\+Gfx\+Instructions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classGame_a8fe4396993f4234d3254cc9a05001e39}{Game}}.
 
 \Hypertarget{classIGame_afd6f257cea0c2495a475e55b398787da}\label{classIGame_afd6f257cea0c2495a475e55b398787da} 
 \index{IGame@{IGame}!init@{init}}
@@ -53,14 +73,22 @@ virtual void \mbox{\hyperlink{classIGame_a20e1ccd07d846a46192c97fdbf088ebb}{appl
 \doxysubsubsection{\texorpdfstring{init()}{init()}}
 {\footnotesize\ttfamily virtual void IGame\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
-\Hypertarget{classIGame_a51019f9c20ac3fe8d04d3f7efafe996e}\label{classIGame_a51019f9c20ac3fe8d04d3f7efafe996e} 
+
+
+Implemented in \mbox{\hyperlink{classGame_aac272ce2d7326151733e97c8a42ad31c}{Game}}.
+
+\Hypertarget{classIGame_ad4e97984eeb22e7472e782392a851aca}\label{classIGame_ad4e97984eeb22e7472e782392a851aca} 
 \index{IGame@{IGame}!update@{update}}
 \index{update@{update}!IGame@{IGame}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
-{\footnotesize\ttfamily virtual void IGame\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+{\footnotesize\ttfamily virtual void IGame\+::update (\begin{DoxyParamCaption}\item[{std\+::queue$<$ \mbox{\hyperlink{gfx_8hpp_ac9c3226d74c73afe0520d666d57a8e7b}{Event}} $>$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classGame_ae7ae6344140ddeff5e885389a9aeab84}{Game}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-include/\mbox{\hyperlink{IGame_8hpp}{IGame.\+hpp}}\end{DoxyCompactItemize}
+shared/include/\mbox{\hyperlink{IGame_8hpp}{IGame.\+hpp}}\end{DoxyCompactItemize}

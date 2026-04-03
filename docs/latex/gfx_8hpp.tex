@@ -1,13 +1,9 @@
-\doxysection{include/gfx.hpp File Reference}
-\hypertarget{gfx_8hpp}{}\label{gfx_8hpp}\index{include/gfx.hpp@{include/gfx.hpp}}
+\doxysection{shared/include/gfx.hpp File Reference}
+\hypertarget{gfx_8hpp}{}\label{gfx_8hpp}\index{shared/include/gfx.hpp@{shared/include/gfx.hpp}}
 {\ttfamily \#include $<$cstddef$>$}\newline
-{\ttfamily \#include $<$functional$>$}\newline
-{\ttfamily \#include $<$map$>$}\newline
-{\ttfamily \#include $<$tuple$>$}\newline
-{\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include $<$stack$>$}\newline
 {\ttfamily \#include "{}shape.\+hpp"{}}\newline
 {\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$variant$>$}\newline
 Include dependency graph for gfx.\+hpp\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -19,77 +15,59 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=320pt]{gfx_8hpp__dep__incl}
+\includegraphics[width=350pt]{gfx_8hpp__dep__incl}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structGfxInstruction}{Gfx\+Instruction$<$ T $>$}}
+struct \mbox{\hyperlink{structpoint__s}{point\+\_\+s}}
 \item 
-struct \mbox{\hyperlink{structrectInstr}{rect\+Instr$<$ T $>$}}
+struct \mbox{\hyperlink{structGfxInstruction}{Gfx\+Instruction}}
 \item 
-struct \mbox{\hyperlink{structcircleInstr}{circle\+Instr$<$ T $>$}}
+struct \mbox{\hyperlink{structrectInstr}{rect\+Instr}}
 \item 
-struct \mbox{\hyperlink{structtextInstr}{text\+Instr$<$ T $>$}}
+struct \mbox{\hyperlink{structcircleInstr}{circle\+Instr}}
+\item 
+struct \mbox{\hyperlink{structtextInstr}{text\+Instr}}
+\item 
+struct \mbox{\hyperlink{structdimensionInstr}{dimension\+Instr}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
 typedef struct gfx\+\_\+s \mbox{\hyperlink{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702}{gfx\+\_\+instr\+\_\+t}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Enumerations}
-\begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}{SHAPE\+\_\+\+TYPE}} \{ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba8c3b537d3960e767a7d714c89078e508}{RECT}}
-, \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391baa79c827759ea48f0735386c4b1188911}{CIRCLE}}
-, \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba9a4a47c1606e295076055a9cc4373197}{TEXT}}
- \}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
-\begin{DoxyCompactItemize}
+typedef struct \mbox{\hyperlink{structpoint__s}{point\+\_\+s}} \mbox{\hyperlink{gfx_8hpp_a8a32041ee7d3fa5ba3a4808b42ed8a8d}{point\+\_\+t}}
 \item 
-{\footnotesize template$<$typename T $>$ }\\std\+::stack$<$ std\+::tuple$<$ \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}{SHAPE\+\_\+\+TYPE}}, T $>$ $>$ \mbox{\hyperlink{gfx_8hpp_a919839163d2769dbb3bb506bae616e5a}{gfx\+Instructions}}
+using \mbox{\hyperlink{gfx_8hpp_ac9c3226d74c73afe0520d666d57a8e7b}{Event}} = std\+::variant$<$ int, \mbox{\hyperlink{gfx_8hpp_a8a32041ee7d3fa5ba3a4808b42ed8a8d}{point\+\_\+t}} $>$
+\item 
+using \mbox{\hyperlink{gfx_8hpp_a5dc162b955e03805fd28d7c8c19e29e2}{Any\+Instruction}} = std\+::variant$<$ \mbox{\hyperlink{structrectInstr}{rect\+Instr}}, \mbox{\hyperlink{structcircleInstr}{circle\+Instr}}, \mbox{\hyperlink{structtextInstr}{text\+Instr}}, \mbox{\hyperlink{structdimensionInstr}{dimension\+Instr}} $>$
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Typedef Documentation}
+\Hypertarget{gfx_8hpp_a5dc162b955e03805fd28d7c8c19e29e2}\label{gfx_8hpp_a5dc162b955e03805fd28d7c8c19e29e2} 
+\index{gfx.hpp@{gfx.hpp}!AnyInstruction@{AnyInstruction}}
+\index{AnyInstruction@{AnyInstruction}!gfx.hpp@{gfx.hpp}}
+\doxysubsubsection{\texorpdfstring{AnyInstruction}{AnyInstruction}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{gfx_8hpp_a5dc162b955e03805fd28d7c8c19e29e2}{Any\+Instruction}} =  std\+::variant$<$\mbox{\hyperlink{structrectInstr}{rect\+Instr}}, \mbox{\hyperlink{structcircleInstr}{circle\+Instr}}, \mbox{\hyperlink{structtextInstr}{text\+Instr}}, \mbox{\hyperlink{structdimensionInstr}{dimension\+Instr}}$>$}
+
+\Hypertarget{gfx_8hpp_ac9c3226d74c73afe0520d666d57a8e7b}\label{gfx_8hpp_ac9c3226d74c73afe0520d666d57a8e7b} 
+\index{gfx.hpp@{gfx.hpp}!Event@{Event}}
+\index{Event@{Event}!gfx.hpp@{gfx.hpp}}
+\doxysubsubsection{\texorpdfstring{Event}{Event}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{gfx_8hpp_ac9c3226d74c73afe0520d666d57a8e7b}{Event}} =  std\+::variant$<$int, \mbox{\hyperlink{gfx_8hpp_a8a32041ee7d3fa5ba3a4808b42ed8a8d}{point\+\_\+t}}$>$}
+
 \Hypertarget{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702}\label{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702} 
 \index{gfx.hpp@{gfx.hpp}!gfx\_instr\_t@{gfx\_instr\_t}}
 \index{gfx\_instr\_t@{gfx\_instr\_t}!gfx.hpp@{gfx.hpp}}
 \doxysubsubsection{\texorpdfstring{gfx\_instr\_t}{gfx\_instr\_t}}
 {\footnotesize\ttfamily typedef struct gfx\+\_\+s \mbox{\hyperlink{gfx_8hpp_a41e7d658f3f7543f80ce99a139020702}{gfx\+\_\+instr\+\_\+t}}}
 
-
-
-\doxysubsection{Enumeration Type Documentation}
-\Hypertarget{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}\label{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b} 
-\index{gfx.hpp@{gfx.hpp}!SHAPE\_TYPE@{SHAPE\_TYPE}}
-\index{SHAPE\_TYPE@{SHAPE\_TYPE}!gfx.hpp@{gfx.hpp}}
-\doxysubsubsection{\texorpdfstring{SHAPE\_TYPE}{SHAPE\_TYPE}}
-{\footnotesize\ttfamily enum \mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}{SHAPE\+\_\+\+TYPE}}}
-
-\begin{DoxyEnumFields}{Enumerator}
-\raisebox{\heightof{T}}[0pt][0pt]{\index{RECT@{RECT}!gfx.hpp@{gfx.hpp}}\index{gfx.hpp@{gfx.hpp}!RECT@{RECT}}}\Hypertarget{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba8c3b537d3960e767a7d714c89078e508}\label{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba8c3b537d3960e767a7d714c89078e508} 
-RECT&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{CIRCLE@{CIRCLE}!gfx.hpp@{gfx.hpp}}\index{gfx.hpp@{gfx.hpp}!CIRCLE@{CIRCLE}}}\Hypertarget{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391baa79c827759ea48f0735386c4b1188911}\label{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391baa79c827759ea48f0735386c4b1188911} 
-CIRCLE&\\
-\hline
-
-\raisebox{\heightof{T}}[0pt][0pt]{\index{TEXT@{TEXT}!gfx.hpp@{gfx.hpp}}\index{gfx.hpp@{gfx.hpp}!TEXT@{TEXT}}}\Hypertarget{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba9a4a47c1606e295076055a9cc4373197}\label{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391ba9a4a47c1606e295076055a9cc4373197} 
-TEXT&\\
-\hline
-
-\end{DoxyEnumFields}
-
-
-\doxysubsection{Variable Documentation}
-\Hypertarget{gfx_8hpp_a919839163d2769dbb3bb506bae616e5a}\label{gfx_8hpp_a919839163d2769dbb3bb506bae616e5a} 
-\index{gfx.hpp@{gfx.hpp}!gfxInstructions@{gfxInstructions}}
-\index{gfxInstructions@{gfxInstructions}!gfx.hpp@{gfx.hpp}}
-\doxysubsubsection{\texorpdfstring{gfxInstructions}{gfxInstructions}}
-{\footnotesize\ttfamily template$<$typename T $>$ \\
-std\+::stack$<$std\+::tuple$<$\mbox{\hyperlink{gfx_8hpp_a733713fb5a6f60fae1f1fe872b3e391b}{SHAPE\+\_\+\+TYPE}}, T$>$ $>$ gfx\+Instructions}
+\Hypertarget{gfx_8hpp_a8a32041ee7d3fa5ba3a4808b42ed8a8d}\label{gfx_8hpp_a8a32041ee7d3fa5ba3a4808b42ed8a8d} 
+\index{gfx.hpp@{gfx.hpp}!point\_t@{point\_t}}
+\index{point\_t@{point\_t}!gfx.hpp@{gfx.hpp}}
+\doxysubsubsection{\texorpdfstring{point\_t}{point\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structpoint__s}{point\+\_\+s}} \mbox{\hyperlink{gfx_8hpp_a8a32041ee7d3fa5ba3a4808b42ed8a8d}{point\+\_\+t}}}
 

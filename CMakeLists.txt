@@ -1,38 +1,114 @@
 cmake_minimum_required(VERSION 3.13)
 project(arcade)
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(DEBUG "Compile with -g3" OFF)
 
-set(CORE
-    core/src/main.cpp
+include_directories(${PROJECT_SOURCE_DIR}/shared/include)
+
+set(SHARED
+    shared/src/DlLoader.cpp
 )
 
-add_executable(arcade ${CORE})
+set(CORE
+    ${SHARED}
+    core/src/Display.cpp
+    core/src/Game.cpp
+    core/src/Arcade.cpp
+)
+
+add_executable(arcade ${CORE} core/src/main.cpp)
+target_include_directories(arcade PRIVATE
+    ${PROJECT_SOURCE_DIR}/core/include
+)
 
 target_compile_options(arcade PRIVATE
     -Wall
     -Wextra
 )
 
+target_compile_definitions(arcade PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+)
+
+# ===== Libraries =====
+    # SDL2
+set(SDL2
+    ${SHARED}
+    graphics/SDL2/src/SDL2.cpp
+)
+
+add_library(arcade_sdl2 SHARED ${SDL2})
+
+target_include_directories(arcade_sdl2 PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/SDL2/include
+)
+
+find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+find_package(SDL2_image REQUIRED)
+
+target_link_libraries(arcade_sdl2 PRIVATE
+    SDL2::SDL2
+    SDL2_ttf::SDL2_ttf
+    SDL2_image::SDL2_image
+)
+
+    # SFML
+set(SFML
+    ${SHARED}
+    graphics/SFML/src/SFML.cpp
+)
+
+add_library(arcade_sfml SHARED ${SFML})
+
+target_include_directories(arcade_sfml PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/SFML/include
+)
+
+find_package(SFML COMPONENTS graphics audio REQUIRED)
+
+target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
+
+# ===== =====
+
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
-
-target_include_directories(arcade
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/shared/include
-)
 
 # ===== Tests =====
 
 enable_testing()
 
 add_executable(test_binary
-    ${SOURCES}
+    ${CORE}
     tests/test_void.cpp
+    tests/test_shared.cpp
+    tests/test_core.cpp
 )
+target_include_directories(test_binary
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/core/include
+)
+
+add_library(test_lib SHARED tests/libtest/lib_test.cpp)
+target_include_directories(test_lib
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/libtest/
+)
+
+add_library(game_mock SHARED tests/libgame_mock/lib_game_mock.cpp)
+target_include_directories(game_mock PRIVATE
+    ${PROJECT_SOURCE_DIR}/tests/libgame_mock
+)
+
+add_library(display_mock SHARED tests/libdisplay_mock/lib_display_mock.cpp)
+target_include_directories(display_mock PRIVATE
+    ${PROJECT_SOURCE_DIR}/tests/libdisplay_mock
+)
+
+add_dependencies(test_binary game_mock display_mock)
 
 target_compile_options(test_binary PRIVATE
     -Wall
@@ -40,9 +116,8 @@ target_compile_options(test_binary PRIVATE
     -g3
 )
 
-target_include_directories(test_binary
-    PRIVATE
-        ${PROJECT_SOURCE_DIR}/shared/include
+target_compile_definitions(test_binary PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
 
 target_link_libraries(test_binary PRIVATE criterion)

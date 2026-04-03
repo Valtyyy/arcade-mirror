@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['text_0',['text',['../structtextInstr.html#a0131ebb5d145d26de6a4b05108280cc6',1,'textInstr::text'],['../gfx_8hpp.html#a733713fb5a6f60fae1f1fe872b3e391ba9a4a47c1606e295076055a9cc4373197',1,'TEXT:&#160;gfx.hpp']]],
-  ['textinstr_1',['textInstr',['../structtextInstr.html',1,'']]],
-  ['type_2',['type',['../structGfxInstruction.html#a91f2e70d5f62544ac19970f1428d2a6c',1,'GfxInstruction']]]
+  ['lib_5ftype_0',['LIB_TYPE',['../IGame_8hpp.html#acf842ea54187d25e58c4e06666c57f06',1,'IGame.hpp']]],
+  ['load_1',['load',['../classDlLoader.html#aa2bf7716b648a0707bf9fc09cc15cd31',1,'DlLoader']]]
 ];

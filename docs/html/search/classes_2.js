@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['idisplay_0',['IDisplay',['../classIDisplay.html',1,'']]],
-  ['igame_1',['IGame',['../classIGame.html',1,'']]],
-  ['ishape_2',['IShape',['../classIShape.html',1,'']]]
+  ['game_0',['Game',['../classGame.html',1,'']]],
+  ['gfxinstruction_1',['GfxInstruction',['../structGfxInstruction.html',1,'']]]
 ];
