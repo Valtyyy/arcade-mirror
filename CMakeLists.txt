@@ -86,6 +86,7 @@ add_executable(test_binary
     tests/test_void.cpp
     tests/test_shared.cpp
     tests/test_core.cpp
+    tests/test_gameMatrix.cpp
 )
 target_include_directories(test_binary
     PRIVATE
