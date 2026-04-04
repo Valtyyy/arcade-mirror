@@ -160,7 +160,7 @@ void SDL2::addEvents(SDL_KeyboardEvent &touch)
     int key = touch.keysym.scancode;
     Event event = key;
 
-    printf("Key: %d\n", key);
+    printf("Key: %d, Touch: %d\n", key, touch.keysym.sym);
     _events.push(event);
 }
 

@@ -108,10 +108,10 @@ void SFML::render(std::queue<AnyInstruction> instructions)
 
 void SFML::addEvents(sf::Keyboard::Key touch)
 {
-    int key = static_cast<char>(touch - sf::Keyboard::A + 'a');;
+    int key = static_cast<char>(touch - sf::Keyboard::A + 'a');
     Event event = key;
 
-    printf("Key: %d\n", key);
+    printf("Key: %d, Touch: %d\n", key, touch);
     _events.push(event);
 }
 
