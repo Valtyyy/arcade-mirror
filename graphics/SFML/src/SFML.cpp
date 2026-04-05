@@ -11,6 +11,7 @@
 #include <SFML/Window/Event.hpp>
 #include <iostream>
 #include <ostream>
+#include <variant>
 
 extern "C" IDisplay *create()
 {
@@ -117,11 +118,7 @@ CommonKey SFML::sfmlToCommonKey(sf::Keyboard::Key key)
 
 void SFML::addEvents(sf::Keyboard::Key touch)
 {
-    int key = static_cast<char>(touch - sf::Keyboard::A + 'a');
-    Event event = key;
-    printf("Key: %d\n", key);
-
-    //Event event = sfmlToCommonKey(touch);
+    Event event = sfmlToCommonKey(touch);
 
     _events.push(event);
 }

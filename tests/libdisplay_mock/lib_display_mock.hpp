@@ -8,6 +8,7 @@
 #pragma once
 
 #include "IDisplay.hpp"
+#include "Keys.hpp"
 
 #define EXPORT extern "C"
 
@@ -27,7 +28,7 @@ EXPORT {
     int get_close_count();
     int get_render_count();
     int get_poll_count();
-    void push_event_int(int event);
+    void push_event_int(CommonKey event);
     void clear_events();
     void reset_counts();
 }

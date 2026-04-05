@@ -8,11 +8,10 @@
 #pragma once
 
 #include <cstddef>
-#include "keys.hpp"
+#include "Keys.hpp"
 #include "shape.hpp"
 #include <optional>
 #include <variant>
-#include "Key.hpp"
 
 typedef struct gfx_s gfx_instr_t;
 typedef struct point_s {

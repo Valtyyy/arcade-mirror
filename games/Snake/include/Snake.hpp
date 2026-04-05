@@ -8,7 +8,7 @@
 #pragma once
 
 #include "IGame.hpp"
-#include "Key.hpp"
+#include "Keys.hpp"
 #include "gfx.hpp"
 #include <cstddef>
 #include <deque>
@@ -65,14 +65,17 @@ public:
     void updateMatrix();
     void setBackground();
     std::queue<AnyInstruction> convertMatrixToGfx();
-    void moveUp() { _snake.front().y = (_snake.front().y - 1 + LINES) % LINES; }
-    void moveDown() { _snake.front().y = (_snake.front().y + 1) % LINES; }
-    void moveLeft() { _snake.front().x = (_snake.front().x - 1 + COLUMNS) % COLUMNS; }
-    void moveRight() { _snake.front().x = (_snake.front().x + 1) % COLUMNS; }
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
     void moveSnake();
+    void handleCollision();
     std::queue<AnyInstruction> getGfxInstructions();
     ~GameSnake();
 private:
+    using Func = std::function<void(void)>;
+
     cell createCell(std::string assetLocation, char txt, size_t color)
     { cell newCell {assetLocation, txt, color}; return newCell; }
     std::map<GAME, cell> _assets {
@@ -84,10 +87,21 @@ private:
             {TAIL, createCell("games/Snake/assets/tail.png", '<', 7845374)},
             {BODY, createCell("games/Snake/assets/body.png", '=', 3247335)}
     };
-    std::map<DIRECTION, std::function<void(void)>> _directions;
+    std::map<DIRECTION, Func> _directions {
+        {UP, [this]() -> void {moveUp();}},
+        {DOWN, [this]() -> void { moveDown(); }},
+        {LEFT, [this]() -> void { moveLeft(); }},
+        {RIGHT, [this]() -> void { moveRight(); }}
+    };
+    std::map<CommonKey, DIRECTION> _keys {
+        {CommonKey::UP, UP},
+        {CommonKey::DOWN, DOWN},
+        {CommonKey::LEFT, LEFT},
+        {CommonKey::RIGHT, RIGHT}
+    };
     GameMatrix<GAME> _matrix;
     std::deque<snake_t> _snake;
-    point_t _apple;
+    point_t _fish;
     size_t _score;
 };
 }

@@ -6,6 +6,7 @@
 */
 
 #include "lib_display_mock.hpp"
+#include "Keys.hpp"
 #include <queue>
 
 static int init_count = 0;
@@ -34,7 +35,7 @@ int get_init_count() { return init_count; }
 int get_close_count() { return close_count; }
 int get_render_count() { return render_count; }
 int get_poll_count() { return poll_count; }
-void push_event_int(int event) { g_events.push(Event(event)); }
+void push_event_int(CommonKey event) { g_events.push(Event(event)); }
 void clear_events()
 {
     while (!g_events.empty())

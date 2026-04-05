@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <variant>
 #include <iostream>
-#include <Key.hpp>
+#include <Keys.hpp>
 
 extern "C" IDisplay *create()
 {
@@ -185,10 +185,8 @@ CommonKey SDL2::sdlToCommonKey(SDL_Keycode sdlKey)
 void SDL2::addEvents(SDL_KeyboardEvent &touch)
 {
     int key = touch.keysym.sym;
-    //Event event = sdlToCommonKey(key);
-    Event event = key;
+    Event event = sdlToCommonKey(key);
 
-    printf("Key: %d\n", key);
     _events.push(event);
 }
 
