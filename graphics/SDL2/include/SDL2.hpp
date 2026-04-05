@@ -30,6 +30,7 @@ public:
 private:
     SDL_Window *_window;
     SDL_Renderer* _renderer;
+    std::map<std::string, SDL_Surface *> _surfaces;
     std::map<std::string, SDL_Texture*> _textures;
     std::queue<Event> _events;
     screen screenSize;

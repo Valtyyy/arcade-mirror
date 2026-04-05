@@ -90,7 +90,8 @@ void Snake::GameSnake::update(std::queue<Event> events)
     }
 }
 
-std::queue<AnyInstruction> Snake::GameSnake::getGfxInstructions()
+
+std::queue<AnyInstruction> Snake::GameSnake::convertMatrixToGfx()
 {
     std::queue<AnyInstruction> instructions = {};
     std::stack<rectInstr> matrixInstruction =_matrix.matrixToGFX("", 5);
@@ -108,9 +109,16 @@ std::queue<AnyInstruction> Snake::GameSnake::getGfxInstructions()
         instructions.push(tile);
         matrixInstruction.pop();
     }
-   // std::cout << std::endl;
-   // _matrix.printMatrix();
-   // std::cout << std::endl;
+    return instructions;
+}
+
+std::queue<AnyInstruction> Snake::GameSnake::getGfxInstructions()
+{
+    std::queue<AnyInstruction> instructions = convertMatrixToGfx();
+
+    std::cout << std::endl;
+    _matrix.printMatrix();
+    std::cout << std::endl;
     return instructions;
 }
 

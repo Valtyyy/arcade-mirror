@@ -145,6 +145,8 @@ std::queue<Event> SFML::pollEvents()
         sf::Mouse::getPosition();
         if ((event.type == sf::Event::MouseButtonPressed) || event.type == sf::Event::MouseButtonReleased)
             addEvents(event.mouseButton);
+        if (event.type == sf::Event::Closed)
+            this->close();
     }
     return _events;
 }

@@ -4,6 +4,7 @@
 #include "gfx.hpp"
 #include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
+#include <SDL_events.h>
 #include <SDL_render.h>
 #include <cstddef>
 #include <cstdio>
@@ -62,8 +63,8 @@ SDL_Color SDL2::convert_rgba(int hex_color)
 
     color.r = ((hex_color >> 24) & 0xFF) ;
     color.g = ((hex_color >> 16) & 0xFF);
-    color.g = ((hex_color >> 8) & 0xFF);
-    color.b = ((hex_color) & 0xFF);
+    color.b = ((hex_color >> 8) & 0xFF);
+    color.a = ((hex_color) & 0xFF);
     return color;
 }
 
@@ -72,6 +73,7 @@ void SDL2::createTextureFromSurface(SDL_Surface *surface, std::string &assets, i
     if (!surface)
         throw std::runtime_error(SDL_GetError());
     if (!_textures.contains(assets)) {
+        std::cout << "new textures" << std::endl;
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
         if (!textTexture)
             throw std::runtime_error(SDL_GetError());
@@ -90,8 +92,12 @@ void SDL2::display_instruction(rectInstr &rectangle)
         (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
     SDL_RenderFillRect(_renderer, &rect);
     if (!rectangle.asset_location->empty()) {
+        if (!_surfaces.contains(rectangle.asset_location.value())) {
+            _surfaces[rectangle.asset_location.value()] =
+                IMG_Load(rectangle.asset_location.value().c_str());   
+        }
         createTextureFromSurface(
-        IMG_Load(rectangle.asset_location.value().c_str()),
+        _surfaces[rectangle.asset_location.value()],
         rectangle.asset_location.value(),
         rect.x , rect.y, rect.w, rect.h);
     }
@@ -100,7 +106,7 @@ void SDL2::display_instruction(rectInstr &rectangle)
 void SDL2::DrawCircle(int x, int y, float radius, SDL_Renderer *renderer)
 {
     double pi = std::numbers::pi;
-    int precision = 1000;
+    int precision = 100;
     double step = pi / (double)(precision - 1);
 
     for (int i = 0; i < precision; i++) {
@@ -127,13 +133,16 @@ void SDL2::display_instruction(textInstr &text)
 {
     SDL_Color color = convert_rgba(text.color_hex);
 
-    if (text.asset_location.value().c_str()) {
+    if (text.asset_location) {
         TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
         if (!font)
             throw std::runtime_error(SDL_GetError());
-        SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.text.c_str(), color);
+        if (!_surfaces.contains(text.asset_location.value())) {
+            _surfaces[text.asset_location.value()] =
+                TTF_RenderText_Blended(font, text.text.c_str(), color);
+        }
         createTextureFromSurface(
-            TTF_RenderText_Blended(font, text.text.c_str(), color),
+            _surfaces[text.asset_location.value() + text.text],
             text.asset_location.value(),
             text.x * screenSize.ratio,
             text.y * screenSize.ratio,
@@ -203,6 +212,9 @@ std::queue<Event> SDL2::pollEvents()
             addEvents(sdl_event.key);
         if (sdl_event.type == SDL_MOUSEBUTTONDOWN)
             addEvents(sdl_event.button);
+        if (sdl_event.type == SDL_QUIT) {
+            this->close();
+        }
     }
     return _events;
 }
