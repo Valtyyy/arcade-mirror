@@ -32,7 +32,7 @@ class Core {
 
     private:
         int _handle_command(std::queue<Event>);
-        int _apply_command(CommonKey);
+        int _apply_command(CommonKey, bool &switched);
         static size_t _findIndex(const std::vector<std::string> &, const std::string &);
 
         Game _game;

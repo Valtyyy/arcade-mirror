@@ -32,10 +32,6 @@ extern "C" IGame *create()
 
 void MenuGame::init()
 {
-    _instructions.push((dimensionInstr){
-        SCREEN_H,
-        SCREEN_W
-    });
 }
 
 void MenuGame::close()
@@ -61,13 +57,13 @@ void MenuGame::update(std::queue<Event> events)
 
 std::queue<AnyInstruction> MenuGame::getGfxInstructions()
 {
+    std::queue<AnyInstruction> instructions;
     std::queue<AnyInstruction> button = MenuUtils::createButton(MENU_SCREEN_W, MENU_SCREEN_H, "games/Menu/assets/button.jpg");
     rectInstr background = {{0, 0, ' ', "games/Menu/assets/background.jpg"}, SCREEN_H, SCREEN_W};
 
-    _instructions.push(background);
-    _instructions = Utils::mergeQueues(_instructions, button);
+    instructions.push((dimensionInstr){SCREEN_H, SCREEN_W});
+    instructions.push(background);
+    instructions = Utils::mergeQueues(instructions, button);
 
-    return {
-        _instructions
-    };
+    return instructions;
 }

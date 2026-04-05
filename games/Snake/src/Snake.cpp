@@ -112,7 +112,8 @@ void Snake::GameSnake::update(std::queue<Event> events)
 
     while (!events.empty()) {
         key = std::get_if<CommonKey>(&events.front());
-        _snake.front().direction = _keys[*key];
+        if (key && _keys.count(*key))
+            _snake.front().direction = _keys[*key];
         events.pop();
     }
     auto now = std::chrono::steady_clock::now();

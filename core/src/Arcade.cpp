@@ -48,10 +48,12 @@ int Core::doIteration()
 {
     auto events = _display.pollEvents();
 
-    if (_handle_command(events) < 0)
+    int cmd = _handle_command(events);
+    if (cmd < 0)
         return -1;
 
-    _game.update(events);
+    if (cmd == 0)
+        _game.update(events);
     _display.render(_game.getGfxInstructions());
     return 0;
 }
@@ -59,32 +61,40 @@ int Core::doIteration()
 int Core::_handle_command(std::queue<Event> events)
 {
     Event curr;
+    bool switched = false;
 
     while (!events.empty()) {
         curr = events.front();
-        if (std::holds_alternative<CommonKey>(curr) && _apply_command(std::get<CommonKey>(curr)) < 0)
-            return -1;
+        if (std::holds_alternative<CommonKey>(curr)) {
+            int res = _apply_command(std::get<CommonKey>(curr), switched);
+            if (res < 0)
+                return -1;
+        }
         events.pop();
     }
-    return 0;
+    return switched ? 1 : 0;
 }
 
-int Core::_apply_command(CommonKey cmd)
+int Core::_apply_command(CommonKey cmd, bool &switched)
 {
     switch (cmd) {
         case CommonKey::P:
             _currentDisplay = (_currentDisplay + 1) % _displayList.size();
             _display = Display(_displayList[_currentDisplay]);
+            switched = true;
             break;
         case CommonKey::M:
             _currentGame = (_currentGame + 1) % _gamesList.size();
             _game = Game(_gamesList[_currentGame]);
+            switched = true;
             break;
         case CommonKey::O:
             _game = Game(_gamesList[_currentGame]);
+            switched = true;
             break;
         case CommonKey::L:
             _game = Game(MENU_GAME);
+            switched = true;
             break;
         case CommonKey::I:
             return -1;

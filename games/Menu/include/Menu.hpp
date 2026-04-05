@@ -24,6 +24,5 @@ class MenuGame : public IGame {
         std::queue<AnyInstruction> getGfxInstructions();
 
     private:
-        std::queue<AnyInstruction> _instructions;
-        std::map<area_t, std::function<void()>> _interactiveAreas;
+std::map<area_t, std::function<void()>> _interactiveAreas;
 };
