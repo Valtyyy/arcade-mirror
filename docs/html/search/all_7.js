@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['idisplay_0',['IDisplay',['../classIDisplay.html',1,'']]],
-  ['idisplay_2ehpp_1',['IDisplay.hpp',['../IDisplay_8hpp.html',1,'']]],
-  ['igame_2',['IGame',['../classIGame.html',1,'']]],
-  ['igame_2ehpp_3',['IGame.hpp',['../IGame_8hpp.html',1,'']]],
-  ['init_4',['init',['../classDisplay.html#a4a1faac567c7aa30e43a2b37c4086e03',1,'Display::init()'],['../classGame.html#aac272ce2d7326151733e97c8a42ad31c',1,'Game::init()'],['../classSDL2.html#a3801c7a65128056be15a0b37b96665c4',1,'SDL2::init()'],['../classSFML.html#ac7d3cd8ba56cab233e22daf91cd7e4b0',1,'SFML::init()'],['../classIDisplay.html#ad5f1757ac3a2e74e27f892c09b887dc1',1,'IDisplay::init()'],['../classIGame.html#afd6f257cea0c2495a475e55b398787da',1,'IGame::init()']]],
-  ['ips_5',['IPS',['../Arcade_8hpp.html#a4111cfe5bd52500d2177975ed8d92494',1,'Arcade.hpp']]],
-  ['is_5floaded_6',['is_loaded',['../classDlLoader.html#a5cff22658a6168d2b5ddd040a7357ab1',1,'DlLoader']]],
-  ['ishape_7',['IShape',['../classIShape.html',1,'']]]
+  ['h_0',['h',['../structscreen.html#aa7b8854f8fd77ef416d17e5ecca00112',1,'screen::h'],['../structrectInstr.html#a41a2325dc2dee3d3d6bfae1882a8e2c8',1,'rectInstr::h'],['../structdimensionInstr.html#aa3f4e87f21b2bd54ee483aa9a4fd7285',1,'dimensionInstr::h'],['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2bac1d9f50f86825a1a2302ec2449c17196',1,'H:&#160;Keys.hpp']]],
+  ['handlecollision_1',['handleCollision',['../classSnake_1_1GameSnake.html#a3e2f0ca0bc6f63c1878f14fd3dfa5f29',1,'Snake::GameSnake']]],
+  ['head_2',['HEAD',['../namespaceSnake.html#a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21',1,'Snake']]]
 ];
