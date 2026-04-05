@@ -8,7 +8,6 @@
 #include <ncurses.h>
 #include <queue>
 #include <chrono>
-#include <thread>
 #include <stack>
 #include <variant>
 

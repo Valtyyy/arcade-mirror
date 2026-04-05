@@ -32,7 +32,8 @@ void Core::run()
     while (running) {
         auto start = std::chrono::steady_clock::now();
 
-        doIteration();
+        if (doIteration() < 0)
+            return;
 
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
@@ -43,15 +44,16 @@ void Core::run()
     }
 }
 
-void Core::doIteration()
+int Core::doIteration()
 {
     auto events = _display.pollEvents();
 
     if (_handle_command(events) < 0)
-        return;
+        return -1;
 
     _game.update(events);
     _display.render(_game.getGfxInstructions());
+    return 0;
 }
 
 int Core::_handle_command(std::queue<Event> events)
@@ -103,10 +105,10 @@ size_t Core::_findIndex(const std::vector<std::string> &list, const std::string 
 
 std::vector<std::string> Core::getGamesList()
 {
-    return {"to_fill"};
+    return {std::string(LIB_PATH) + "libarcade_snake.so"};
 }
 
 std::vector<std::string> Core::getDisplayList()
 {
-    return {"to_fill"};
+    return {std::string(LIB_PATH) + "libarcade_sfml.so", std::string(LIB_PATH) + "libarcade_sdl2.so"};
 }

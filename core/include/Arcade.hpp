@@ -25,7 +25,7 @@ class Core {
     public:
         Core(const std::string &, const std::string &);
         void run();
-        void doIteration();
+        int doIteration();
 
         static std::vector<std::string> getGamesList();
         static std::vector<std::string> getDisplayList();
