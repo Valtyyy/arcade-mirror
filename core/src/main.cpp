@@ -14,7 +14,7 @@ int main(int ac, char **av)
     if (ac < 2)
         return EXIT_FAIL;
     try {
-        Core arcade(av[1], "build/libarcade_snake.so");
+        Core arcade(av[1], MENU_GAME);
         arcade.run();
     } catch (const std::exception &e) {
         std::cerr << e.what();
