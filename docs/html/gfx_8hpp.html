@@ -80,18 +80,19 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<code>#include &quot;<a class="el" href="Keys_8hpp_source.html">Keys.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shape_8hpp_source.html">shape.hpp</a>&quot;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;variant&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for gfx.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="gfx_8hpp__incl.svg" width="387" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="gfx_8hpp__incl.svg" width="954" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="gfx_8hpp__dep__incl.svg" width="1226" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="gfx_8hpp__dep__incl.svg" width="1674" height="418"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="gfx_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -117,8 +118,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a41e7d658f3f7543f80ce99a139020702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a32041ee7d3fa5ba3a4808b42ed8a8d" id="r_a8a32041ee7d3fa5ba3a4808b42ed8a8d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpoint__s.html">point_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a></td></tr>
 <tr class="separator:a8a32041ee7d3fa5ba3a4808b42ed8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9c3226d74c73afe0520d666d57a8e7b" id="r_ac9c3226d74c73afe0520d666d57a8e7b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#ac9c3226d74c73afe0520d666d57a8e7b">Event</a> = std::variant&lt; int, <a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a> &gt;</td></tr>
-<tr class="separator:ac9c3226d74c73afe0520d666d57a8e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fcc0447043b86bc6e45cab2818d3cbb" id="r_a5fcc0447043b86bc6e45cab2818d3cbb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#a5fcc0447043b86bc6e45cab2818d3cbb">Event</a> = std::variant&lt; <a class="el" href="Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2b">CommonKey</a>, <a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a> &gt;</td></tr>
+<tr class="separator:a5fcc0447043b86bc6e45cab2818d3cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dc162b955e03805fd28d7c8c19e29e2" id="r_a5dc162b955e03805fd28d7c8c19e29e2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#a5dc162b955e03805fd28d7c8c19e29e2">AnyInstruction</a> = std::variant&lt; <a class="el" href="structrectInstr.html">rectInstr</a>, <a class="el" href="structcircleInstr.html">circleInstr</a>, <a class="el" href="structtextInstr.html">textInstr</a>, <a class="el" href="structdimensionInstr.html">dimensionInstr</a> &gt;</td></tr>
 <tr class="separator:a5dc162b955e03805fd28d7c8c19e29e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -137,14 +138,14 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="ac9c3226d74c73afe0520d666d57a8e7b" name="ac9c3226d74c73afe0520d666d57a8e7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9c3226d74c73afe0520d666d57a8e7b">&#9670;&#160;</a></span>Event</h2>
+<a id="a5fcc0447043b86bc6e45cab2818d3cbb" name="a5fcc0447043b86bc6e45cab2818d3cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fcc0447043b86bc6e45cab2818d3cbb">&#9670;&#160;</a></span>Event</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="gfx_8hpp.html#ac9c3226d74c73afe0520d666d57a8e7b">Event</a> =  std::variant&lt;int, <a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a>&gt;</td>
+          <td class="memname">using <a class="el" href="gfx_8hpp.html#a5fcc0447043b86bc6e45cab2818d3cbb">Event</a> =  std::variant&lt;<a class="el" href="Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2b">CommonKey</a>, <a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">

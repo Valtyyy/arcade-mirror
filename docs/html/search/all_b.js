@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['point_5fs_0',['point_s',['../structpoint__s.html',1,'']]],
-  ['point_5ft_1',['point_t',['../gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d',1,'gfx.hpp']]],
-  ['pollevents_2',['pollevents',['../classDisplay.html#a4b02d67bb1cc1f4d9ea91b7c3f70bcac',1,'Display::pollEvents()'],['../classSDL2.html#a0bf8656a9e20ebbbb21dce9697c46970',1,'SDL2::pollEvents()'],['../classSFML.html#a928f5bbd9f9c2a0f71cdd60a165a527b',1,'SFML::pollEvents()'],['../classIDisplay.html#a5f79762f240a39eb92934c1b70a22905',1,'IDisplay::pollEvents()']]]
+  ['l_0',['L',['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2bad20caec3b48a1eef164cb4ca81ba2587',1,'Keys.hpp']]],
+  ['left_1',['left',['../namespaceSnake.html#a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e',1,'Snake::LEFT'],['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2ba684d325a7303f52e64011467ff5c5758',1,'LEFT:&#160;Keys.hpp']]],
+  ['lib_5ftype_2',['LIB_TYPE',['../IGame_8hpp.html#acf842ea54187d25e58c4e06666c57f06',1,'IGame.hpp']]],
+  ['lines_3',['LINES',['../Snake_8hpp.html#a321ae946de24c36489276616d13c46cd',1,'Snake.hpp']]],
+  ['load_4',['load',['../classDlLoader.html#aa2bf7716b648a0707bf9fc09cc15cd31',1,'DlLoader']]]
 ];
