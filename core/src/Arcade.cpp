@@ -60,32 +60,34 @@ int Core::_handle_command(std::queue<Event> events)
 
     while (!events.empty()) {
         curr = events.front();
-        if (std::holds_alternative<int>(curr) && _apply_command(std::get<int>(curr)) < 0)
+        if (std::holds_alternative<CommonKey>(curr) && _apply_command(std::get<CommonKey>(curr)) < 0)
             return -1;
         events.pop();
     }
     return 0;
 }
 
-int Core::_apply_command(int cmd)
+int Core::_apply_command(CommonKey cmd)
 {
     switch (cmd) {
-        case ASCII_P:
+        case CommonKey::P:
             _currentDisplay = (_currentDisplay + 1) % _displayList.size();
             _display = Display(_displayList[_currentDisplay]);
             break;
-        case ASCII_M:
+        case CommonKey::M:
             _currentGame = (_currentGame + 1) % _gamesList.size();
             _game = Game(_gamesList[_currentGame]);
             break;
-        case ASCII_O:
+        case CommonKey::O:
             _game = Game(_gamesList[_currentGame]);
             break;
-        case ASCII_L:
+        case CommonKey::L:
             _game = Game(MENU_GAME);
             break;
-        case ASCII_I:
+        case CommonKey::I:
             return -1;
+        default:
+            break;
     }
     return 0;
 }

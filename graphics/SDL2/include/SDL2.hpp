@@ -30,6 +30,7 @@ public:
 private:
     SDL_Window *_window;
     SDL_Renderer* _renderer;
+    std::map<std::string, SDL_Surface *> _surfaces;
     std::map<std::string, SDL_Texture*> _textures;
     std::queue<Event> _events;
     screen screenSize;
@@ -39,6 +40,7 @@ private:
     SDL_Color convert_rgba(int hexValue);
     void createTextureFromSurface(SDL_Surface *surface, std::string &assets,
         int x, int y, int w, int h);
+    CommonKey sdlToCommonKey(SDL_Keycode sdlKey);
     void display_instruction(rectInstr &);
     void display_instruction(circleInstr &);
     void display_instruction(textInstr &);
