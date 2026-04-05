@@ -39,7 +39,7 @@ void SFML::clear()
 void SFML::display_instruction(rectInstr &rectangle)
 {
     sf::RectangleShape rect(sf::Vector2f(rectangle.w * screenSize.ratio, rectangle.h * screenSize.ratio));
-    rect.setPosition(sf::Vector2f(rectangle.x, rectangle.y));
+    rect.setPosition(sf::Vector2f(rectangle.x * screenSize.ratio, rectangle.y * screenSize.ratio));
 
     if (!rectangle.asset_location->empty()) {
         if (!_textures.contains(rectangle.asset_location.value())) {
@@ -106,12 +106,23 @@ void SFML::render(std::queue<AnyInstruction> instructions)
     _textures.clear();
 }
 
+CommonKey SFML::sfmlToCommonKey(sf::Keyboard::Key key)
+{
+    for (const auto& [commonKey, trio] : KEY_MAP) {
+        if (std::get<1>(trio) == key)
+            return commonKey;
+    }
+    return CommonKey::UNKNOWN;
+}
+
 void SFML::addEvents(sf::Keyboard::Key touch)
 {
-    int key = static_cast<char>(touch - sf::Keyboard::A + 'a');;
+    int key = static_cast<char>(touch - sf::Keyboard::A + 'a');
     Event event = key;
-
     printf("Key: %d\n", key);
+
+    //Event event = sfmlToCommonKey(touch);
+
     _events.push(event);
 }
 
@@ -134,9 +145,10 @@ std::queue<Event> SFML::pollEvents()
         sf::Mouse::getPosition();
         if ((event.type == sf::Event::MouseButtonPressed) || event.type == sf::Event::MouseButtonReleased)
             addEvents(event.mouseButton);
-        return _events;
+        if (event.type == sf::Event::Closed)
+            this->close();
     }
-    return {};
+    return _events;
 }
 
 extern "C" LIB_TYPE getLibType()
