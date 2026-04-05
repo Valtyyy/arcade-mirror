@@ -82,6 +82,10 @@ public:
     };
     void setShark();
     void setFish();
+    GameMatrix<GAME> getMatrix() const { return _matrix; };
+    std::deque<snake_t> &getShark() { return _snake; };
+    point_t &getFish() { return _fish; };
+    std::map<GAME, std::vector<point_t>> &getGames() { return _games; };
     std::queue<AnyInstruction> getGfxInstructions();
     ~GameSnake();
 private:
@@ -94,9 +98,9 @@ private:
             {SCORE, createCell("games/Snake/assets/wild-jungle-font/WildJungleRegular-vnop9.ttf", '\0', 16777215)},
             {WALL, createCell("games/Snake/assets/wall.png", '#', 32768)},
             {FISH, createCell("games/Snake/assets/fish.png", '@', 16711680)},
-            {HEAD, createCell("games/Snake/assets/head.png", '>', 255)},
-            {TAIL, createCell("games/Snake/assets/tail.png", '<', 7845374)},
-            {BODY, createCell("games/Snake/assets/body.png", '=', 3247335)}
+            {HEAD, createCell("games/Snake/assets/pixelhead.png", '>', 255)},
+            {TAIL, createCell("games/Snake/assets/pixeltail.png", '<', 7845374)},
+            {BODY, createCell("games/Snake/assets/pixelbody.png", '=', 3247335)}
     };
     std::map<DIRECTION, MoveFunc> _directions {
         {UP, [this]() -> void { moveUp();}},

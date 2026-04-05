@@ -136,6 +136,7 @@ std::queue<Event> SFML::pollEvents()
 {
     sf::Event event;
 
+    _events = {};
     if  (_window.pollEvent(event)) {
         if ((event.type == sf::Event::KeyPressed) || (event.type == sf::Event::KeyReleased))
             addEvents(sf::Keyboard::localize(event.key.scancode));
