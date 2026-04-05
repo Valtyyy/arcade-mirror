@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ips_0',['IPS',['../Arcade_8hpp.html#a4111cfe5bd52500d2177975ed8d92494',1,'Arcade.hpp']]]
+  ['framelimits_0',['FRAMELIMITS',['../DisplayVariable_8hpp.html#a582848655dc11c5bf8ee11ad5a077966',1,'DisplayVariable.hpp']]]
 ];

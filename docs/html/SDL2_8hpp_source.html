@@ -114,38 +114,41 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    SDL_Window *_window;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    SDL_Renderer* _renderer;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::map&lt;std::string, SDL_Texture*&gt; _textures;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::queue&lt;Event&gt; _events;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_struct" href="structscreen.html">screen</a> screenSize;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> addEvents(SDL_KeyboardEvent &amp;);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> addEvents(SDL_MouseButtonEvent &amp;);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> DrawCircle(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">float</span> radius, SDL_Renderer *renderer);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    SDL_Color convert_rgba(<span class="keywordtype">int</span> hexValue);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> createTextureFromSurface(SDL_Surface *surface, std::string &amp;assets,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structrectInstr.html">rectInstr</a> &amp;);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structcircleInstr.html">circleInstr</a> &amp;);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structtextInstr.html">textInstr</a> &amp;);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structdimensionInstr.html">dimensionInstr</a> &amp;);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    std::map&lt;std::string, SDL_Surface *&gt; _surfaces;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::map&lt;std::string, SDL_Texture*&gt; _textures;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::queue&lt;Event&gt; _events;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_struct" href="structscreen.html">screen</a> screenSize;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> addEvents(SDL_KeyboardEvent &amp;);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> addEvents(SDL_MouseButtonEvent &amp;);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> DrawCircle(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">float</span> radius, SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    SDL_Color convert_rgba(<span class="keywordtype">int</span> hexValue);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> createTextureFromSurface(SDL_Surface *surface, std::string &amp;assets,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_enumeration" href="Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2b">CommonKey</a> sdlToCommonKey(SDL_Keycode sdlKey);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structrectInstr.html">rectInstr</a> &amp;);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structcircleInstr.html">circleInstr</a> &amp;);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structtextInstr.html">textInstr</a> &amp;);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> display_instruction(<a class="code hl_struct" href="structdimensionInstr.html">dimensionInstr</a> &amp;);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
 </div>
 <div class="ttc" id="aDisplayVariable_8hpp_html"><div class="ttname"><a href="DisplayVariable_8hpp.html">DisplayVariable.hpp</a></div></div>
 <div class="ttc" id="aIDisplay_8hpp_html"><div class="ttname"><a href="IDisplay_8hpp.html">IDisplay.hpp</a></div></div>
+<div class="ttc" id="aKeys_8hpp_html_aca064e9d0e2325f89d8aca2f544edb2b"><div class="ttname"><a href="Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2b">CommonKey</a></div><div class="ttdeci">CommonKey</div><div class="ttdef"><b>Definition</b> Keys.hpp:16</div></div>
 <div class="ttc" id="aclassIDisplay_html"><div class="ttname"><a href="classIDisplay.html">IDisplay</a></div><div class="ttdef"><b>Definition</b> IDisplay.hpp:14</div></div>
 <div class="ttc" id="aclassSDL2_html"><div class="ttname"><a href="classSDL2.html">SDL2</a></div><div class="ttdef"><b>Definition</b> SDL2.hpp:20</div></div>
-<div class="ttc" id="aclassSDL2_html_a0bf8656a9e20ebbbb21dce9697c46970"><div class="ttname"><a href="classSDL2.html#a0bf8656a9e20ebbbb21dce9697c46970">SDL2::pollEvents</a></div><div class="ttdeci">std::queue&lt; Event &gt; pollEvents() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:177</div></div>
-<div class="ttc" id="aclassSDL2_html_a3801c7a65128056be15a0b37b96665c4"><div class="ttname"><a href="classSDL2.html#a3801c7a65128056be15a0b37b96665c4">SDL2::init</a></div><div class="ttdeci">void init() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:29</div></div>
-<div class="ttc" id="aclassSDL2_html_a4f78f78e314048f75fa50ac4b0be8701"><div class="ttname"><a href="classSDL2.html#a4f78f78e314048f75fa50ac4b0be8701">SDL2::clear</a></div><div class="ttdeci">void clear() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:52</div></div>
-<div class="ttc" id="aclassSDL2_html_a5d2dd8ae56c1d6e199850e16aec40afe"><div class="ttname"><a href="classSDL2.html#a5d2dd8ae56c1d6e199850e16aec40afe">SDL2::SDL2</a></div><div class="ttdeci">SDL2()</div><div class="ttdef"><b>Definition</b> SDL2.cpp:20</div></div>
-<div class="ttc" id="aclassSDL2_html_a6b48c229f6c065ef1a0d2f77c4c59983"><div class="ttname"><a href="classSDL2.html#a6b48c229f6c065ef1a0d2f77c4c59983">SDL2::close</a></div><div class="ttdeci">void close() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:43</div></div>
-<div class="ttc" id="aclassSDL2_html_ad5a80717c7e27f938b2ef4a2ba09cc67"><div class="ttname"><a href="classSDL2.html#ad5a80717c7e27f938b2ef4a2ba09cc67">SDL2::render</a></div><div class="ttdeci">void render(std::queue&lt; AnyInstruction &gt;) override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:145</div></div>
-<div class="ttc" id="aclassSDL2_html_af9298d522225b2bb14394f167ec79cce"><div class="ttname"><a href="classSDL2.html#af9298d522225b2bb14394f167ec79cce">SDL2::~SDL2</a></div><div class="ttdeci">~SDL2()</div><div class="ttdef"><b>Definition</b> SDL2.cpp:196</div></div>
+<div class="ttc" id="aclassSDL2_html_a0bf8656a9e20ebbbb21dce9697c46970"><div class="ttname"><a href="classSDL2.html#a0bf8656a9e20ebbbb21dce9697c46970">SDL2::pollEvents</a></div><div class="ttdeci">std::queue&lt; Event &gt; pollEvents() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:203</div></div>
+<div class="ttc" id="aclassSDL2_html_a3801c7a65128056be15a0b37b96665c4"><div class="ttname"><a href="classSDL2.html#a3801c7a65128056be15a0b37b96665c4">SDL2::init</a></div><div class="ttdeci">void init() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:32</div></div>
+<div class="ttc" id="aclassSDL2_html_a4f78f78e314048f75fa50ac4b0be8701"><div class="ttname"><a href="classSDL2.html#a4f78f78e314048f75fa50ac4b0be8701">SDL2::clear</a></div><div class="ttdeci">void clear() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:55</div></div>
+<div class="ttc" id="aclassSDL2_html_a5d2dd8ae56c1d6e199850e16aec40afe"><div class="ttname"><a href="classSDL2.html#a5d2dd8ae56c1d6e199850e16aec40afe">SDL2::SDL2</a></div><div class="ttdeci">SDL2()</div><div class="ttdef"><b>Definition</b> SDL2.cpp:23</div></div>
+<div class="ttc" id="aclassSDL2_html_a6b48c229f6c065ef1a0d2f77c4c59983"><div class="ttname"><a href="classSDL2.html#a6b48c229f6c065ef1a0d2f77c4c59983">SDL2::close</a></div><div class="ttdeci">void close() override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:46</div></div>
+<div class="ttc" id="aclassSDL2_html_ad5a80717c7e27f938b2ef4a2ba09cc67"><div class="ttname"><a href="classSDL2.html#ad5a80717c7e27f938b2ef4a2ba09cc67">SDL2::render</a></div><div class="ttdeci">void render(std::queue&lt; AnyInstruction &gt;) override</div><div class="ttdef"><b>Definition</b> SDL2.cpp:161</div></div>
+<div class="ttc" id="aclassSDL2_html_af9298d522225b2bb14394f167ec79cce"><div class="ttname"><a href="classSDL2.html#af9298d522225b2bb14394f167ec79cce">SDL2::~SDL2</a></div><div class="ttdeci">~SDL2()</div><div class="ttdef"><b>Definition</b> SDL2.cpp:225</div></div>
 <div class="ttc" id="agfx_8hpp_html"><div class="ttname"><a href="gfx_8hpp.html">gfx.hpp</a></div></div>
-<div class="ttc" id="astructcircleInstr_html"><div class="ttname"><a href="structcircleInstr.html">circleInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:34</div></div>
-<div class="ttc" id="astructdimensionInstr_html"><div class="ttname"><a href="structdimensionInstr.html">dimensionInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:43</div></div>
-<div class="ttc" id="astructrectInstr_html"><div class="ttname"><a href="structrectInstr.html">rectInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:29</div></div>
+<div class="ttc" id="astructcircleInstr_html"><div class="ttname"><a href="structcircleInstr.html">circleInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:35</div></div>
+<div class="ttc" id="astructdimensionInstr_html"><div class="ttname"><a href="structdimensionInstr.html">dimensionInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:44</div></div>
+<div class="ttc" id="astructrectInstr_html"><div class="ttname"><a href="structrectInstr.html">rectInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:30</div></div>
 <div class="ttc" id="astructscreen_html"><div class="ttname"><a href="structscreen.html">screen</a></div><div class="ttdef"><b>Definition</b> DisplayVariable.hpp:8</div></div>
-<div class="ttc" id="astructtextInstr_html"><div class="ttname"><a href="structtextInstr.html">textInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:38</div></div>
+<div class="ttc" id="astructtextInstr_html"><div class="ttname"><a href="structtextInstr.html">textInstr</a></div><div class="ttdef"><b>Definition</b> gfx.hpp:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

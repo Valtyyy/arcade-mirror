@@ -3,9 +3,12 @@ project(arcade)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+set(SFML_INCLUDE /opt/sfml2/include)
+
 option(DEBUG "Compile with -g3" OFF)
 
 include_directories(${PROJECT_SOURCE_DIR}/shared/include)
+include_directories(${SFML_INCLUDE})
 
 set(SHARED
     shared/src/DlLoader.cpp
@@ -33,7 +36,7 @@ target_compile_definitions(arcade PRIVATE
 )
 
 # ===== Libraries =====
-    # SDL2
+# === SDL2 ===
 set(SDL2
     ${SHARED}
     graphics/SDL2/src/SDL2.cpp
@@ -55,7 +58,7 @@ target_link_libraries(arcade_sdl2 PRIVATE
     SDL2_image::SDL2_image
 )
 
-    # SFML
+# === SFML ===
 set(SFML
     ${SHARED}
     graphics/SFML/src/SFML.cpp
@@ -73,6 +76,19 @@ target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 
 # ===== =====
 
+# ===== Games =====
+
+SET(SNAKE
+    ${SHARED}
+    games/Snake/src/Snake.cpp
+)
+
+add_library(arcade_snake SHARED ${SNAKE})
+
+target_include_directories(arcade_snake PRIVATE
+    ${PROJECT_SOURCE_DIR}/games/Snake/include
+)
+
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()
@@ -83,14 +99,17 @@ enable_testing()
 
 add_executable(test_binary
     ${CORE}
+    ${SNAKE}
     tests/test_void.cpp
     tests/test_shared.cpp
     tests/test_core.cpp
     tests/test_gameMatrix.cpp
+    tests/test_snake.cpp
 )
 target_include_directories(test_binary
     PRIVATE
         ${PROJECT_SOURCE_DIR}/core/include
+        ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
 
 add_library(test_lib SHARED tests/libtest/lib_test.cpp)

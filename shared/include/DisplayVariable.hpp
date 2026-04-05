@@ -6,7 +6,7 @@
 #define FRAMELIMITS 60
 
 struct screen {
-    size_t h;
-    size_t w;
+    size_t h = 1;
+    size_t w = 1;
     int ratio = 1;
 };

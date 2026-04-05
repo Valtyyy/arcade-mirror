@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menu_5fgame_0',['MENU_GAME',['../Arcade_8hpp.html#aebfe3169ab060734fc1657a08d7cecea',1,'Arcade.hpp']]]
+  ['ips_0',['IPS',['../Arcade_8hpp.html#a4111cfe5bd52500d2177975ed8d92494',1,'Arcade.hpp']]]
 ];
