@@ -13,7 +13,7 @@ static int init_count = 0;
 static int close_count = 0;
 static int render_count = 0;
 static int poll_count = 0;
-static std::queue<Event> g_events;
+static std::queue<Event> events;
 
 void MockDisplay::init() { init_count++; }
 void MockDisplay::close() { close_count++; }
@@ -23,9 +23,9 @@ void MockDisplay::render(std::queue<AnyInstruction>) { render_count++; }
 std::queue<Event> MockDisplay::pollEvents()
 {
     poll_count++;
-    std::queue<Event> copy = g_events;
-    while (!g_events.empty())
-        g_events.pop();
+    std::queue<Event> copy = events;
+    while (!events.empty())
+        events.pop();
     return copy;
 }
 
@@ -35,11 +35,11 @@ int get_init_count() { return init_count; }
 int get_close_count() { return close_count; }
 int get_render_count() { return render_count; }
 int get_poll_count() { return poll_count; }
-void push_event_int(CommonKey event) { g_events.push(Event(event)); }
+void push_event_key(CommonKey event) { events.push(Event(event)); }
 void clear_events()
 {
-    while (!g_events.empty())
-        g_events.pop();
+    while (!events.empty())
+        events.pop();
 }
 void reset_counts()
 {
