@@ -67,6 +67,15 @@ void Snake::GameSnake::close()
 
 };
 
+Snake::DIRECTION Snake::GameSnake::getDirection(CommonKey &key)
+{
+    DIRECTION direction = _keys[key];
+
+    if (direction == _opposites[_snake.front().direction])
+        return _snake.front().direction;
+    return direction;
+};
+
 void Snake::GameSnake::moveUp()
 {
     _snake.front().y = (_snake.front().y - _speed + LINES) % LINES;
