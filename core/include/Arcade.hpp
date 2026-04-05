@@ -10,6 +10,7 @@
 #include "Display.hpp"
 #include "Game.hpp"
 #include "gfx.hpp"
+
 #include <queue>
 #include <string>
 #include <vector>
@@ -19,12 +20,6 @@
 #define IPS 100
 #define SECOND 1000000
 #define MENU_GAME LIB_PATH "libarcade_menu.so"
-
-#define ASCII_O 'o'
-#define ASCII_P 'p'
-#define ASCII_L 'l'
-#define ASCII_M 'm'
-#define ASCII_I 'i'
 
 class Core {
     public:

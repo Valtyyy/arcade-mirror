@@ -28,7 +28,7 @@ EXPORT {
     int get_close_count();
     int get_render_count();
     int get_poll_count();
-    void push_event_int(CommonKey event);
+    void push_event_key(CommonKey event);
     void clear_events();
     void reset_counts();
 }

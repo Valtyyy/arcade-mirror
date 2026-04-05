@@ -9,6 +9,7 @@
 #include <exception>
 #include "Arcade.hpp"
 #include "DlLoader.hpp"
+#include "Keys.hpp"
 
 #define GAME_MOCK_LIB LIB_PATH "libgame_mock.so"
 #define DISPLAY_MOCK_LIB LIB_PATH "libdisplay_mock.so"
@@ -99,7 +100,7 @@ Test(Core, doIteration_exit_command_skips_update_and_render)
     auto g_reset = reinterpret_cast<void(*)()>(game_loader.sym("reset_counts"));
     auto d_reset = reinterpret_cast<void(*)()>(display_loader.sym("reset_counts"));
     auto d_clear = reinterpret_cast<void(*)()>(display_loader.sym("clear_events"));
-    auto push_event = reinterpret_cast<void(*)(int)>(display_loader.sym("push_event_int"));
+    auto push_event = reinterpret_cast<void(*)(CommonKey)>(display_loader.sym("push_event_key"));
     g_reset();
     d_reset();
     d_clear();
@@ -108,7 +109,7 @@ Test(Core, doIteration_exit_command_skips_update_and_render)
     g_reset();
     d_reset();
 
-    push_event(ASCII_I);
+    push_event(CommonKey::I);
     core.doIteration();
 
     auto get_update = reinterpret_cast<int(*)()>(game_loader.sym("get_update_count"));
