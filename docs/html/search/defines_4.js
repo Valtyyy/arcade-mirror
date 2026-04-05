@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lines_0',['LINES',['../Snake_8hpp.html#a321ae946de24c36489276616d13c46cd',1,'Snake.hpp']]]
+  ['ips_0',['IPS',['../Arcade_8hpp.html#a4111cfe5bd52500d2177975ed8d92494',1,'Arcade.hpp']]]
 ];

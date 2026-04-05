@@ -22,92 +22,116 @@
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <deque>}}
 \DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameMatrix_8hpp}{GameMatrix.hpp}}"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ TILESIZE\ 40}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ COLUMNS\ 20}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ LINES\ 20}}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceSnake}{Snake}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GameMatrix_8hpp}{GameMatrix.hpp}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ TILESIZE\ 40}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ COLUMNS\ 20}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ LINES\ 20}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ BASIC\_SPEED\ 500}}
+\DoxyCodeLine{00027\ }
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82}{GAME}}\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a27e5ea0d3a4710bc966fced53a1a08dc}{EMPTY}},}
-\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a91d783ab4736842abedc0f729998e312}{WALL}},}
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82aac23ef4d1a86d86185850265531bba33}{SCORE}},}
-\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a6b6b17247a7a3e4a6168d861b9e8c06b}{FISH}},}
-\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21}{HEAD}},}
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a48ef5108c394d2b8bef4c9cbc976c9c6}{BODY}},}
-\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a87693f034832b69cbd295f9fdd9c51b1}{TAIL}},}
-\DoxyCodeLine{00037\ \};}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733f}{DIRECTION}}\ \{}
-\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}},}
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}},}
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}},}
-\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}}}
-\DoxyCodeLine{00044\ \};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSnake_1_1snake__t}{snake\_t}}\ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structSnake_1_1snake__t_a2070b61f53f7f84d29edbb77518f20c6}{x}};}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structSnake_1_1snake__t_a9fc85b26099f45304170d1708cd4f1fd}{y}};}
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82}{GAME}}\ \mbox{\hyperlink{structSnake_1_1snake__t_a2c465f5376f6698feca8c21edb42c2e1}{part}};}
-\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733f}{DIRECTION}}\ \mbox{\hyperlink{structSnake_1_1snake__t_a5e0a67f22474f0305faca8ccad3f1294}{direction}};}
-\DoxyCodeLine{00051\ \};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSnake_1_1cell}{cell}}\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ std::string\ \mbox{\hyperlink{structSnake_1_1cell_a0d9ab0791a0e033e055a219710cb0137}{assets}};}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structSnake_1_1cell_a6e6ed5b76973ff009b4d8363dcaba51b}{txt}};}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structSnake_1_1cell_a1b43c09681c79eef6613884f567e6b39}{color}};}
-\DoxyCodeLine{00057\ \};}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSnake_1_1GameSnake}{GameSnake}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIGame}{IGame}}\ \{}
-\DoxyCodeLine{00060\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{classSnake_1_1GameSnake_a9adcbd4a48ff1a9cf410f3b29bbc2780}{GameSnake}}();}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_af0abdef6677b2bc394a841e3a0740691}{init}}();}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a95d29e2a9fa413b983f89d0aea8131c6}{close}}();}
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a93ba7c03449bbfd56e3edf2064013a2b}{update}}(std::queue<Event>);}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_adce48c571615aabb14fde615a645be53}{updateMatrix}}();}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_ae33ddb5165c4a0e6f7776f457eaa4d8b}{setBackground}}();}
-\DoxyCodeLine{00067\ \ \ \ \ std::queue<AnyInstruction>\ \mbox{\hyperlink{classSnake_1_1GameSnake_ae35ffc285a35eeb7dfcdbabac2f5ac77}{convertMatrixToGfx}}();}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a346aeabae38d92d12bf7efa8bc62b91a}{moveUp}}();}
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a55bd049e39cd19a0ed483fd9ccfe4ff9}{moveDown}}();}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_aea3fa48f6560393399c8f9530ad5b530}{moveLeft}}();}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_aba3db949fd09b313def0d524992e53fe}{moveRight}}();}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_adeac4e4b9ffe0e19f350350bd455a05d}{moveSnake}}();}
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a3e2f0ca0bc6f63c1878f14fd3dfa5f29}{handleCollision}}();}
-\DoxyCodeLine{00074\ \ \ \ \ std::queue<AnyInstruction>\ \mbox{\hyperlink{classSnake_1_1GameSnake_ad93e5421969d34329170f6e59f722b4a}{getGfxInstructions}}();}
-\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{classSnake_1_1GameSnake_a13fa5fd7ef4c5f13283a03dd8c631e26}{\string~GameSnake}}();}
-\DoxyCodeLine{00076\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{using\ }Func\ =\ std::function<void(\textcolor{keywordtype}{void})>;}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{structSnake_1_1cell}{cell}}\ createCell(std::string\ assetLocation,\ \textcolor{keywordtype}{char}\ txt,\ \textcolor{keywordtype}{size\_t}\ color)}
-\DoxyCodeLine{00080\ \ \ \ \ \{\ \mbox{\hyperlink{structSnake_1_1cell}{cell}}\ newCell\ \{assetLocation,\ txt,\ color\};\ \textcolor{keywordflow}{return}\ newCell;\ \}}
-\DoxyCodeLine{00081\ \ \ \ \ std::map<GAME,\ cell>\ \_assets\ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a27e5ea0d3a4710bc966fced53a1a08dc}{EMPTY}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/empty.png"{}},\ \textcolor{charliteral}{'\ '},\ 0)\},}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82aac23ef4d1a86d86185850265531bba33}{SCORE}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/wild-\/jungle-\/font/WildJungleRegular-\/vnop9.ttf"{}},\ \textcolor{charliteral}{'\(\backslash\)0'},\ 16777215)\},}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a91d783ab4736842abedc0f729998e312}{WALL}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/wall.png"{}},\ \textcolor{charliteral}{'\#'},\ 32768)\},}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a6b6b17247a7a3e4a6168d861b9e8c06b}{FISH}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/fish.png"{}},\ \textcolor{charliteral}{'@'},\ 16711680)\},}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21}{HEAD}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/head.png"{}},\ \textcolor{charliteral}{'>'},\ 255)\},}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a87693f034832b69cbd295f9fdd9c51b1}{TAIL}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/tail.png"{}},\ \textcolor{charliteral}{'<'},\ 7845374)\},}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a48ef5108c394d2b8bef4c9cbc976c9c6}{BODY}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/body.png"{}},\ \textcolor{charliteral}{'='},\ 3247335)\}}
-\DoxyCodeLine{00089\ \ \ \ \ \};}
-\DoxyCodeLine{00090\ \ \ \ \ std::map<DIRECTION,\ Func>\ \_directions\ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\mbox{\hyperlink{classSnake_1_1GameSnake_a346aeabae38d92d12bf7efa8bc62b91a}{moveUp}}();\}\},}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \mbox{\hyperlink{classSnake_1_1GameSnake_a55bd049e39cd19a0ed483fd9ccfe4ff9}{moveDown}}();\ \}\},}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \mbox{\hyperlink{classSnake_1_1GameSnake_aea3fa48f6560393399c8f9530ad5b530}{moveLeft}}();\ \}\},}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \mbox{\hyperlink{classSnake_1_1GameSnake_aba3db949fd09b313def0d524992e53fe}{moveRight}}();\ \}\}}
-\DoxyCodeLine{00095\ \ \ \ \ \};}
-\DoxyCodeLine{00096\ \ \ \ \ std::map<CommonKey,\ DIRECTION>\ \_keys\ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2bafbaedde498cdead4f2780217646e9ba1}{CommonKey::UP}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}}\},}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2bac4e0e4e3118472beeb2ae75827450f1f}{CommonKey::DOWN}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}}\},}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2ba684d325a7303f52e64011467ff5c5758}{CommonKey::LEFT}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}}\},}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2ba21507b40c80068eda19865706fdc2403}{CommonKey::RIGHT}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}}\}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceSnake}{Snake}}\ \{}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82}{GAME}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a27e5ea0d3a4710bc966fced53a1a08dc}{EMPTY}},}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a91d783ab4736842abedc0f729998e312}{WALL}},}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82aac23ef4d1a86d86185850265531bba33}{SCORE}},}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a6b6b17247a7a3e4a6168d861b9e8c06b}{FISH}},}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21}{HEAD}},}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a48ef5108c394d2b8bef4c9cbc976c9c6}{BODY}},}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a87693f034832b69cbd295f9fdd9c51b1}{TAIL}},}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733f}{DIRECTION}}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}},}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}},}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}},}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}}}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSnake_1_1snake__t}{snake\_t}}\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structSnake_1_1snake__t_a2070b61f53f7f84d29edbb77518f20c6}{x}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structSnake_1_1snake__t_a9fc85b26099f45304170d1708cd4f1fd}{y}};}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82}{GAME}}\ \mbox{\hyperlink{structSnake_1_1snake__t_a2c465f5376f6698feca8c21edb42c2e1}{part}};}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733f}{DIRECTION}}\ \mbox{\hyperlink{structSnake_1_1snake__t_a5e0a67f22474f0305faca8ccad3f1294}{direction}};}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSnake_1_1cell}{cell}}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ std::string\ \mbox{\hyperlink{structSnake_1_1cell_a0d9ab0791a0e033e055a219710cb0137}{assets}};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structSnake_1_1cell_a6e6ed5b76973ff009b4d8363dcaba51b}{txt}};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structSnake_1_1cell_a1b43c09681c79eef6613884f567e6b39}{color}};}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespaceSnake_a3269c9ac5a845495c9538c3ea5e3d56d}{MoveFunc}}\ =\ std::function<void(\textcolor{keywordtype}{void})>;}
+\DoxyCodeLine{00062\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespaceSnake_aac8c9a47c85570080310b57b341e243b}{setDirectionFunc}}\ =\ std::function<\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733f}{DIRECTION}}(\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2b}{CommonKey}})>;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSnake_1_1GameSnake}{GameSnake}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIGame}{IGame}}\ \{}
+\DoxyCodeLine{00065\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classSnake_1_1GameSnake_a9adcbd4a48ff1a9cf410f3b29bbc2780}{GameSnake}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_af0abdef6677b2bc394a841e3a0740691}{init}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a95d29e2a9fa413b983f89d0aea8131c6}{close}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a93ba7c03449bbfd56e3edf2064013a2b}{update}}(std::queue<Event>);}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733f}{DIRECTION}}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a2a67c0365206a85d7ee0836b952fca83}{getDirection}}(\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2b}{CommonKey}}\ \&key);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a3ee79d8f565239fcd1eb601dddc20307}{setShark}}();}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSnake_1_1GameSnake_a4d30efe87044858f685476cb8abc4934}{setFish}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classGameMatrix}{GameMatrix<GAME>}}\ \mbox{\hyperlink{classSnake_1_1GameSnake_ad98dfc48c4b2c0245172dfbedbdf4483}{getMatrix}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_matrix;\ \};}
+\DoxyCodeLine{00074\ \ \ \ \ std::deque<snake\_t>\ \&\mbox{\hyperlink{classSnake_1_1GameSnake_a564959ccd2204f5e6277fa0c7eaa9092}{getShark}}()\ \{\ \textcolor{keywordflow}{return}\ \_snake;\ \};}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{structpoint__s}{point\_t}}\ \&\mbox{\hyperlink{classSnake_1_1GameSnake_af390957441f5021108854a24df492468}{getFish}}()\ \{\ \textcolor{keywordflow}{return}\ \_fish;\ \};}
+\DoxyCodeLine{00076\ \ \ \ \ std::map<GAME,\ std::vector<point\_t>>\ \&\mbox{\hyperlink{classSnake_1_1GameSnake_abdddd42c659e630e24c2b43dc1f7088b}{getGames}}()\ \{\ \textcolor{keywordflow}{return}\ \_games;\ \};}
+\DoxyCodeLine{00077\ \ \ \ \ std::queue<AnyInstruction>\ \mbox{\hyperlink{classSnake_1_1GameSnake_ad93e5421969d34329170f6e59f722b4a}{getGfxInstructions}}();}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classSnake_1_1GameSnake_a13fa5fd7ef4c5f13283a03dd8c631e26}{\string~GameSnake}}();}
+\DoxyCodeLine{00079\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \_moveUp();}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \_moveDown();}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \_moveLeft();}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \_moveRight();}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \_moveSnake();}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \_updateMatrix();}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \_setBackground();}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \_handleCollision();}
+\DoxyCodeLine{00088\ \ \ \ \ std::queue<AnyInstruction>\ \_convertMatrixToGfx();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structSnake_1_1cell}{cell}}\ createCell(std::string\ assetLocation,\ \textcolor{keywordtype}{char}\ txt,\ \textcolor{keywordtype}{size\_t}\ color)}
+\DoxyCodeLine{00091\ \ \ \ \ \{\ \mbox{\hyperlink{structSnake_1_1cell}{cell}}\ newCell\ \{assetLocation,\ txt,\ color\};\ \textcolor{keywordflow}{return}\ newCell;\ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ std::map<GAME,\ cell>\ \_assets\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a27e5ea0d3a4710bc966fced53a1a08dc}{EMPTY}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/empty.png"{}},\ \textcolor{charliteral}{'\ '},\ 0)\},}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82aac23ef4d1a86d86185850265531bba33}{SCORE}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/wild-\/jungle-\/font/WildJungleRegular-\/vnop9.ttf"{}},\ \textcolor{charliteral}{'\(\backslash\)0'},\ 16777215)\},}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a91d783ab4736842abedc0f729998e312}{WALL}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/wall.png"{}},\ \textcolor{charliteral}{'\#'},\ 32768)\},}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a6b6b17247a7a3e4a6168d861b9e8c06b}{FISH}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/fish.png"{}},\ \textcolor{charliteral}{'@'},\ 16711680)\},}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21}{HEAD}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/pixelhead.png"{}},\ \textcolor{charliteral}{'>'},\ 255)\},}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a87693f034832b69cbd295f9fdd9c51b1}{TAIL}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/pixeltail.png"{}},\ \textcolor{charliteral}{'<'},\ 7845374)\},}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a864b2fc18694b34a086e060f30c88d82a48ef5108c394d2b8bef4c9cbc976c9c6}{BODY}},\ createCell(\textcolor{stringliteral}{"{}games/Snake/assets/pixelbody.png"{}},\ \textcolor{charliteral}{'='},\ 3247335)\}}
 \DoxyCodeLine{00101\ \ \ \ \ \};}
-\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{classGameMatrix}{GameMatrix<GAME>}}\ \_matrix;}
-\DoxyCodeLine{00103\ \ \ \ \ std::deque<snake\_t>\ \_snake;}
-\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{structpoint__s}{point\_t}}\ \_fish;}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_score;}
-\DoxyCodeLine{00106\ \};}
-\DoxyCodeLine{00107\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::map<DIRECTION,\ MoveFunc>\ \_directions\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \_moveUp();\}\},}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \_moveDown();\ \}\},}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \_moveLeft();\ \}\},}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}},\ [\textcolor{keyword}{this}]()\ -\/>\ \textcolor{keywordtype}{void}\ \{\ \_moveRight();\ \}\}}
+\DoxyCodeLine{00108\ \ \ \ \ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ std::map<DIRECTION,\ DIRECTION>\ \_opposites\ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}}\},}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}}\},}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}}\},}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}}\}}
+\DoxyCodeLine{00115\ \ \ \ \ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ std::map<CommonKey,\ DIRECTION>\ \_keys\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2bafbaedde498cdead4f2780217646e9ba1}{CommonKey::UP}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa325095e4b444c7131aeb88ca33c7edf2}{UP}}\},}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2bac4e0e4e3118472beeb2ae75827450f1f}{CommonKey::DOWN}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa552ec6394b72dab1dcc8bf47f05c8548}{DOWN}}\},}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2ba684d325a7303f52e64011467ff5c5758}{CommonKey::LEFT}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa81e5111ab514498d533c75dc9724f29e}{LEFT}}\},}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2ba21507b40c80068eda19865706fdc2403}{CommonKey::RIGHT}},\ \mbox{\hyperlink{namespaceSnake_a84f95420a1edd2cef599ca3c914c733fa7bcce9b91942351b31e124e2387546d3}{RIGHT}}\}}
+\DoxyCodeLine{00122\ \ \ \ \ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{classGameMatrix}{GameMatrix<GAME>}}\ \_matrix;}
+\DoxyCodeLine{00125\ \ \ \ \ std::deque<snake\_t>\ \_snake;}
+\DoxyCodeLine{00126\ \ \ \ \ std::map<GAME,\ std::vector<point\_t>>\ \_games;}
+\DoxyCodeLine{00127\ \ \ \ \ \mbox{\hyperlink{structpoint__s}{point\_t}}\ \_fish;}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{int}\ \_speed;}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \_score;}
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ \}}
 
 \end{DoxyCode}

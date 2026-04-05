@@ -8,11 +8,16 @@ var searchData=
   ['gamematrix_2ehpp_5',['GameMatrix.hpp',['../GameMatrix_8hpp.html',1,'']]],
   ['gamematrix_3c_20game_20_3e_6',['GameMatrix&lt; GAME &gt;',['../classGameMatrix.html',1,'']]],
   ['gamesnake_7',['gamesnake',['../classSnake_1_1GameSnake.html',1,'Snake::GameSnake'],['../classSnake_1_1GameSnake.html#a9adcbd4a48ff1a9cf410f3b29bbc2780',1,'Snake::GameSnake::GameSnake()']]],
-  ['getdisplaylist_8',['getDisplayList',['../classCore.html#a10320cacf0b34a059a7ae186c9b65cc3',1,'Core']]],
-  ['getgameslist_9',['getGamesList',['../classCore.html#a050def4f2658de79a75da1ff9e1924d1',1,'Core']]],
-  ['getgfxinstructions_10',['getgfxinstructions',['../classGame.html#a8fe4396993f4234d3254cc9a05001e39',1,'Game::getGfxInstructions()'],['../classSnake_1_1GameSnake.html#ad93e5421969d34329170f6e59f722b4a',1,'Snake::GameSnake::getGfxInstructions()'],['../classIGame.html#a2c09179e6b001b16ce7fd497e6085143',1,'IGame::getGfxInstructions()']]],
-  ['getlibtype_11',['getlibtype',['../Snake_8cpp.html#a4bbc47207cc25dcf404fa8b921853e95',1,'getLibType():&#160;Snake.cpp'],['../SDL2_8cpp.html#a4bbc47207cc25dcf404fa8b921853e95',1,'getLibType():&#160;SDL2.cpp'],['../SFML_8cpp.html#a4bbc47207cc25dcf404fa8b921853e95',1,'getLibType():&#160;SFML.cpp']]],
-  ['gfx_2ehpp_12',['gfx.hpp',['../gfx_8hpp.html',1,'']]],
-  ['gfx_5finstr_5ft_13',['gfx_instr_t',['../gfx_8hpp.html#a41e7d658f3f7543f80ce99a139020702',1,'gfx.hpp']]],
-  ['gfxinstruction_14',['GfxInstruction',['../structGfxInstruction.html',1,'']]]
+  ['getdirection_8',['getDirection',['../classSnake_1_1GameSnake.html#a2a67c0365206a85d7ee0836b952fca83',1,'Snake::GameSnake']]],
+  ['getdisplaylist_9',['getDisplayList',['../classCore.html#a10320cacf0b34a059a7ae186c9b65cc3',1,'Core']]],
+  ['getfish_10',['getFish',['../classSnake_1_1GameSnake.html#af390957441f5021108854a24df492468',1,'Snake::GameSnake']]],
+  ['getgames_11',['getGames',['../classSnake_1_1GameSnake.html#abdddd42c659e630e24c2b43dc1f7088b',1,'Snake::GameSnake']]],
+  ['getgameslist_12',['getGamesList',['../classCore.html#a050def4f2658de79a75da1ff9e1924d1',1,'Core']]],
+  ['getgfxinstructions_13',['getgfxinstructions',['../classGame.html#a8fe4396993f4234d3254cc9a05001e39',1,'Game::getGfxInstructions()'],['../classSnake_1_1GameSnake.html#ad93e5421969d34329170f6e59f722b4a',1,'Snake::GameSnake::getGfxInstructions()'],['../classIGame.html#a2c09179e6b001b16ce7fd497e6085143',1,'IGame::getGfxInstructions()']]],
+  ['getlibtype_14',['getlibtype',['../Snake_8cpp.html#a4bbc47207cc25dcf404fa8b921853e95',1,'getLibType():&#160;Snake.cpp'],['../SDL2_8cpp.html#a4bbc47207cc25dcf404fa8b921853e95',1,'getLibType():&#160;SDL2.cpp'],['../SFML_8cpp.html#a4bbc47207cc25dcf404fa8b921853e95',1,'getLibType():&#160;SFML.cpp']]],
+  ['getmatrix_15',['getMatrix',['../classSnake_1_1GameSnake.html#ad98dfc48c4b2c0245172dfbedbdf4483',1,'Snake::GameSnake']]],
+  ['getshark_16',['getShark',['../classSnake_1_1GameSnake.html#a564959ccd2204f5e6277fa0c7eaa9092',1,'Snake::GameSnake']]],
+  ['gfx_2ehpp_17',['gfx.hpp',['../gfx_8hpp.html',1,'']]],
+  ['gfx_5finstr_5ft_18',['gfx_instr_t',['../gfx_8hpp.html#a41e7d658f3f7543f80ce99a139020702',1,'gfx.hpp']]],
+  ['gfxinstruction_19',['GfxInstruction',['../structGfxInstruction.html',1,'']]]
 ];

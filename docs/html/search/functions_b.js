@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['sdl2_0',['SDL2',['../classSDL2.html#a5d2dd8ae56c1d6e199850e16aec40afe',1,'SDL2']]],
-  ['setbackground_1',['setBackground',['../classSnake_1_1GameSnake.html#ae33ddb5165c4a0e6f7776f457eaa4d8b',1,'Snake::GameSnake']]],
-  ['sfml_2',['SFML',['../classSFML.html#a38eac3826e67b2dc189d291d47c59394',1,'SFML']]],
-  ['sizeerror_3',['SizeError',['../classGameMatrix_1_1SizeError.html#a050eae0522fd0dbdbc32c45c7b9bed1a',1,'GameMatrix::SizeError']]],
-  ['sym_4',['sym',['../classDlLoader.html#a96e9032e363068df6ca9015001368059',1,'DlLoader']]]
+  ['unload_0',['unload',['../classDlLoader.html#ae0e361e51a603b119b1236cc75a51bfd',1,'DlLoader']]],
+  ['update_1',['update',['../classGame.html#ae7ae6344140ddeff5e885389a9aeab84',1,'Game::update()'],['../classSnake_1_1GameSnake.html#a93ba7c03449bbfd56e3edf2064013a2b',1,'Snake::GameSnake::update()'],['../classIGame.html#ad4e97984eeb22e7472e782392a851aca',1,'IGame::update()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['columns_0',['COLUMNS',['../Snake_8hpp.html#a06c6c391fc11d106e9909f0401b255b1',1,'Snake.hpp']]]
+  ['basic_5fspeed_0',['BASIC_SPEED',['../Snake_8hpp.html#ae633aad6e0f26320aeaad77043448c84',1,'Snake.hpp']]]
 ];

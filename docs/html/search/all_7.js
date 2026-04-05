@@ -1,6 +1,5 @@
 var searchData=
 [
   ['h_0',['h',['../structscreen.html#aa7b8854f8fd77ef416d17e5ecca00112',1,'screen::h'],['../structrectInstr.html#a41a2325dc2dee3d3d6bfae1882a8e2c8',1,'rectInstr::h'],['../structdimensionInstr.html#aa3f4e87f21b2bd54ee483aa9a4fd7285',1,'dimensionInstr::h'],['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2bac1d9f50f86825a1a2302ec2449c17196',1,'H:&#160;Keys.hpp']]],
-  ['handlecollision_1',['handleCollision',['../classSnake_1_1GameSnake.html#a3e2f0ca0bc6f63c1878f14fd3dfa5f29',1,'Snake::GameSnake']]],
-  ['head_2',['HEAD',['../namespaceSnake.html#a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21',1,'Snake']]]
+  ['head_1',['HEAD',['../namespaceSnake.html#a864b2fc18694b34a086e060f30c88d82ac4d1fbbbb21a8c8a3b0cd7ece1b6bc21',1,'Snake']]]
 ];
