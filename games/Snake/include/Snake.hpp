@@ -77,15 +77,15 @@ public:
     std::queue<AnyInstruction> getGfxInstructions();
     ~GameSnake();
 private:
-    void moveUp();
-    void moveDown();
-    void moveLeft();
-    void moveRight();
-    void moveSnake();
-    void updateMatrix();
-    void setBackground();
-    void handleCollision();
-    std::queue<AnyInstruction> convertMatrixToGfx();
+    void _moveUp();
+    void _moveDown();
+    void _moveLeft();
+    void _moveRight();
+    void _moveSnake();
+    void _updateMatrix();
+    void _setBackground();
+    void _handleCollision();
+    std::queue<AnyInstruction> _convertMatrixToGfx();
 
     static cell createCell(std::string assetLocation, char txt, size_t color)
     { cell newCell {assetLocation, txt, color}; return newCell; }
@@ -101,10 +101,10 @@ private:
     };
 
     std::map<DIRECTION, MoveFunc> _directions {
-        {UP, [this]() -> void { moveUp();}},
-        {DOWN, [this]() -> void { moveDown(); }},
-        {LEFT, [this]() -> void { moveLeft(); }},
-        {RIGHT, [this]() -> void { moveRight(); }}
+        {UP, [this]() -> void { _moveUp();}},
+        {DOWN, [this]() -> void { _moveDown(); }},
+        {LEFT, [this]() -> void { _moveLeft(); }},
+        {RIGHT, [this]() -> void { _moveRight(); }}
     };
 
     std::map<DIRECTION, DIRECTION> _opposites {
