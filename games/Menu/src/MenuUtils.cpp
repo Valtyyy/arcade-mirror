@@ -17,7 +17,7 @@ std::queue<AnyInstruction> MenuUtils::createButton(size_t x, size_t y, std::stri
     size_t w = 400;
     size_t h = 250;
     rectInstr rect = {{x, y, '/', background_location, 23718336}, h, w};
-    textInstr text = {{{x + (w / 5), y + (h / 4), 0, "games/Menu/assets/Minecraft.ttf", 0x000000FF}, h, w}, "Play", 100};
+    textInstr text = {{{x + (w / 5), y + (h / 4), 0, "games/Menu/assets/Minecraft.ttf", 0x000000FF}, h / 2, w / 2}, "Play", 100};
 
     q.push(rect);
     q.push(text);
