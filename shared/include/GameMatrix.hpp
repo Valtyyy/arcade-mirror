@@ -8,6 +8,7 @@
 #pragma once
 
 #include "IGame.hpp"
+#include <cstdio>
 #include <vector>
 #include <exception>
 #include <sstream>
@@ -30,7 +31,6 @@ class GameMatrix {
             }
         };
 
-
         rectInstr createTileGFX(char txt)
         {
             rectInstr tileGFX;
@@ -49,7 +49,7 @@ class GameMatrix {
             }
         }
 
-        std::stack<rectInstr> &matrixToGFX(std::size_t color = 0, char txt = ' ')
+        std::stack<rectInstr> &matrixToGFX(std::size_t color, char txt = ' ')
         {
             rectInstr tileGFX;
             clearInstruct();

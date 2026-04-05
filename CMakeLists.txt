@@ -73,6 +73,19 @@ target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 
 # ===== =====
 
+# ===== Games =====
+
+SET(SNAKE
+    ${SHARED}
+    games/Snake/src/Snake.cpp
+)
+
+add_library(arcade_snake SHARED ${SNAKE})
+
+target_include_directories(arcade_snake PRIVATE
+    ${PROJECT_SOURCE_DIR}/games/Snake/include
+)
+
 if(DEBUG)
     target_compile_options(arcade PRIVATE -g3)
 endif()

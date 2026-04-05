@@ -8,9 +8,11 @@
 #include <cstddef>
 #include <cstdio>
 #include <numbers>
+#include <ostream>
 #include <stdexcept>
 #include <variant>
 #include <iostream>
+#include <Key.hpp>
 
 extern "C" IDisplay *create()
 {
@@ -31,8 +33,8 @@ void SDL2::init()
     _window = SDL_CreateWindow("SDL",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        SCREEN_H,
         SCREEN_W,
+        SCREEN_H,
         SDL_WINDOW_RESIZABLE);
     if (!_window)
         throw std::runtime_error(SDL_GetError());
@@ -51,6 +53,7 @@ void SDL2::close()
 
 void SDL2::clear()
 {
+    SDL_RenderClear(_renderer);
 }
 
 SDL_Color SDL2::convert_rgba(int hex_color)
@@ -87,8 +90,10 @@ void SDL2::display_instruction(rectInstr &rectangle)
         (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
     SDL_RenderFillRect(_renderer, &rect);
     if (!rectangle.asset_location->empty()) {
-        SDL_Surface *surface = IMG_Load(rectangle.asset_location->c_str());
-        createTextureFromSurface(surface, rectangle.asset_location.value(), rect.x , rect.y, rect.w, rect.h);
+        createTextureFromSurface(
+        IMG_Load(rectangle.asset_location.value().c_str()),
+        rectangle.asset_location.value(),
+        rect.x , rect.y, rect.w, rect.h);
     }
 }
 
@@ -121,18 +126,20 @@ void SDL2::display_instruction(circleInstr &circle)
 void SDL2::display_instruction(textInstr &text)
 {
     SDL_Color color = convert_rgba(text.color_hex);
-    TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
-    if (!font)
-        throw std::runtime_error(SDL_GetError());
-    SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.text.c_str(), color);
-    if (!textSurface)
-        throw std::runtime_error(SDL_GetError());
-    createTextureFromSurface(textSurface,
-        text.asset_location.value(),
-        text.x * screenSize.ratio,
-        text.y * screenSize.ratio,
-        textSurface->w * screenSize.ratio,
-        textSurface->h * screenSize.ratio);
+
+    if (text.asset_location.value().c_str()) {
+        TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
+        if (!font)
+            throw std::runtime_error(SDL_GetError());
+        SDL_Surface *textSurface = TTF_RenderText_Blended(font, text.text.c_str(), color);
+        createTextureFromSurface(
+            TTF_RenderText_Blended(font, text.text.c_str(), color),
+            text.asset_location.value(),
+            text.x * screenSize.ratio,
+            text.y * screenSize.ratio,
+            text.w * screenSize.ratio,
+            text.h * screenSize.ratio);
+    }
 }
 
 void SDL2::display_instruction(dimensionInstr &dimension)
@@ -155,12 +162,24 @@ void SDL2::render(std::queue<AnyInstruction> instructions)
     SDL_RenderPresent(_renderer);
 }
 
+
+CommonKey SDL2::sdlToCommonKey(SDL_Keycode sdlKey)
+    {
+        for (const auto& [commonKey, trio] : KEY_MAP) {
+            if (std::get<0>(trio) == sdlKey)
+                return commonKey;
+        }
+        return CommonKey::UNKNOWN;
+}
+
+
 void SDL2::addEvents(SDL_KeyboardEvent &touch)
 {
-    int key = touch.keysym.scancode;
+    int key = touch.keysym.sym;
+    //Event event = sdlToCommonKey(key);
     Event event = key;
 
-    printf("Key: %d, Touch: %d\n", key, touch.keysym.sym);
+    printf("Key: %d\n", key);
     _events.push(event);
 }
 
@@ -178,14 +197,14 @@ std::queue<Event> SDL2::pollEvents()
 {
     SDL_Event sdl_event = {0};
 
-    if (SDL_PollEvent(&sdl_event)) {
-        if ((sdl_event.type == SDL_KEYUP) ||  (sdl_event.type  == SDL_KEYDOWN))
+    _events = {};
+    while (SDL_PollEvent(&sdl_event)) {
+        if (sdl_event.type == SDL_KEYDOWN)
             addEvents(sdl_event.key);
-        if ((sdl_event.type == SDL_MOUSEBUTTONUP) || (sdl_event.type == SDL_MOUSEBUTTONDOWN))
+        if (sdl_event.type == SDL_MOUSEBUTTONDOWN)
             addEvents(sdl_event.button);
-        return _events;
     }
-    return {};
+    return _events;
 }
 
 extern "C" LIB_TYPE getLibType()

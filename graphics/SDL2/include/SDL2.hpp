@@ -39,6 +39,7 @@ private:
     SDL_Color convert_rgba(int hexValue);
     void createTextureFromSurface(SDL_Surface *surface, std::string &assets,
         int x, int y, int w, int h);
+    CommonKey sdlToCommonKey(SDL_Keycode sdlKey);
     void display_instruction(rectInstr &);
     void display_instruction(circleInstr &);
     void display_instruction(textInstr &);
