@@ -34,19 +34,21 @@
 \DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
 \DoxyCodeLine{00031\ \ \ \ \ SDL\_Window\ *\_window;}
 \DoxyCodeLine{00032\ \ \ \ \ SDL\_Renderer*\ \_renderer;}
-\DoxyCodeLine{00033\ \ \ \ \ std::map<std::string,\ SDL\_Texture*>\ \_textures;}
-\DoxyCodeLine{00034\ \ \ \ \ std::queue<Event>\ \_events;}
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{structscreen}{screen}}\ screenSize;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ addEvents(SDL\_KeyboardEvent\ \&);}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ addEvents(SDL\_MouseButtonEvent\ \&);}
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircle(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{float}\ radius,\ SDL\_Renderer\ *renderer);}
-\DoxyCodeLine{00039\ \ \ \ \ SDL\_Color\ convert\_rgba(\textcolor{keywordtype}{int}\ hexValue);}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ createTextureFromSurface(SDL\_Surface\ *surface,\ std::string\ \&assets,}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structrectInstr}{rectInstr}}\ \&);}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structcircleInstr}{circleInstr}}\ \&);}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structtextInstr}{textInstr}}\ \&);}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structdimensionInstr}{dimensionInstr}}\ \&);}
-\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00033\ \ \ \ \ std::map<std::string,\ SDL\_Surface\ *>\ \_surfaces;}
+\DoxyCodeLine{00034\ \ \ \ \ std::map<std::string,\ SDL\_Texture*>\ \_textures;}
+\DoxyCodeLine{00035\ \ \ \ \ std::queue<Event>\ \_events;}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{structscreen}{screen}}\ screenSize;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ addEvents(SDL\_KeyboardEvent\ \&);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ addEvents(SDL\_MouseButtonEvent\ \&);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ DrawCircle(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{float}\ radius,\ SDL\_Renderer\ *renderer);}
+\DoxyCodeLine{00040\ \ \ \ \ SDL\_Color\ convert\_rgba(\textcolor{keywordtype}{int}\ hexValue);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ createTextureFromSurface(SDL\_Surface\ *surface,\ std::string\ \&assets,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00043\ \ \ \ \ \mbox{\hyperlink{Keys_8hpp_aca064e9d0e2325f89d8aca2f544edb2b}{CommonKey}}\ sdlToCommonKey(SDL\_Keycode\ sdlKey);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structrectInstr}{rectInstr}}\ \&);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structcircleInstr}{circleInstr}}\ \&);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structtextInstr}{textInstr}}\ \&);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ display\_instruction(\mbox{\hyperlink{structdimensionInstr}{dimensionInstr}}\ \&);}
+\DoxyCodeLine{00048\ \};}
 
 \end{DoxyCode}

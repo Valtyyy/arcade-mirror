@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['operator_3d_0',['operator=',['../classDisplay.html#ae77e538416397a9a250ffc01e2deee1d',1,'Display::operator=()'],['../classGame.html#a82aba9627ff823d7e66c62949fd8424d',1,'Game::operator=()'],['../classDlLoader.html#aa537bd60b37029e3184d87677312a5de',1,'DlLoader::operator=()']]]
+  ['k_0',['K',['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2baa5f3c6a11b03839d46af9fb43c97c188',1,'Keys.hpp']]],
+  ['keys_2ehpp_1',['Keys.hpp',['../Keys_8hpp.html',1,'']]],
+  ['keytrio_2',['KeyTrio',['../Keys_8hpp.html#a5637e583ef5b8f37d25e79fd001dbe0e',1,'Keys.hpp']]]
 ];

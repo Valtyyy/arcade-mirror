@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['_7edisplay_0',['~Display',['../classDisplay.html#ac2607a6bb236c55547a4223d40d85d1f',1,'Display']]],
-  ['_7edlloader_1',['~DlLoader',['../classDlLoader.html#a364eb8be93dfbd1e51382d9403415ed8',1,'DlLoader']]],
-  ['_7egame_2',['~Game',['../classGame.html#ae3d112ca6e0e55150d2fdbc704474530',1,'Game']]],
-  ['_7eidisplay_3',['~IDisplay',['../classIDisplay.html#a3f639a4bdb0ab42276fee151c99ea2d8',1,'IDisplay']]],
-  ['_7eigame_4',['~IGame',['../classIGame.html#a91b14c1b6019364120d5c5e4d4c64414',1,'IGame']]],
-  ['_7esdl2_5',['~SDL2',['../classSDL2.html#af9298d522225b2bb14394f167ec79cce',1,'SDL2']]],
-  ['_7esfml_6',['~SFML',['../classSFML.html#a126a0eafbc9e2824e667d5a12156457e',1,'SFML']]]
+  ['t_0',['T',['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2bab9ece18c950afbfa6b0fdbfa4ff731d3',1,'Keys.hpp']]],
+  ['tab_1',['TAB',['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2baf684bf05fa3e81528c84d1d281d839f1',1,'Keys.hpp']]],
+  ['tail_2',['TAIL',['../namespaceSnake.html#a864b2fc18694b34a086e060f30c88d82a87693f034832b69cbd295f9fdd9c51b1',1,'Snake']]],
+  ['text_3',['text',['../structtextInstr.html#a0efab3554ba204a0a61a6d4407d3b525',1,'textInstr']]],
+  ['textinstr_4',['textInstr',['../structtextInstr.html',1,'']]],
+  ['tilesize_5',['TILESIZE',['../Snake_8hpp.html#a07ae61ed7dc31e9cddbdf9da244567c7',1,'Snake.hpp']]],
+  ['txt_6',['txt',['../structSnake_1_1cell.html#a6e6ed5b76973ff009b4d8363dcaba51b',1,'Snake::cell::txt'],['../structGfxInstruction.html#a2b7a20e62049f08a2a577f6c422abbd1',1,'GfxInstruction::txt']]]
 ];

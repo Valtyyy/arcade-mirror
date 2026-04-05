@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['radius_0',['radius',['../structcircleInstr.html#a7f1bd154b9312d39cf9c326770f21737',1,'circleInstr']]],
-  ['ratio_1',['ratio',['../structscreen.html#a71fc386f89efc76d42cda39603904449',1,'screen']]]
+  ['h_0',['h',['../structscreen.html#aa7b8854f8fd77ef416d17e5ecca00112',1,'screen::h'],['../structrectInstr.html#a41a2325dc2dee3d3d6bfae1882a8e2c8',1,'rectInstr::h'],['../structdimensionInstr.html#aa3f4e87f21b2bd54ee483aa9a4fd7285',1,'dimensionInstr::h']]]
 ];
