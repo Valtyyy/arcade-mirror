@@ -8,6 +8,7 @@
 #pragma once
 
 #include <cstddef>
+#include "keys.hpp"
 #include "shape.hpp"
 #include <optional>
 #include <variant>
@@ -45,6 +46,6 @@ struct dimensionInstr {
     size_t w;
 };
 
-using Event = std::variant<int, point_t>;
+using Event = std::variant<CommonKey, point_t>;
 
 using AnyInstruction = std::variant<rectInstr, circleInstr, textInstr, dimensionInstr>;
