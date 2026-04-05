@@ -18,14 +18,8 @@ extern "C" IGame *create()
 }
 
 Snake::GameSnake::GameSnake() :
-    _matrix(COLUMNS, LINES, Snake::EMPTY, TILESIZE) 
+    _matrix(COLUMNS, LINES, Snake::EMPTY, TILESIZE), _speed(1)
 {
-    _snake.push_front({11, 10, HEAD, UP});
-    _snake.push_back({10, 10, BODY, RIGHT});
-    _snake.push_back({9, 10, BODY, RIGHT});
-    _snake.push_back({8, 10, TAIL, RIGHT});
-    _fish.x = rand() % (COLUMNS - 1);
-    _fish.y = rand() % (LINES - 1);
 };
 
 void Snake::GameSnake::setBackground()
@@ -37,12 +31,36 @@ void Snake::GameSnake::setBackground()
     for (size_t y = 0; y < LINES; y++)
             _matrix(0, y) = WALL;
     for (size_t y = 0; y < LINES; y++)
-            _matrix(COLUMNS - 1, y) = WALL;  
+            _matrix(COLUMNS - 1, y) = WALL;
+    for (int i = 0; i < COLUMNS; i++) {
+        for (int j = 0; j < LINES; j++)
+            _games[_matrix(i, j)].push_back({i, j});
+    }
+}
+
+void Snake::GameSnake::setShark()
+{
+    _snake.clear();
+    _snake.push_front({11, 10, HEAD, UP});
+    _snake.push_back({10, 10, BODY, RIGHT});
+    _snake.push_back({9, 10, BODY, RIGHT});
+    _snake.push_back({8, 10, TAIL, RIGHT});
+}
+
+void Snake::GameSnake::setFish()
+{
+    int index = rand() % (_games[EMPTY].size());
+
+    _fish.x = _games[EMPTY][index].x;
+    _fish.y = _games[EMPTY][index].y;
 }
 
 void Snake::GameSnake::init()
 {
+    _score = 0;
     setBackground();
+    setShark();
+    setFish();
 };
 
 void Snake::GameSnake::close()
@@ -52,21 +70,21 @@ void Snake::GameSnake::close()
 
 void Snake::GameSnake::moveUp()
 {
-    _snake.front().y = (_snake.front().y - 1 + LINES) % LINES;
+    _snake.front().y = (_snake.front().y - _speed + LINES) % LINES;
 }
 
 void Snake::GameSnake::moveDown()
 {
-    _snake.front().y = (_snake.front().y + 1) % LINES;
+    _snake.front().y = (_snake.front().y + _speed) % LINES;
 }
 void Snake::GameSnake::moveLeft()
 {
-    _snake.front().x = (_snake.front().x - 1 + COLUMNS) % COLUMNS;
+    _snake.front().x = (_snake.front().x - _speed + COLUMNS) % COLUMNS;
 }
 
 void Snake::GameSnake::moveRight()
 {
-    _snake.front().x = (_snake.front().x + 1) % COLUMNS;
+    _snake.front().x = (_snake.front().x + _speed) % COLUMNS;
 }
 
 void Snake::GameSnake::updateMatrix()
@@ -83,23 +101,30 @@ void Snake::GameSnake::updateMatrix()
 void Snake::GameSnake::handleCollision()
 {
     if (_matrix(_snake.front().x, _snake.front().y) == WALL) {
-        std::cout << "WALL" << std::endl;
+        printf("WALL\n");
+        this->init();
     }
     if (_matrix(_snake.front().x, _snake.front().y) == FISH) {
-        std::cout << "FISH" << std::endl;
+        printf("FISH\n");
+        _score += 1;
+        snake_t newPart = {
+            _snake.back().x, _snake.back().y, TAIL, _snake.front().direction};
+        _snake.back().part = BODY;
+        _snake.push_back(newPart);
+        setFish();
+        printf("SPEED: %ld\n", (BASIC_SPEED - (_score * 10)));
+    }
+    if ((_matrix(_snake.front().x, _snake.front().y) == BODY) || 
+        _matrix(_snake.front().x, _snake.front().y) == TAIL) {
+        this->init();
     }
 }
 
 void Snake::GameSnake::moveSnake()
 {
-    std::cout << "Size:" << _snake.size() << std::endl;
     for (size_t i = (_snake.size() - 1); i > 0; i--) {
         _snake[i].x = _snake[i - 1].x;
         _snake[i].y = _snake[i - 1].y;
-        //printf(
-        //    "Elem X %ld | Elem Y %ld | Part Elem %d / Next X %ld | Next Y %ld | Part Next %d\n",
-        //    _snake[i].x, _snake[i].y, _snake[i].part, _snake[i + 1].x, _snake[i + 1].y, _snake[i + 1].part);
-        std::cout << "Part:" << _snake[i].part << std::endl;
     }
     _directions[_snake.front().direction]();
 
@@ -108,12 +133,13 @@ void Snake::GameSnake::moveSnake()
 void Snake::GameSnake::update(std::queue<Event> events)
 {
     static auto start = std::chrono::steady_clock::now();
-    const auto interval = std::chrono::milliseconds(400);
+    const auto interval = std::chrono::milliseconds((BASIC_SPEED - (_score * 10)));
     CommonKey *key = 0;
 
+    setBackground();
     while (!events.empty()) {
         key = std::get_if<CommonKey>(&events.front());
-        _snake.front().direction = _keys[*key];
+        _snake.front().direction = this->getDirection(*key);
         events.pop();
     }
     auto now = std::chrono::steady_clock::now();
@@ -150,9 +176,6 @@ std::queue<AnyInstruction> Snake::GameSnake::getGfxInstructions()
 {
     std::queue<AnyInstruction> instructions = convertMatrixToGfx();
 
-  //  std::cout << std::endl;
-  //  _matrix.printMatrix();
-  //  std::cout << std::endl;
     return instructions;
 }
 

@@ -18,10 +18,12 @@
 #include <string>
 #include <deque>
 #include <map>
+#include <vector>
 #include "GameMatrix.hpp"
 #define TILESIZE 40
 #define COLUMNS 20
 #define LINES 20
+#define BASIC_SPEED 500
 
 
 namespace Snake {
@@ -71,11 +73,20 @@ public:
     void moveRight();
     void moveSnake();
     void handleCollision();
+    DIRECTION getDirection(CommonKey &key) {
+        DIRECTION direction = _keys[key];
+    
+        if (direction == _opposites[_snake.front().direction])
+            return _snake.front().direction;
+        return direction;
+    };
+    void setShark();
+    void setFish();
     std::queue<AnyInstruction> getGfxInstructions();
     ~GameSnake();
 private:
-    using Func = std::function<void(void)>;
-
+    using MoveFunc = std::function<void(void)>;
+    using setDirectionFunc = std::function<DIRECTION(CommonKey)>;
     cell createCell(std::string assetLocation, char txt, size_t color)
     { cell newCell {assetLocation, txt, color}; return newCell; }
     std::map<GAME, cell> _assets {
@@ -87,11 +98,17 @@ private:
             {TAIL, createCell("games/Snake/assets/tail.png", '<', 7845374)},
             {BODY, createCell("games/Snake/assets/body.png", '=', 3247335)}
     };
-    std::map<DIRECTION, Func> _directions {
-        {UP, [this]() -> void {moveUp();}},
+    std::map<DIRECTION, MoveFunc> _directions {
+        {UP, [this]() -> void { moveUp();}},
         {DOWN, [this]() -> void { moveDown(); }},
         {LEFT, [this]() -> void { moveLeft(); }},
         {RIGHT, [this]() -> void { moveRight(); }}
+    };
+    std::map<DIRECTION, DIRECTION> _opposites {
+        {UP, DOWN},
+        {DOWN, UP},
+        {LEFT, RIGHT},
+        {RIGHT, LEFT}
     };
     std::map<CommonKey, DIRECTION> _keys {
         {CommonKey::UP, UP},
@@ -101,7 +118,9 @@ private:
     };
     GameMatrix<GAME> _matrix;
     std::deque<snake_t> _snake;
+    std::map<GAME, std::vector<point_t>> _games;
     point_t _fish;
+    int _speed;
     size_t _score;
 };
 }
