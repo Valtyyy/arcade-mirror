@@ -16,7 +16,7 @@
 
 #define EXIT_FAIL 84
 #define EXIT_SUCCESS 0
-#define IPS 100
+#define IPS 15
 #define SECOND 1000000
 #define MENU_GAME LIB_PATH "libarcade_menu.so"
 

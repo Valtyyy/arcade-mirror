@@ -39,7 +39,6 @@ private:
     std::map<std::string, sf::Texture> _textures;
     void addEvents(sf::Keyboard::Key touch);
     void addEvents(sf::Event::MouseButtonEvent click);
-    CommonKey sfmlToCommonKey(sf::Keyboard::Key);
     void create_texture(const int width, const int height);
     void display_instruction(rectInstr &rectangle);
     void display_instruction(circleInstr &circle);
