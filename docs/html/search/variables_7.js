@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['text_0',['text',['../structtextInstr.html#a0efab3554ba204a0a61a6d4407d3b525',1,'textInstr']]],
-  ['txt_1',['txt',['../structSnake_1_1cell.html#a6e6ed5b76973ff009b4d8363dcaba51b',1,'Snake::cell::txt'],['../structGfxInstruction.html#a2b7a20e62049f08a2a577f6c422abbd1',1,'GfxInstruction::txt']]]
+  ['radius_0',['radius',['../structcircleInstr.html#a7f1bd154b9312d39cf9c326770f21737',1,'circleInstr']]],
+  ['ratio_1',['ratio',['../structscreen.html#a71fc386f89efc76d42cda39603904449',1,'screen']]]
 ];
