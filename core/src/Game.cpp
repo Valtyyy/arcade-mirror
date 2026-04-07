@@ -30,6 +30,7 @@ Game &Game::operator=(Game &&other) noexcept
     if (this != &other) {
         if (_lib.is_loaded())
             close();
+        _self.reset();
         _lib = std::move(other._lib);
         _self = std::move(other._self);
     }
