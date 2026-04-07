@@ -21,6 +21,7 @@ class Game : public IGame {
         void close() override;
         void update(std::queue<Event>) override;
         std::queue<AnyInstruction> getGfxInstructions() override;
+        std::queue<GameEvent> getEvent() override;
 
     private:
         DlLoader _lib;
