@@ -83,7 +83,8 @@ int Core::_apply_command(CommonKey cmd, bool &switched)
 {
     switch (cmd) {
         case CommonKey::P:
-            _currentDisplay = (_currentDisplay + 1) % _displayList.size();
+            _display.close();
+           // _currentDisplay = (_currentDisplay + 1) % _displayList.size();
             _display = Display(_displayList[_currentDisplay]);
             switched = true;
             break;

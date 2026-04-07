@@ -23,7 +23,6 @@ DlLoader &DlLoader::operator=(DlLoader &&other) noexcept
 {
     if (this != &other) {
         unload();
-        const_cast<std::string &>(_location) = other._location;
         _handle = other._handle;
         other._handle = nullptr;
     }
