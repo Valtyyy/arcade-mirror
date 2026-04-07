@@ -21,5 +21,6 @@ var searchData=
   ['snake_2ecpp_18',['Snake.cpp',['../Snake_8cpp.html',1,'']]],
   ['snake_2ehpp_19',['Snake.hpp',['../Snake_8hpp.html',1,'']]],
   ['snake_5ft_20',['snake_t',['../structSnake_1_1snake__t.html',1,'Snake']]],
-  ['sym_21',['sym',['../classDlLoader.html#a96e9032e363068df6ca9015001368059',1,'DlLoader']]]
+  ['switchgamevent_21',['switchGamevent',['../structswitchGamevent.html',1,'']]],
+  ['sym_22',['sym',['../classDlLoader.html#a96e9032e363068df6ca9015001368059',1,'DlLoader']]]
 ];

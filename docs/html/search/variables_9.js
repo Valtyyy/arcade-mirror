@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_0',['x',['../structSnake_1_1snake__t.html#a2070b61f53f7f84d29edbb77518f20c6',1,'Snake::snake_t::x'],['../structpoint__s.html#a7e248212bc9f699b6c8aab36929a33f2',1,'point_s::x'],['../structGfxInstruction.html#ae771ff23983a1f737928bb5da28a9057',1,'GfxInstruction::x']]]
+  ['w_0',['w',['../structscreen.html#af3c137e6463d047a14226d81d14c244d',1,'screen::w'],['../structrectInstr.html#a6a1424acd084d84d096cfd5c4f96234c',1,'rectInstr::w'],['../structdimensionInstr.html#acee76a9ef63d450e9344afbf762455a1',1,'dimensionInstr::w']]]
 ];
