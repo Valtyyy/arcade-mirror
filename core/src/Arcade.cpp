@@ -83,11 +83,14 @@ int Core::_apply_command(CommonKey cmd, bool &switched)
 {
     switch (cmd) {
         case CommonKey::P:
+        {
             _display.close();
-           // _currentDisplay = (_currentDisplay + 1) % _displayList.size();
+             _currentDisplay = (_currentDisplay + 1) % _displayList.size();
             _display = Display(_displayList[_currentDisplay]);
+            _display.init();
             switched = true;
             break;
+        }
         case CommonKey::M:
             _currentGame = (_currentGame + 1) % _gamesList.size();
             _game = Game(_gamesList[_currentGame]);

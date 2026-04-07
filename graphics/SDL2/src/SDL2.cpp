@@ -31,6 +31,7 @@ SDL2::SDL2() : _window(nullptr)
 
 void SDL2::init()
 {
+    std::cout << "Init" << std::endl;
     _window = SDL_CreateWindow("SDL",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,

@@ -21,6 +21,6 @@ class DlLoader {
         bool is_loaded() const;
 
     private:
-        const std::string _location;
+        std::string _location;
         void *_handle;
 };
