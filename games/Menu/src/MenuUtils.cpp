@@ -9,9 +9,10 @@
 #include "Utils.hpp"
 #include "gfx.hpp"
 #include <cstddef>
+#include <functional>
 #include <queue>
 
-std::queue<AnyInstruction> MenuUtils::createButton(size_t x, size_t y, std::string background_location)
+std::queue<AnyInstruction> MenuUtils::createButton(size_t x, size_t y, std::string background_location, std::function<void()> callback)
 {
     std::queue<AnyInstruction> q;
     size_t w = 400;

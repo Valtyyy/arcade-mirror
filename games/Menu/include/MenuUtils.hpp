@@ -11,5 +11,5 @@
 
 class MenuUtils {
     public:
-        static std::queue<AnyInstruction> createButton(size_t x, size_t y, std::string);
+        static std::queue<AnyInstruction> createButton(size_t x, size_t y, std::string, std::function<void()>);
 };

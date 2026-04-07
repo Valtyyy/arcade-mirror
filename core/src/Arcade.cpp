@@ -8,6 +8,7 @@
 #include "Arcade.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "IGame.hpp"
 #include "gfx.hpp"
 #include <chrono>
 #include <queue>
@@ -47,10 +48,13 @@ void Core::run()
 int Core::doIteration()
 {
     auto events = _display.pollEvents();
+    auto gameEvents = _game.getEvent();
 
     int cmd = _handle_command(events);
     if (cmd < 0)
         return -1;
+
+    _handle_gameEvent(gameEvents);
 
     if (cmd == 0)
         _game.update(events);
@@ -121,4 +125,16 @@ std::vector<std::string> Core::getGamesList()
 std::vector<std::string> Core::getDisplayList()
 {
     return {std::string(LIB_PATH) + "libarcade_sfml.so", std::string(LIB_PATH) + "libarcade_sdl2.so"};
+}
+
+void Core::_handle_gameEvent(std::queue<GameEvent> events)
+{
+    GameEvent curr;
+
+    while (!events.empty()) {
+        curr = events.front();
+        if (std::holds_alternative<switchGamevent>(curr))
+            _game = Game(std::get<switchGamevent>(curr).lib_location);
+        events.pop();
+    }
 }

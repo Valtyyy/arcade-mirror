@@ -98,13 +98,16 @@ target_include_directories(arcade_snake PRIVATE
 set(MENU
     ${SHARED}
     games/Menu/src/Menu.cpp
-    games/Menu/src/MenuUtils.cpp
 )
 
 add_library(arcade_menu SHARED ${MENU})
 
 target_include_directories(arcade_menu PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Menu/include
+)
+
+target_compile_definitions(arcade_menu PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
 
 # ===== Tests =====

@@ -9,6 +9,7 @@
 
 #include "Display.hpp"
 #include "Game.hpp"
+#include "IGame.hpp"
 #include "gfx.hpp"
 
 #include <queue>
@@ -34,6 +35,7 @@ class Core {
         int _handle_command(std::queue<Event>);
         int _apply_command(CommonKey, bool &switched);
         static size_t _findIndex(const std::vector<std::string> &, const std::string &);
+        void _handle_gameEvent(std::queue<GameEvent>);
 
         Game _game;
         Display _display;
