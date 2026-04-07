@@ -77,7 +77,7 @@ target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 # ===== =====
 
 # ===== Games =====
-
+# ===== Snake =====
 SET(SNAKE
     ${SHARED}
     games/Snake/src/Snake.cpp
@@ -87,6 +87,18 @@ add_library(arcade_snake SHARED ${SNAKE})
 
 target_include_directories(arcade_snake PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Snake/include
+)
+
+# ===== MineSweeper =====
+SET(MINESWEEPER
+    ${SHARED}
+    games/MineSweeper/src/MineSweeper.cpp
+)
+
+add_library(arcade_minesweeper SHARED ${MINESWEEPER})
+
+target_include_directories(arcade_minesweeper PRIVATE
+    ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
 )
 
 if(DEBUG)
