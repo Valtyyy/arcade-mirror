@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['dimensioninstr_0',['dimensionInstr',['../structdimensionInstr.html',1,'']]],
-  ['display_1',['Display',['../classDisplay.html',1,'']]],
-  ['dlloader_2',['DlLoader',['../classDlLoader.html',1,'']]]
+  ['cell_0',['cell',['../structSnake_1_1cell.html',1,'Snake']]],
+  ['circleinstr_1',['circleInstr',['../structcircleInstr.html',1,'']]],
+  ['core_2',['Core',['../classCore.html',1,'']]]
 ];
