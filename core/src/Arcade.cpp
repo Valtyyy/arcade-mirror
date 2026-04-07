@@ -8,6 +8,7 @@
 #include "Arcade.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "IGame.hpp"
 #include "gfx.hpp"
 #include <chrono>
 #include <queue>
@@ -32,7 +33,8 @@ void Core::run()
     while (running) {
         auto start = std::chrono::steady_clock::now();
 
-        doIteration();
+        if (doIteration() < 0)
+            return;
 
         auto elapsed = std::chrono::steady_clock::now() - start;
         if (elapsed < interval) {
@@ -43,46 +45,60 @@ void Core::run()
     }
 }
 
-void Core::doIteration()
+int Core::doIteration()
 {
     auto events = _display.pollEvents();
+    auto gameEvents = _game.getEvent();
 
-    if (_handle_command(events) < 0)
-        return;
+    int cmd = _handle_command(events);
+    if (cmd < 0)
+        return -1;
 
-    _game.update(events);
+    _handle_gameEvent(gameEvents);
+
+    if (cmd == 0)
+        _game.update(events);
     _display.render(_game.getGfxInstructions());
+    return 0;
 }
 
 int Core::_handle_command(std::queue<Event> events)
 {
     Event curr;
+    bool switched = false;
 
     while (!events.empty()) {
         curr = events.front();
-        if (std::holds_alternative<CommonKey>(curr) && _apply_command(std::get<CommonKey>(curr)) < 0)
-            return -1;
+        if (std::holds_alternative<CommonKey>(curr)) {
+            int res = _apply_command(std::get<CommonKey>(curr), switched);
+            if (res < 0)
+                return -1;
+        }
         events.pop();
     }
-    return 0;
+    return switched ? 1 : 0;
 }
 
-int Core::_apply_command(CommonKey cmd)
+int Core::_apply_command(CommonKey cmd, bool &switched)
 {
     switch (cmd) {
         case CommonKey::P:
             _currentDisplay = (_currentDisplay + 1) % _displayList.size();
             _display = Display(_displayList[_currentDisplay]);
+            switched = true;
             break;
         case CommonKey::M:
             _currentGame = (_currentGame + 1) % _gamesList.size();
             _game = Game(_gamesList[_currentGame]);
+            switched = true;
             break;
         case CommonKey::O:
             _game = Game(_gamesList[_currentGame]);
+            switched = true;
             break;
         case CommonKey::L:
             _game = Game(MENU_GAME);
+            switched = true;
             break;
         case CommonKey::I:
             return -1;
@@ -103,10 +119,22 @@ size_t Core::_findIndex(const std::vector<std::string> &list, const std::string 
 
 std::vector<std::string> Core::getGamesList()
 {
-    return {"to_fill"};
+    return {std::string(LIB_PATH) + "libarcade_snake.so"};
 }
 
 std::vector<std::string> Core::getDisplayList()
 {
-    return {"to_fill"};
+    return {std::string(LIB_PATH) + "libarcade_sfml.so", std::string(LIB_PATH) + "libarcade_sdl2.so"};
+}
+
+void Core::_handle_gameEvent(std::queue<GameEvent> events)
+{
+    GameEvent curr;
+
+    while (!events.empty()) {
+        curr = events.front();
+        if (std::holds_alternative<switchGamevent>(curr))
+            _game = Game(std::get<switchGamevent>(curr).lib_location);
+        events.pop();
+    }
 }

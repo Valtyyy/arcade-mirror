@@ -10,8 +10,11 @@ option(DEBUG "Compile with -g3" OFF)
 include_directories(${PROJECT_SOURCE_DIR}/shared/include)
 include_directories(${SFML_INCLUDE})
 
+# ===== CORE / SHARED =====
+
 set(SHARED
     shared/src/DlLoader.cpp
+    shared/src/Utils.cpp
 )
 
 set(CORE
@@ -34,6 +37,10 @@ target_compile_options(arcade PRIVATE
 target_compile_definitions(arcade PRIVATE
     LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
+
+if(DEBUG)
+    target_compile_options(arcade PRIVATE -g3)
+endif()
 
 # ===== Libraries =====
 # === SDL2 ===
@@ -74,11 +81,9 @@ find_package(SFML COMPONENTS graphics audio REQUIRED)
 
 target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 
-# ===== =====
-
 # ===== Games =====
-
-SET(SNAKE
+# === Snake ===
+set(SNAKE
     ${SHARED}
     games/Snake/src/Snake.cpp
 )
@@ -89,9 +94,21 @@ target_include_directories(arcade_snake PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
 
-if(DEBUG)
-    target_compile_options(arcade PRIVATE -g3)
-endif()
+# === Menu ===
+set(MENU
+    ${SHARED}
+    games/Menu/src/Menu.cpp
+)
+
+add_library(arcade_menu SHARED ${MENU})
+
+target_include_directories(arcade_menu PRIVATE
+    ${PROJECT_SOURCE_DIR}/games/Menu/include
+)
+
+target_compile_definitions(arcade_menu PRIVATE
+    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+)
 
 # ===== Tests =====
 

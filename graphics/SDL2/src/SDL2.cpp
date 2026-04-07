@@ -73,10 +73,11 @@ void SDL2::createTextureFromSurface(SDL_Surface *surface, std::string &assets, i
     if (!surface)
         throw std::runtime_error(SDL_GetError());
     if (!_textures.contains(assets)) {
-        std::cout << "new textures" << std::endl;
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
-        if (!textTexture)
+        if (!textTexture) {
+            std::cout << "TEXTURE FAIL" << std::endl;
             throw std::runtime_error(SDL_GetError());
+        }
         _textures[assets] = std::move(textTexture);
 
     }
@@ -133,14 +134,18 @@ void SDL2::display_instruction(textInstr &text)
 {
     SDL_Color color = convert_rgba(text.color_hex);
 
-    if (text.asset_location) {
+    std::cout << text.text << std::endl;
+    std::cout << text.asset_location.value() << std::endl;
+    if (!text.asset_location->empty()) {
         TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
-        if (!font)
+        if (!font) {
             throw std::runtime_error(SDL_GetError());
-        if (!_surfaces.contains(text.asset_location.value())) {
-            _surfaces[text.asset_location.value()] =
+        }
+        if (!_surfaces.contains(text.asset_location.value().c_str())) {
+            _surfaces[text.asset_location.value() + text.text] =
                 TTF_RenderText_Blended(font, text.text.c_str(), color);
         }
+        std::cout << "Ratio:" << screenSize.ratio << std::endl;
         createTextureFromSurface(
             _surfaces[text.asset_location.value() + text.text],
             text.asset_location.value(),
@@ -153,9 +158,11 @@ void SDL2::display_instruction(textInstr &text)
 
 void SDL2::display_instruction(dimensionInstr &dimension)
 {
+    std::cout << "Dimenstion" << std::endl;
     screenSize.h = dimension.h;
     screenSize.w = dimension.w;
     screenSize.ratio = (800 / dimension.h);
+    std::cout << "Ratio:" << screenSize.ratio << std::endl;
 }
 
 void SDL2::render(std::queue<AnyInstruction> instructions)
