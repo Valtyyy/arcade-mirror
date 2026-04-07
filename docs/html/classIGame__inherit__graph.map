@@ -1,7 +1,9 @@
 <map id="IGame" name="IGame">
-<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,255,171"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="188,5,347,171"/>
 <area shape="rect" id="Node000002" href="$classGame.html" title=" " alt="" coords="5,279,164,484"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,184,119,279,114,278,143,183"/>
-<area shape="rect" id="Node000003" href="$classSnake_1_1GameSnake.html" title=" " alt="" coords="188,219,347,544"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,183,219,218,214,219,203,184"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,183,178,220,142,280,137,277,173,217,197,181"/>
+<area shape="rect" id="Node000003" href="$classMenuGame.html" title=" " alt="" coords="188,309,347,454"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="270,184,270,309,265,309,265,184"/>
+<area shape="rect" id="Node000004" href="$classSnake_1_1GameSnake.html" title=" " alt="" coords="371,219,529,544"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="337,181,362,217,373,235,368,238,357,220,333,183"/>
 </map>
