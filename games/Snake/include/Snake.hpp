@@ -20,6 +20,7 @@
 #include <map>
 #include <vector>
 #include "GameMatrix.hpp"
+
 #define TILESIZE 40
 #define COLUMNS 20
 #define LINES 20
@@ -64,9 +65,9 @@ using setDirectionFunc = std::function<DIRECTION(CommonKey)>;
 class GameSnake : public IGame {
 public:
     GameSnake();
-    void init();
-    void close();
-    void update(std::queue<Event>);
+    void init() override;
+    void close() override;
+    void update(std::queue<Event>) override;
     DIRECTION getDirection(CommonKey &key);
     void setShark();
     void setFish();
@@ -74,7 +75,8 @@ public:
     std::deque<snake_t> &getShark() { return _snake; };
     point_t &getFish() { return _fish; };
     std::map<GAME, std::vector<point_t>> &getGames() { return _games; };
-    std::queue<AnyInstruction> getGfxInstructions();
+    std::queue<AnyInstruction> getGfxInstructions() override;
+    std::queue<GameEvent> getEvent() override;
     ~GameSnake();
 private:
     void _moveUp();
@@ -127,5 +129,6 @@ private:
     point_t _fish;
     int _speed;
     size_t _score;
+    std::queue<GameEvent> _events;
 };
 }

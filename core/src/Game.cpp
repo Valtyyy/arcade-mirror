@@ -61,3 +61,8 @@ std::queue<AnyInstruction> Game::getGfxInstructions()
 {
     return _self->getGfxInstructions();
 }
+
+std::queue<GameEvent> Game::getEvent()
+{
+    return _self->getEvent();
+}
