@@ -17,6 +17,7 @@ public:
     void close() override;
     void update(std::queue<Event>) override;
     std::queue<AnyInstruction> getGfxInstructions() override;
+    std::queue<GameEvent> getEvent() override;
 };
 
 EXPORT {
