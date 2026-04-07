@@ -1,4 +1,25 @@
 var searchData=
 [
-  ['y_0',['y',['../structpoint__s.html#a2f7004b5a632c501cf73aca8c9724839',1,'point_s::y'],['../structGfxInstruction.html#a7c19ad6fe15968d42493f3cbd7ab28c3',1,'GfxInstruction::y']]]
+  ['s_0',['S',['../Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2ba5dbc98dcc983a70728bd082d1a47546e',1,'Keys.hpp']]],
+  ['score_1',['SCORE',['../namespaceSnake.html#a864b2fc18694b34a086e060f30c88d82aac23ef4d1a86d86185850265531bba33',1,'Snake']]],
+  ['screen_2',['screen',['../structscreen.html',1,'']]],
+  ['screen_5fh_3',['SCREEN_H',['../DisplayVariable_8hpp.html#a27cddfd509d28b4b2b0b44c093fac090',1,'DisplayVariable.hpp']]],
+  ['screen_5fw_4',['SCREEN_W',['../DisplayVariable_8hpp.html#a9b6bc9242882d1e758e06ed751a2e8ec',1,'DisplayVariable.hpp']]],
+  ['sdl2_5',['sdl2',['../classSDL2.html',1,'SDL2'],['../classSDL2.html#a5d2dd8ae56c1d6e199850e16aec40afe',1,'SDL2::SDL2()']]],
+  ['sdl2_2ecpp_6',['SDL2.cpp',['../SDL2_8cpp.html',1,'']]],
+  ['sdl2_2ehpp_7',['SDL2.hpp',['../SDL2_8hpp.html',1,'']]],
+  ['second_8',['SECOND',['../Arcade_8hpp.html#a94212be2394d2d37d9dfd33d07d82dba',1,'Arcade.hpp']]],
+  ['setdirectionfunc_9',['setDirectionFunc',['../namespaceSnake.html#aac8c9a47c85570080310b57b341e243b',1,'Snake']]],
+  ['setfish_10',['setFish',['../classSnake_1_1GameSnake.html#a4d30efe87044858f685476cb8abc4934',1,'Snake::GameSnake']]],
+  ['setshark_11',['setShark',['../classSnake_1_1GameSnake.html#a3ee79d8f565239fcd1eb601dddc20307',1,'Snake::GameSnake']]],
+  ['sfml_12',['sfml',['../classSFML.html#a38eac3826e67b2dc189d291d47c59394',1,'SFML::SFML()'],['../classSFML.html',1,'SFML']]],
+  ['sfml_2ecpp_13',['SFML.cpp',['../SFML_8cpp.html',1,'']]],
+  ['sfml_2ehpp_14',['SFML.hpp',['../SFML_8hpp.html',1,'']]],
+  ['shape_2ehpp_15',['shape.hpp',['../shape_8hpp.html',1,'']]],
+  ['sizeerror_16',['sizeerror',['../classGameMatrix_1_1SizeError.html#a050eae0522fd0dbdbc32c45c7b9bed1a',1,'GameMatrix::SizeError::SizeError()'],['../classGameMatrix_1_1SizeError.html',1,'GameMatrix&lt; T &gt;::SizeError']]],
+  ['snake_17',['Snake',['../namespaceSnake.html',1,'']]],
+  ['snake_2ecpp_18',['Snake.cpp',['../Snake_8cpp.html',1,'']]],
+  ['snake_2ehpp_19',['Snake.hpp',['../Snake_8hpp.html',1,'']]],
+  ['snake_5ft_20',['snake_t',['../structSnake_1_1snake__t.html',1,'Snake']]],
+  ['sym_21',['sym',['../classDlLoader.html#a96e9032e363068df6ca9015001368059',1,'DlLoader']]]
 ];

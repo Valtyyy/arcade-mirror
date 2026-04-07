@@ -113,14 +113,17 @@ enable_testing()
 
 add_executable(test_binary
     ${CORE}
+    ${SNAKE}
     tests/test_void.cpp
     tests/test_shared.cpp
     tests/test_core.cpp
     tests/test_gameMatrix.cpp
+    tests/test_snake.cpp
 )
 target_include_directories(test_binary
     PRIVATE
         ${PROJECT_SOURCE_DIR}/core/include
+        ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
 
 add_library(test_lib SHARED tests/libtest/lib_test.cpp)

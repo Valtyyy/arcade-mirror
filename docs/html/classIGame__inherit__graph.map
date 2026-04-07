@@ -1,5 +1,7 @@
 <map id="IGame" name="IGame">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,164,151"/>
-<area shape="rect" id="Node000002" href="$classGame.html" title=" " alt="" coords="5,199,164,384"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,165,87,198,82,198,82,165"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,255,151"/>
+<area shape="rect" id="Node000002" href="$classGame.html" title=" " alt="" coords="5,259,164,444"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,165,118,259,113,257,145,163"/>
+<area shape="rect" id="Node000003" href="$classSnake_1_1GameSnake.html" title=" " alt="" coords="188,199,347,504"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,163,218,198,213,199,201,165"/>
 </map>
