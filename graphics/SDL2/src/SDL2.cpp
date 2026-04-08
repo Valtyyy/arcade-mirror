@@ -74,8 +74,10 @@ void SDL2::createTextureFromSurface(SDL_Surface *surface, std::string &assets, i
         throw std::runtime_error(SDL_GetError());
     if (!_textures.contains(assets)) {
         SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
-        if (!textTexture)
+        if (!textTexture) {
+            std::cout << "TEXTURE FAIL" << std::endl;
             throw std::runtime_error(SDL_GetError());
+        }
         _textures[assets] = std::move(textTexture);
     }
     SDL_Rect textRect = {x, y, w * screenSize.ratio, h * screenSize.ratio};
@@ -131,17 +133,18 @@ void SDL2::display_instruction(textInstr &text)
 {
     SDL_Color color = convert_rgba(text.color_hex);
 
-    if (text.asset_location) {
+    if (!text.asset_location->empty()) {
         TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
-        if (!font)
+        if (!font) {
             throw std::runtime_error(SDL_GetError());
-        if (!_surfaces.contains(text.asset_location.value())) {
-            _surfaces[text.asset_location.value()] =
+        }
+        if (!_surfaces.contains(text.asset_location.value().c_str())) {
+            _surfaces[text.asset_location.value() + text.text] =
                 TTF_RenderText_Blended(font, text.text.c_str(), color);
         }
         std::string asset = text.asset_location.value() + text.text;
         createTextureFromSurface(
-            _surfaces[asset],
+            _surfaces[text.asset_location.value() + text.text],
             asset,
             text.x * screenSize.ratio,
             text.y * screenSize.ratio,
