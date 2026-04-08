@@ -21,7 +21,6 @@ extern "C" LIB_TYPE getLibType()
 MineSweeper::Game::Game():
     _bombs(GameMatrix<cell>(0,0, {false, HIDE}, TILESIZE))
 {
-    _endGameScreen.text = "GAME OVER";
 }
 
 MineSweeper::Game::~Game()
@@ -65,6 +64,9 @@ void MineSweeper::Game::init()
     std::size_t y = 0;
 
     _isAlive = true;
+    _win = false;
+    _discover = 0;
+    _timerStart = std::chrono::steady_clock::now();
     std::srand(std::time({}));
     _nbBombs = std::rand() % (MAXBOMB - MINBOMB) + MINBOMB;
     _bombs.resize(0,0);
@@ -94,71 +96,87 @@ point_t MineSweeper::Game::findCoords(cell &target)
     throw std::runtime_error("Cell not found in matrix");
 }
 
-void MineSweeper::Game::discoverAdjacent(point_t pos)
+std::size_t MineSweeper::Game::discoverAdjacent(point_t pos)
 {
     if (_bombs(pos.x, pos.y).visiblility == VISIBILITY::VISIBLE ||
         _bombs(pos.x, pos.y).neighboringBombs == -1)
-        return;
+        return 0;
 
     _bombs(pos.x, pos.y).visiblility = VISIBILITY::VISIBLE;
     if (_bombs(pos.x, pos.y).neighboringBombs > 0){
-        return;
+        return 1;
     }
+    std::size_t discover = 1;
     for (int i = -1; i <= 1; i++) {
         for (int  j = -1; j <= 1; j++) {
             if (i == 0 && j == 0)
                 continue;
             try {
                 point_t next = {pos.x + i, pos.y + j};
-                discoverAdjacent(next);
+                discover += discoverAdjacent(next);
             } catch (std::exception &e){
                 std::cout << e.what() << std::endl;
             }
         }
     }
+    return discover;
 }
 
 void MineSweeper::Game::discoverTile(cell &tile)
 {
-    std::cout << "touch tile" << std::endl;
     if (tile.visiblility == VISIBLE)
         return;
     if (_flagActive){
-        tile.visiblility = FLAG;
+        tile.visiblility = (tile.visiblility == FLAG) ? HIDE : FLAG;
     } else {
+        if (tile.visiblility == VISIBILITY::FLAG)
+            return;
         if (tile.isMine) {
             tile.visiblility = VISIBLE;
             _isAlive = false;
-            std::cout << "YOU DIED" << std::endl;
             return;
         }
         if (tile.neighboringBombs == 0) {
             try {
-                discoverAdjacent(findCoords(tile));
+                _discover += discoverAdjacent(findCoords(tile));
             } catch (std::exception &e) {}
+        } else {
+            _discover += 1;
         }
         tile.visiblility = VISIBLE;
+    }
+    std::cout << "discover tiles : " << _discover << std::endl;
+    if (_discover == MATRIXSIZE - _nbBombs){
+        _win = true;
     }
 }
 
 void MineSweeper::Game::update(std::queue<Event> events)
 {
     point_t *click;
-    CommonKey *reset;
+    CommonKey *key;
 
     while (!events.empty()) {
         click = std::get_if<point_t>(&events.front());
-        if (click && _isAlive){
+        if (click && _isAlive && !_win){
             std::cout << "get Click" << std::endl;
             _bombs.onTileClick(*click,
                 [this](MineSweeper::cell &tile) {discoverTile(tile);});
         }
-        reset = std::get_if<CommonKey>(&events.front());
-        if (reset && *reset == CommonKey::R){
+        key = std::get_if<CommonKey>(&events.front());
+        if (key && *key == CommonKey::F){
+            _flagActive = !_flagActive;
+            std::cout << "flag active : "<< _flagActive << std::endl;
+        }
+        if (key && *key == CommonKey::R){
             init();
             break;
         }
         events.pop();
+    }
+    if (_isAlive && !_win &&
+        std::chrono::steady_clock::now() - _timerStart > std::chrono::minutes(5)){
+        _isAlive = false;
     }
 }
 
@@ -169,20 +187,31 @@ void MineSweeper::Game::close()
 std::queue<AnyInstruction> MineSweeper::Game::getGfxInstructions()
 {
     std::queue<AnyInstruction> instructions;
-    std::stack<rectInstr> matrixInstruction = _bombs.matrixToGFX(TILEASSET);
+    std::stack<rectInstr> matrixInstruction = _bombs.matrixToGFX(TILEASSET, '#');
     point_t coordinates = {0, 0};
 
     while (!matrixInstruction.empty()) {
         rectInstr tile = matrixInstruction.top();
         coordinates.x = tile.x / TILESIZE;
         coordinates.y = tile.y / TILESIZE;
-        if (_bombs(coordinates.x,coordinates.y).visiblility != VISIBILITY::HIDE){
+        if (_bombs(coordinates.x,coordinates.y).visiblility == VISIBILITY::VISIBLE){
             tile.asset_location = 
                 _tileAsset[_bombs(coordinates.x,coordinates.y).neighboringBombs];
+        } else if (_bombs(coordinates.x, coordinates.y).visiblility == VISIBILITY::FLAG) {
+            tile.asset_location = FLAGASSET;
         }
         instructions.push(tile);
         matrixInstruction.pop();
-
     }
+    if (!_isAlive || _win){
+        instructions.push(_endGameScreen);
+    } else {
+        auto time = std::chrono::minutes(5) - (std::chrono::steady_clock::now() - _timerStart);
+        auto sec = std::chrono::duration_cast<std::chrono::seconds>(time);
+        _timer.text = std::to_string(sec.count());
+    }
+    _smileyRect.asset_location = (!_isAlive) ? SMILEYDEAD : (_win)? SMILEYWIN : SMILEY;
+    instructions.push(_timer);
+    instructions.push(_smileyRect);
     return instructions;
 }
