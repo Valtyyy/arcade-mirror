@@ -156,5 +156,5 @@ extern "C" LIB_TYPE getLibType()
 
 SFML::~SFML()
 {
-
+    std::cout << "OUI JE DETRUI" << std::endl;
 }

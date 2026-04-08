@@ -20,7 +20,7 @@ extern "C" IDisplay *create()
     return new SDL2();
 }
 
-SDL2::SDL2() : _window(nullptr)
+SDL2::SDL2() : _window(nullptr), _renderer(nullptr)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
         throw std::runtime_error(SDL_GetError());
@@ -31,6 +31,7 @@ SDL2::SDL2() : _window(nullptr)
 
 void SDL2::init()
 {
+    std::cout << "Init" << std::endl;
     _window = SDL_CreateWindow("SDL",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
@@ -47,8 +48,15 @@ void SDL2::close()
 {
     for (auto elem : _textures)
         SDL_DestroyTexture(elem.second);
-    SDL_DestroyRenderer(_renderer);
-    SDL_DestroyWindow(_window);
+    _textures.clear();
+    if (_renderer) {
+        SDL_DestroyRenderer(_renderer);
+        _renderer = nullptr;
+    }
+    if (_window) {
+        SDL_DestroyWindow(_window);
+        _window = nullptr;
+    }
     SDL_Quit();
 }
 

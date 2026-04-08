@@ -30,6 +30,7 @@ Game &Game::operator=(Game &&other) noexcept
     if (this != &other) {
         if (_lib.is_loaded())
             close();
+        _self.reset();
         _lib = std::move(other._lib);
         _self = std::move(other._self);
     }
@@ -49,7 +50,10 @@ void Game::init()
 
 void Game::close()
 {
-    _self->close();
+    if (_self) {
+        _self->close();
+        _self.reset();
+    }
 }
 
 void Game::update(std::queue<Event> events)
