@@ -30,8 +30,8 @@ namespace MineSweeper
     #define TILESIZE 50
     #define MATRIXLEN 13
     #define MATRIXSIZE MATRIXLEN * MATRIXLEN
-    #define MAXBOMB 15
-    #define MINBOMB 25
+    #define MINBOMB 15
+    #define MAXBOMB 25
     #define TILEASSET "games/MineSweeper/asset/tileMineSweeper.jpg"
     #define FLAGASSET "games/MineSweeper/asset/TileFlag.png"
     #define FONT "games/MineSweeper/asset/Minesweeper.ttf"
