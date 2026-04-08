@@ -95,7 +95,10 @@ SET(MINESWEEPER
     games/MineSweeper/src/MineSweeper.cpp
 )
 
-add_library(arcade_minesweeper SHARED ${MINESWEEPER})
+add_library(arcade_minesweeper SHARED
+    ${MINESWEEPER}
+    games/MineSweeper/src/symEntry.cpp
+)
 
 target_include_directories(arcade_minesweeper PRIVATE
     ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
@@ -112,16 +115,20 @@ enable_testing()
 add_executable(test_binary
     ${CORE}
     ${SNAKE}
+    ${MINESWEEPER}
     tests/test_void.cpp
     tests/test_shared.cpp
     tests/test_core.cpp
     tests/test_gameMatrix.cpp
     tests/test_snake.cpp
+    tests/test_minesweeper.cpp
 )
+
 target_include_directories(test_binary
     PRIVATE
         ${PROJECT_SOURCE_DIR}/core/include
         ${PROJECT_SOURCE_DIR}/games/Snake/include
+        ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
 )
 
 add_library(test_lib SHARED tests/libtest/lib_test.cpp)

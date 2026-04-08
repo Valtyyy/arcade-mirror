@@ -31,7 +31,7 @@ void Core::run()
 
     while (running) {
         auto start = std::chrono::steady_clock::now();
-
+        
         doIteration();
 
         auto elapsed = std::chrono::steady_clock::now() - start;

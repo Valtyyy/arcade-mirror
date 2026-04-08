@@ -8,18 +8,9 @@
 #include "MineSweeper.hpp"
 #include <ctime>
 
-extern "C" IGame *create()
-{
-    return new MineSweeper::Game();
-}
-
-extern "C" LIB_TYPE getLibType()
-{
-    return LIB_TYPE::GAME;
-}
 
 MineSweeper::Game::Game():
-    _bombs(GameMatrix<cell>(0,0, {false, HIDE}, TILESIZE))
+    _bombs(GameMatrix<cell>(0,0, {false, HIDE, 0}, TILESIZE))
 {
 }
 
@@ -37,7 +28,6 @@ void MineSweeper::Game::setNeighbour(std::size_t x, std::size_t y)
                 _bombs(x + i, y + j).neighboringBombs += 
                     (_bombs(x + i, y + j).isMine) ? 0 : 1;
             } catch (std::exception &e){
-                std::cout << e.what() << std::endl;
             }
         }
     }
@@ -115,7 +105,6 @@ std::size_t MineSweeper::Game::discoverAdjacent(point_t pos)
                 point_t next = {pos.x + i, pos.y + j};
                 discover += discoverAdjacent(next);
             } catch (std::exception &e){
-                std::cout << e.what() << std::endl;
             }
         }
     }
