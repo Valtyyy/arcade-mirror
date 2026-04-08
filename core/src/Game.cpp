@@ -50,7 +50,10 @@ void Game::init()
 
 void Game::close()
 {
-    _self->close();
+    if (_self) {
+        _self->close();
+        _self.reset();
+    }
 }
 
 void Game::update(std::queue<Event> events)

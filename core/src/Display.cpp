@@ -25,6 +25,7 @@ Display::Display(const std::string &_lib_location) : _lib(_lib_location)
         throw std::runtime_error("Error: " + _lib_location + " not a graphical library\n");
 
     _self = std::unique_ptr<IDisplay>(create());
+    _self->init();
 }
 
 Display &Display::operator=(Display &&other) noexcept
@@ -52,7 +53,10 @@ void Display::init()
 
 void Display::close()
 {
-    _self->close();
+    if (_self) {
+        _self->close();
+        _self.reset();
+    }
 }
 
 void Display::clear()
