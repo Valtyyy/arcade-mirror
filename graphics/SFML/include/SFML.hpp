@@ -9,7 +9,6 @@
 
 #include "IDisplay.hpp"
 #include <SFML/Window/Mouse.hpp>
-#include <cstddef>
 #include <cstdio>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics/Color.hpp>
@@ -20,7 +19,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "DisplayVariable.hpp"
-#include <vector>
 
 class SFML : public IDisplay {
 public:

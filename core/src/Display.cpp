@@ -33,6 +33,7 @@ Display &Display::operator=(Display &&other) noexcept
     if (this != &other) {
         if (_lib.is_loaded())
             close();
+        _self.reset();
         _lib = std::move(other._lib);
         _self = std::move(other._self);
     }
@@ -52,7 +53,10 @@ void Display::init()
 
 void Display::close()
 {
-    _self->close();
+    if (_self) {
+        _self->close();
+        _self.reset();
+    }
 }
 
 void Display::clear()
