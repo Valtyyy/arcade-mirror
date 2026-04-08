@@ -37,6 +37,7 @@ private:
     sf::RenderWindow _window;
     std::queue<Event> _events;
     std::map<std::string, sf::Texture> _textures;
+    sf::Color convert_rgba(int hex_color);
     void addEvents(sf::Keyboard::Key touch);
     void addEvents(sf::Event::MouseButtonEvent click);
     CommonKey sfmlToCommonKey(sf::Keyboard::Key);
