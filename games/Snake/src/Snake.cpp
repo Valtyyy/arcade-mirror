@@ -187,6 +187,11 @@ std::queue<AnyInstruction> Snake::GameSnake::getGfxInstructions()
     return instructions;
 }
 
+std::queue<GameEvent> Snake::GameSnake::getEvent()
+{
+    return _events;
+}
+
 Snake::GameSnake::~GameSnake() {};
 
 extern "C" LIB_TYPE getLibType()
