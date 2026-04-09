@@ -184,7 +184,9 @@ std::queue<AnyInstruction> Snake::GameSnake::_convertMatrixToGfx()
 std::queue<AnyInstruction> Snake::GameSnake::getGfxInstructions()
 {
     std::queue<AnyInstruction> instructions = _convertMatrixToGfx();
+    //dimensionInstr dim = {LINES * TILESIZE, COLUMNS * TILESIZE};
 
+    //instructions.push(dim);
     return instructions;
 }
 

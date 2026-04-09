@@ -19,6 +19,17 @@ typedef struct point_s {
     int y;
 } point_t;
 
+typedef struct area_s {
+    point_t a;
+    point_t b;
+    bool operator<(const struct area_s &o) const {
+        if (a.x != o.a.x) return a.x < o.a.x;
+        if (a.y != o.a.y) return a.y < o.a.y;
+        if (b.x != o.b.x) return b.x < o.b.x;
+        return b.y < o.b.y;
+    }
+} area_t;
+
 struct GfxInstruction {
     size_t x;
     size_t y;

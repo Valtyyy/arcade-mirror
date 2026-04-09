@@ -20,7 +20,7 @@ extern "C" IDisplay *create()
     return new SDL2();
 }
 
-SDL2::SDL2() : _window(nullptr)
+SDL2::SDL2() : _window(nullptr), _renderer(nullptr)
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
         throw std::runtime_error(SDL_GetError());
@@ -161,7 +161,7 @@ void SDL2::display_instruction(dimensionInstr &dimension)
     std::cout << "Dimenstion" << std::endl;
     screenSize.h = dimension.h;
     screenSize.w = dimension.w;
-    screenSize.ratio = (800 / dimension.h);
+    screenSize.ratio = (SCREEN_H / dimension.h);
     std::cout << "Ratio:" << screenSize.ratio << std::endl;
 }
 
