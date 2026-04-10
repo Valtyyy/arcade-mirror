@@ -74,7 +74,12 @@ SDL_Color SDL2::convert_rgba(int hex_color)
 void SDL2::createTextureFromSurface(SDL_Surface &surface, std::string &assets, int x, int y, int w, int h)
 {
     if (!_textures.contains(assets)) {
-        _textures[assets] = SDL_CreateTextureFromSurface(_renderer.get(), &surface);
+        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
+        if (!textTexture) {
+            std::cout << "TEXTURE FAIL" << std::endl;
+            throw std::runtime_error(SDL_GetError());
+        }
+        _textures[assets] = std::move(textTexture);
     }
     SDL_Rect textRect = {x, y, w * screenSize.ratio, h * screenSize.ratio};
     SDL_RenderCopy(_renderer.get(), _textures[assets], NULL, &textRect);
