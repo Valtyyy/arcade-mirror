@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['unload_0',['unload',['../classDlLoader.html#ae0e361e51a603b119b1236cc75a51bfd',1,'DlLoader']]],
-  ['update_1',['update',['../classGame.html#ae7ae6344140ddeff5e885389a9aeab84',1,'Game::update()'],['../classMenuGame.html#aeb53e0e19315aaef454fb620ea427835',1,'MenuGame::update()'],['../classSnake_1_1GameSnake.html#a33d5d7f495701b28436b1d5333efd9b0',1,'Snake::GameSnake::update()'],['../classIGame.html#ad4e97984eeb22e7472e782392a851aca',1,'IGame::update()']]]
+  ['sdl2_0',['SDL2',['../classSDL2.html#a5d2dd8ae56c1d6e199850e16aec40afe',1,'SDL2']]],
+  ['setfish_1',['setFish',['../classSnake_1_1GameSnake.html#a4d30efe87044858f685476cb8abc4934',1,'Snake::GameSnake']]],
+  ['setneighbour_2',['setNeighbour',['../classMineSweeper_1_1Game.html#af9f684adb452e4c02c8f513a5c3d3d04',1,'MineSweeper::Game']]],
+  ['setshark_3',['setShark',['../classSnake_1_1GameSnake.html#a3ee79d8f565239fcd1eb601dddc20307',1,'Snake::GameSnake']]],
+  ['sfml_4',['SFML',['../classSFML.html#a38eac3826e67b2dc189d291d47c59394',1,'SFML']]],
+  ['sizeerror_5',['SizeError',['../classGameMatrix_1_1SizeError.html#a050eae0522fd0dbdbc32c45c7b9bed1a',1,'GameMatrix::SizeError']]],
+  ['sym_6',['sym',['../classDlLoader.html#a96e9032e363068df6ca9015001368059',1,'DlLoader']]]
 ];

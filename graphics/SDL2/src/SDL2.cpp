@@ -87,7 +87,6 @@ void SDL2::createTextureFromSurface(SDL_Surface *surface, std::string &assets, i
             throw std::runtime_error(SDL_GetError());
         }
         _textures[assets] = std::move(textTexture);
-
     }
     SDL_Rect textRect = {x, y, w * screenSize.ratio, h * screenSize.ratio};
     SDL_RenderCopy(_renderer, _textures[assets], NULL, &textRect);
@@ -142,8 +141,6 @@ void SDL2::display_instruction(textInstr &text)
 {
     SDL_Color color = convert_rgba(text.color_hex);
 
-    std::cout << text.text << std::endl;
-    std::cout << text.asset_location.value() << std::endl;
     if (!text.asset_location->empty()) {
         TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
         if (!font) {
@@ -153,14 +150,15 @@ void SDL2::display_instruction(textInstr &text)
             _surfaces[text.asset_location.value() + text.text] =
                 TTF_RenderText_Blended(font, text.text.c_str(), color);
         }
-        std::cout << "Ratio:" << screenSize.ratio << std::endl;
+        std::string asset = text.asset_location.value() + text.text;
         createTextureFromSurface(
             _surfaces[text.asset_location.value() + text.text],
-            text.asset_location.value(),
+            asset,
             text.x * screenSize.ratio,
             text.y * screenSize.ratio,
             text.w * screenSize.ratio,
             text.h * screenSize.ratio);
+        TTF_CloseFont(font);
     }
 }
 

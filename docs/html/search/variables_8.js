@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['radius_0',['radius',['../structcircleInstr.html#a7f1bd154b9312d39cf9c326770f21737',1,'circleInstr']]],
-  ['ratio_1',['ratio',['../structscreen.html#a71fc386f89efc76d42cda39603904449',1,'screen']]]
+  ['neighboringbombs_0',['neighboringBombs',['../structMineSweeper_1_1cell.html#a90cbc6661403ce56046ce5afa0cbc25f',1,'MineSweeper::cell']]]
 ];

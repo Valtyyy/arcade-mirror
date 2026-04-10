@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['render_0',['render',['../classDisplay.html#a577b1ce6ec9e4168cce731b3a591f6bb',1,'Display::render()'],['../classSDL2.html#ad5a80717c7e27f938b2ef4a2ba09cc67',1,'SDL2::render()'],['../classSFML.html#a3c42dc8d94b81c6f87448aeab514df3c',1,'SFML::render()'],['../classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa',1,'IDisplay::render()'],['../classIShape.html#a0730215f9cd7bdc0e5da43bdd5984599',1,'IShape::render()']]],
-  ['resize_1',['resize',['../classGameMatrix.html#a6013c2b9143d534a552a988d40231dd7',1,'GameMatrix']]],
-  ['run_2',['run',['../classCore.html#adcc93b561dfefacfe2bcbd60604ea7a6',1,'Core']]]
+  ['pollevents_0',['pollevents',['../classDisplay.html#a4b02d67bb1cc1f4d9ea91b7c3f70bcac',1,'Display::pollEvents()'],['../classSDL2.html#a0bf8656a9e20ebbbb21dce9697c46970',1,'SDL2::pollEvents()'],['../classSFML.html#a928f5bbd9f9c2a0f71cdd60a165a527b',1,'SFML::pollEvents()'],['../classIDisplay.html#a5f79762f240a39eb92934c1b70a22905',1,'IDisplay::pollEvents()']]],
+  ['printmatrix_1',['printMatrix',['../classGameMatrix.html#a94cf09b99630348b4cea48a6c505d9fa',1,'GameMatrix']]]
 ];
