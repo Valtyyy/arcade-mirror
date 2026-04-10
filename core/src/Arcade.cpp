@@ -122,12 +122,12 @@ size_t Core::_findIndex(const std::vector<std::string> &list, const std::string 
 
 std::vector<std::string> Core::getGamesList()
 {
-    return {std::string(LIB_PATH) + "libarcade_snake.so"};
+    return {std::string(LIB_PATH) + "arcade_snake.so"};
 }
 
 std::vector<std::string> Core::getDisplayList()
 {
-    return {std::string(LIB_PATH) + "libarcade_sfml.so", std::string(LIB_PATH) + "libarcade_sdl2.so"};
+    return {std::string(LIB_PATH) + "arcade_sfml.so", std::string(LIB_PATH) + "arcade_sdl2.so"};
 }
 
 void Core::_handle_gameEvent(std::queue<GameEvent> events)

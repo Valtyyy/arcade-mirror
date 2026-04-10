@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.13)
 project(arcade)
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 set(SFML_INCLUDE /opt/sfml2/include)
 
 option(DEBUG "Compile with -g3" OFF)
@@ -65,6 +65,8 @@ target_link_libraries(arcade_sdl2 PRIVATE
     SDL2_image::SDL2_image
 )
 
+set_target_properties(arcade_sdl2 PROPERTIES PREFIX "")
+
 # === SFML ===
 set(SFML
     ${SHARED}
@@ -81,6 +83,9 @@ find_package(SFML COMPONENTS graphics audio REQUIRED)
 
 target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 
+set_target_properties(arcade_sfml PROPERTIES PREFIX "")
+
+
 # ===== Games =====
 # === Snake ===
 set(SNAKE
@@ -93,6 +98,8 @@ add_library(arcade_snake SHARED ${SNAKE})
 target_include_directories(arcade_snake PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
+
+set_target_properties(arcade_snake PROPERTIES PREFIX "")
 
 # === Menu ===
 set(MENU
@@ -109,6 +116,9 @@ target_include_directories(arcade_menu PRIVATE
 target_compile_definitions(arcade_menu PRIVATE
     LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
+
+set_target_properties(arcade_menu PROPERTIES PREFIX "")
+
 
 # ===== Tests =====
 
