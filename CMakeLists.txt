@@ -3,6 +3,7 @@ project(arcade)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(EXECUTABLE_OUTPUT_PATH ..)
+set(LIBRARY_OUTPUT_PATH ../libs)
 set(SFML_INCLUDE /opt/sfml2/include)
 
 option(DEBUG "Compile with -g3" OFF)
@@ -35,7 +36,7 @@ target_compile_options(arcade PRIVATE
 )
 
 target_compile_definitions(arcade PRIVATE
-    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+    LIB_PATH="${CMAKE_SOURCE_DIR}/libs/"
 )
 
 if(DEBUG)
@@ -151,7 +152,7 @@ target_include_directories(arcade_menu PRIVATE
 )
 
 target_compile_definitions(arcade_menu PRIVATE
-    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+    LIB_PATH="${CMAKE_SOURCE_DIR}/libs/"
 )
 
 set_target_properties(arcade_menu PROPERTIES PREFIX "")
@@ -212,7 +213,7 @@ target_compile_options(test_binary PRIVATE
 )
 
 target_compile_definitions(test_binary PRIVATE
-    LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
+    LIB_PATH="${CMAKE_SOURCE_DIR}/libs/"
 )
 
 target_link_libraries(test_binary PRIVATE criterion)
