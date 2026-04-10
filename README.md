@@ -13,7 +13,7 @@ cmake --build path/build/dir/
 ### lauch
 Once the project is build you can execute the program by choosing the base graphic setting should be use.
 ```cpp
-./path/for/build/dir/arcade  basegraphiclib.so
+./path/build/dir/arcade  basegraphiclib.so
 ```
 
 Then you can press the following button to interact with the program:
