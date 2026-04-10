@@ -33,7 +33,7 @@ class GameMatrix {
 
         rectInstr createTileGFX(char txt)
         {
-            rectInstr tileGFX;
+            rectInstr tileGFX = {{0, 0, ' ', std::nullopt ,0x0}, 0,0};
 
             tileGFX.h = _tileSize;
             tileGFX.w = _tileSize;
