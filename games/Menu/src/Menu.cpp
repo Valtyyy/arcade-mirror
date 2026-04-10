@@ -82,7 +82,7 @@ std::queue<AnyInstruction> MenuGame::getGfxInstructions()
 {
     std::queue<AnyInstruction> instructions;
     std::queue<AnyInstruction> button = createButton(MENU_SCREEN_W, MENU_SCREEN_H, "games/Menu/assets/button.jpg",
-        [this](){_events.push(switchGamevent{std::string(LIB_PATH) + "libarcade_snake.so"});});
+        [this](){_events.push(switchGamevent{std::string(LIB_PATH) + "arcade_snake.so"});});
     rectInstr background = {{0, 0, ' ', "games/Menu/assets/background.jpg"}, SCREEN_H, SCREEN_W};
 
     instructions.push((dimensionInstr){SCREEN_H, SCREEN_W});

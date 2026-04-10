@@ -20,7 +20,7 @@
 #define EXIT_SUCCESS 0
 #define IPS 100
 #define SECOND 1000000
-#define MENU_GAME LIB_PATH "libarcade_menu.so"
+#define MENU_GAME LIB_PATH "arcade_menu.so"
 
 class Core {
     public:

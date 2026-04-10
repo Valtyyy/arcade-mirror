@@ -65,6 +65,9 @@ target_link_libraries(arcade_sdl2 PRIVATE
     SDL2_image::SDL2_image
 )
 
+set_target_properties(arcade_sdl2 PROPERTIES PREFIX "")
+
+
 # === SFML ===
 set(SFML
     ${SHARED}
@@ -80,6 +83,9 @@ target_include_directories(arcade_sfml PRIVATE
 find_package(SFML COMPONENTS graphics audio REQUIRED)
 
 target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
+
+set_target_properties(arcade_sfml PROPERTIES PREFIX "")
+
 
 # === Ncurses ===
 set(NCURSES_SRC
@@ -97,6 +103,9 @@ find_package(Curses REQUIRED)
 
 target_link_libraries(arcade_ncurses PRIVATE ncurses)
 
+set_target_properties(arcade_ncurses PROPERTIES PREFIX "")
+
+
 # ===== Games =====
 # === Snake ===
 set(SNAKE
@@ -109,6 +118,8 @@ add_library(arcade_snake SHARED ${SNAKE})
 target_include_directories(arcade_snake PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
+
+set_target_properties(arcade_snake PROPERTIES PREFIX "")
 
 # ===== MineSweeper =====
 SET(MINESWEEPER
@@ -125,9 +136,8 @@ target_include_directories(arcade_minesweeper PRIVATE
     ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
 )
 
-if(DEBUG)
-    target_compile_options(arcade PRIVATE -g3)
-endif()
+set_target_properties(arcade_minesweeper PROPERTIES PREFIX "")
+
 # === Menu ===
 set(MENU
     ${SHARED}
@@ -143,6 +153,16 @@ target_include_directories(arcade_menu PRIVATE
 target_compile_definitions(arcade_menu PRIVATE
     LIB_PATH="${CMAKE_CURRENT_BINARY_DIR}/"
 )
+
+set_target_properties(arcade_menu PROPERTIES PREFIX "")
+
+
+
+# ======
+
+if(DEBUG)
+    target_compile_options(arcade PRIVATE -g3)
+endif()
 
 # ===== Tests =====
 
