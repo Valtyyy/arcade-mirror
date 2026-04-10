@@ -51,7 +51,10 @@ void Display::init()
 
 void Display::close()
 {
-    _self->close();
+    if (_self) {
+        _self->close();
+        _self.reset();
+    }
 }
 
 void Display::clear()
