@@ -20,7 +20,9 @@ extern "C" IDisplay *create()
 
 SFML::SFML() : _window(sf::VideoMode(SCREEN_W, SCREEN_H), 
         "SFML",
-        sf::Style::Default) {}
+        sf::Style::Default)
+{
+}
 
 void SFML::init()
 {
@@ -156,5 +158,4 @@ extern "C" LIB_TYPE getLibType()
 
 SFML::~SFML()
 {
-
 }

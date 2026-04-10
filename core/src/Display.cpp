@@ -64,6 +64,11 @@ void Display::render(std::queue<AnyInstruction> instructions)
     _self->render(instructions);
 }
 
+void Display::reset()
+{
+    _self.reset();
+}
+
 std::queue<Event> Display::pollEvents()
 {
     return _self->pollEvents();
