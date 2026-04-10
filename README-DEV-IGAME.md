@@ -34,7 +34,7 @@ _**LIB_TYPE getLibType()**_ function should return the enum LIB_TYPE::GAME defin
 
 
 ## New Game Class
-### construction
+### Class constructor
 the constructor of the new game should not take any parameter since the core will not give anything threw it.
 
 ```cpp
