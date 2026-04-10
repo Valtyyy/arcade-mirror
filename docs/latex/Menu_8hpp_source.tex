@@ -17,31 +17,20 @@
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <map>}}
 \DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <queue>}}
 \DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structarea__s}{area\_s}}\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{structpoint__s}{point\_t}}\ \mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}};}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{structpoint__s}{point\_t}}\ \mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}};}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structarea__s_aec35955d2043d407fb207e6d0fed2e33}{operator<}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structarea__s}{area\_s}}\ \&o)\textcolor{keyword}{\ const\ }\{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}}\ !=\ o.\mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}}\ <\ o.\mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}};}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a2f7004b5a632c501cf73aca8c9724839}{y}}\ !=\ o.\mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a2f7004b5a632c501cf73aca8c9724839}{y}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a2f7004b5a632c501cf73aca8c9724839}{y}}\ <\ o.\mbox{\hyperlink{structarea__s_ad690e24d27d5958f4866775e05b77c45}{a}}.\mbox{\hyperlink{structpoint__s_a2f7004b5a632c501cf73aca8c9724839}{y}};}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}}\ !=\ o.\mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}}\ <\ o.\mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}}.\mbox{\hyperlink{structpoint__s_a7e248212bc9f699b6c8aab36929a33f2}{x}};}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}}.\mbox{\hyperlink{structpoint__s_a2f7004b5a632c501cf73aca8c9724839}{y}}\ <\ o.\mbox{\hyperlink{structarea__s_a20ec90884997b5e4f17424f8b1b6d9ac}{b}}.\mbox{\hyperlink{structpoint__s_a2f7004b5a632c501cf73aca8c9724839}{y}};}
-\DoxyCodeLine{00024\ \ \ \ \ \}}
-\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{Menu_8hpp_aaaa63d544613662c28eee378242e302d}{area\_t}};}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenuGame}{MenuGame}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIGame}{IGame}}\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuGame_afcff376a4b73da0b10a1f9b93328e6f0}{init}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuGame_aa1b8eaea6b5ab21b64421f3c13354550}{close}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuGame_aeb53e0e19315aaef454fb620ea427835}{update}}(std::queue<Event>)\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ std::queue<AnyInstruction>\ \mbox{\hyperlink{classMenuGame_a0d2d82232bfd9e033c9bd302d768093e}{getGfxInstructions}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::queue<GameEvent>\ \mbox{\hyperlink{classMenuGame_a13970bd683952149f6b66f74eb468ab5}{getEvent}}()\ \textcolor{keyword}{override};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::queue<AnyInstruction>\ createButton(\textcolor{keywordtype}{size\_t}\ x,\ \textcolor{keywordtype}{size\_t}\ y,\ std::string\ background\_location,\ std::function<\textcolor{keywordtype}{void}()>\ callback);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \_handle\_click(\mbox{\hyperlink{structpoint__s}{point\_t}}\ click);}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::map<\mbox{\hyperlink{Menu_8hpp_aaaa63d544613662c28eee378242e302d}{area\_t}},\ std::function<void()>>\ \_interactiveAreas;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::queue<GameEvent>\ \_events;}
-\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenuGame}{MenuGame}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classIGame}{IGame}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuGame_afcff376a4b73da0b10a1f9b93328e6f0}{init}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuGame_aa1b8eaea6b5ab21b64421f3c13354550}{close}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenuGame_aeb53e0e19315aaef454fb620ea427835}{update}}(std::queue<Event>)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::queue<AnyInstruction>\ \mbox{\hyperlink{classMenuGame_a0d2d82232bfd9e033c9bd302d768093e}{getGfxInstructions}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::queue<GameEvent>\ \mbox{\hyperlink{classMenuGame_a13970bd683952149f6b66f74eb468ab5}{getEvent}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ std::queue<AnyInstruction>\ createButton(\textcolor{keywordtype}{size\_t}\ x,\ \textcolor{keywordtype}{size\_t}\ y,\ std::string\ background\_location,\ std::function<\textcolor{keywordtype}{void}()>\ callback);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \_handle\_click(\mbox{\hyperlink{structpoint__s}{point\_t}}\ click);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::map<\mbox{\hyperlink{gfx_8hpp_aaaa63d544613662c28eee378242e302d}{area\_t}},\ std::function<void()>>\ \_interactiveAreas;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::queue<GameEvent>\ \_events;}
+\DoxyCodeLine{00030\ \};}
 
 \end{DoxyCode}

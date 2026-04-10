@@ -18,9 +18,22 @@ extern "C" IDisplay *create()
     return new SFML();
 }
 
+sf::Color SFML::convert_rgba(int hex_color)
+{
+    sf::Color color;
+
+    color.r = ((hex_color >> 24) & 0xFF) ;
+    color.g = ((hex_color >> 16) & 0xFF);
+    color.b = ((hex_color >> 8) & 0xFF);
+    color.a = 255 - ((hex_color) & 0xFF);
+    return color;
+}
+
 SFML::SFML() : _window(sf::VideoMode(SCREEN_W, SCREEN_H), 
         "SFML",
-        sf::Style::Default) {}
+        sf::Style::Default)
+{
+}
 
 void SFML::init()
 {
@@ -53,14 +66,14 @@ void SFML::display_instruction(rectInstr &rectangle)
             _textures[rectangle.asset_location.value()].getSize().y));
     }
     else
-        rect.setFillColor(sf::Color(rectangle.color_hex));
+        rect.setFillColor(convert_rgba(rectangle.color_hex));
     _window.draw(rect);
 }
 
 void SFML::display_instruction(circleInstr &circle)
 {
     sf::CircleShape circ(circle.radius);
-    circ.setFillColor(sf::Color(circle.color_hex));
+    circ.setFillColor(convert_rgba(circle.color_hex));
     circ.setPosition(sf::Vector2f(circle.x, circle.y));
 
     if (!circle.asset_location->empty()) {
@@ -82,7 +95,7 @@ void SFML::display_instruction(textInstr &text)
 
     font.loadFromFile(text.asset_location->c_str());
     sf::Text Text(text.text, font, text.fontSize);
-    Text.setFillColor(sf::Color(text.color_hex));
+    Text.setFillColor(convert_rgba(text.color_hex));
     Text.setPosition(sf::Vector2f(text.x, text.y));
     _window.draw(Text);
 }
@@ -138,10 +151,10 @@ std::queue<Event> SFML::pollEvents()
 
     _events = {};
     if  (_window.pollEvent(event)) {
-        if ((event.type == sf::Event::KeyPressed) || (event.type == sf::Event::KeyReleased))
+        if ((event.type == sf::Event::KeyPressed))
             addEvents(sf::Keyboard::localize(event.key.scancode));
         sf::Mouse::getPosition();
-        if ((event.type == sf::Event::MouseButtonPressed) || event.type == sf::Event::MouseButtonReleased)
+        if ((event.type == sf::Event::MouseButtonPressed))
             addEvents(event.mouseButton);
         if (event.type == sf::Event::Closed)
             this->close();
@@ -156,5 +169,4 @@ extern "C" LIB_TYPE getLibType()
 
 SFML::~SFML()
 {
-    std::cout << "OUI JE DETRUI" << std::endl;
 }

@@ -81,6 +81,22 @@ find_package(SFML COMPONENTS graphics audio REQUIRED)
 
 target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 
+# === Ncurses ===
+set(NCURSES_SRC
+    ${SHARED}
+    graphics/Ncurses/src/Ncurses.cpp;
+)
+
+add_library(arcade_ncurses SHARED ${NCURSES_SRC})
+
+target_include_directories(arcade_ncurses PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/Ncurses/include
+)
+
+find_package(Curses REQUIRED)
+
+target_link_libraries(arcade_ncurses PRIVATE ncurses)
+
 # ===== Games =====
 # === Snake ===
 set(SNAKE
@@ -94,6 +110,24 @@ target_include_directories(arcade_snake PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
 
+# ===== MineSweeper =====
+SET(MINESWEEPER
+    ${SHARED}
+    games/MineSweeper/src/MineSweeper.cpp
+)
+
+add_library(arcade_minesweeper SHARED
+    ${MINESWEEPER}
+    games/MineSweeper/src/symEntry.cpp
+)
+
+target_include_directories(arcade_minesweeper PRIVATE
+    ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
+)
+
+if(DEBUG)
+    target_compile_options(arcade PRIVATE -g3)
+endif()
 # === Menu ===
 set(MENU
     ${SHARED}
@@ -117,16 +151,20 @@ enable_testing()
 add_executable(test_binary
     ${CORE}
     ${SNAKE}
+    ${MINESWEEPER}
     tests/test_void.cpp
     tests/test_shared.cpp
     tests/test_core.cpp
     tests/test_gameMatrix.cpp
     tests/test_snake.cpp
+    tests/test_minesweeper.cpp
 )
+
 target_include_directories(test_binary
     PRIVATE
         ${PROJECT_SOURCE_DIR}/core/include
         ${PROJECT_SOURCE_DIR}/games/Snake/include
+        ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
 )
 
 add_library(test_lib SHARED tests/libtest/lib_test.cpp)

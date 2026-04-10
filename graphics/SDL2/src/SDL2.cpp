@@ -6,8 +6,11 @@
 #include <SDL2/SDL_image.h>
 #include <SDL_events.h>
 #include <SDL_render.h>
+#include <SDL_surface.h>
+#include <SDL_video.h>
 #include <cstddef>
 #include <cstdio>
+#include <memory>
 #include <numbers>
 #include <ostream>
 #include <stdexcept>
@@ -20,7 +23,19 @@ extern "C" IDisplay *create()
     return new SDL2();
 }
 
-SDL2::SDL2() : _window(nullptr), _renderer(nullptr)
+SDL2::SDL2() :
+    _window(std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)>(
+        SDL_CreateWindow("SDL",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        SCREEN_W,
+        SCREEN_H,
+        SDL_WINDOW_RESIZABLE), SDL_DestroyWindow)),
+        _renderer(
+            std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>
+            (SDL_CreateRenderer(
+        _window.get(), -1, SDL_RENDERER_ACCELERATED), SDL_DestroyRenderer)),
+        _textures({}), _surfaces({})
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
         throw std::runtime_error(SDL_GetError());
@@ -31,38 +46,18 @@ SDL2::SDL2() : _window(nullptr), _renderer(nullptr)
 
 void SDL2::init()
 {
-    std::cout << "Init" << std::endl;
-    _window = SDL_CreateWindow("SDL",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        SCREEN_W,
-        SCREEN_H,
-        SDL_WINDOW_RESIZABLE);
-    if (!_window)
-        throw std::runtime_error(SDL_GetError());
-    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
-    _textures = {};
 }
 
 void SDL2::close()
 {
-    for (auto elem : _textures)
+    for (auto &elem : _textures)
         SDL_DestroyTexture(elem.second);
-    _textures.clear();
-    if (_renderer) {
-        SDL_DestroyRenderer(_renderer);
-        _renderer = nullptr;
-    }
-    if (_window) {
-        SDL_DestroyWindow(_window);
-        _window = nullptr;
-    }
-    SDL_Quit();
+        SDL_Quit();
 }
 
 void SDL2::clear()
 {
-    SDL_RenderClear(_renderer);
+    SDL_RenderClear(_renderer.get());
 }
 
 SDL_Color SDL2::convert_rgba(int hex_color)
@@ -76,34 +71,31 @@ SDL_Color SDL2::convert_rgba(int hex_color)
     return color;
 }
 
-void SDL2::createTextureFromSurface(SDL_Surface *surface, std::string &assets, int x, int y, int w, int h)
+void SDL2::createTextureFromSurface(SDL_Surface &surface, std::string &assets, int x, int y, int w, int h)
 {
-    if (!surface)
-        throw std::runtime_error(SDL_GetError());
     if (!_textures.contains(assets)) {
-        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
+        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer.get(), &surface);
         if (!textTexture) {
             std::cout << "TEXTURE FAIL" << std::endl;
             throw std::runtime_error(SDL_GetError());
         }
         _textures[assets] = std::move(textTexture);
-
     }
     SDL_Rect textRect = {x, y, w * screenSize.ratio, h * screenSize.ratio};
-    SDL_RenderCopy(_renderer, _textures[assets], NULL, &textRect);
+    SDL_RenderCopy(_renderer.get(), _textures[assets], NULL, &textRect);
 }
 
 void SDL2::display_instruction(rectInstr &rectangle)
 {
     SDL_Color color = convert_rgba(rectangle.color_hex);
-    SDL_SetRenderDrawColor(_renderer, color.r, color.g, color.b, color.a);
+    SDL_SetRenderDrawColor(_renderer.get(), color.r, color.g, color.b, color.a);
     SDL_Rect rect = {(int)rectangle.x, 
         (int)rectangle.y, (int)rectangle.w, (int)rectangle.h};
-    SDL_RenderFillRect(_renderer, &rect);
+    SDL_RenderFillRect(_renderer.get(), &rect);
     if (!rectangle.asset_location->empty()) {
         if (!_surfaces.contains(rectangle.asset_location.value())) {
             _surfaces[rectangle.asset_location.value()] =
-                IMG_Load(rectangle.asset_location.value().c_str());   
+                *IMG_Load(rectangle.asset_location.value().c_str());   
         }
         createTextureFromSurface(
         _surfaces[rectangle.asset_location.value()],
@@ -112,7 +104,7 @@ void SDL2::display_instruction(rectInstr &rectangle)
     }
 }
 
-void SDL2::DrawCircle(int x, int y, float radius, SDL_Renderer *renderer)
+void SDL2::DrawCircle(int x, int y, float radius)
 {
     double pi = std::numbers::pi;
     int precision = 100;
@@ -123,7 +115,7 @@ void SDL2::DrawCircle(int x, int y, float radius, SDL_Renderer *renderer)
         float y1 = sin(-i * step) * radius + y;
         float x2 = cos(i * step) * radius + x;
         float y2 = sin(i * step) * radius + y;
-        SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+        SDL_RenderDrawLine(_renderer.get(), x1, y1, x2, y2);
     }
 }
 
@@ -131,19 +123,17 @@ void SDL2::display_instruction(circleInstr &circle)
 {
     SDL_Color color = convert_rgba(circle.color_hex);
 
-    SDL_SetRenderDrawColor(_renderer, color.r, color.g, color.b, color.a);
+    SDL_SetRenderDrawColor(_renderer.get(), color.r, color.g, color.b, color.a);
     DrawCircle(
         circle.x, 
         circle.y, 
-        circle.radius * screenSize.ratio, _renderer);
+        circle.radius * screenSize.ratio);
 }
 
 void SDL2::display_instruction(textInstr &text)
 {
     SDL_Color color = convert_rgba(text.color_hex);
 
-    std::cout << text.text << std::endl;
-    std::cout << text.asset_location.value() << std::endl;
     if (!text.asset_location->empty()) {
         TTF_Font *font = TTF_OpenFont(text.asset_location->c_str(), text.fontSize);
         if (!font) {
@@ -151,39 +141,38 @@ void SDL2::display_instruction(textInstr &text)
         }
         if (!_surfaces.contains(text.asset_location.value().c_str())) {
             _surfaces[text.asset_location.value() + text.text] =
-                TTF_RenderText_Blended(font, text.text.c_str(), color);
+                *TTF_RenderText_Blended(font, text.text.c_str(), color);
         }
-        std::cout << "Ratio:" << screenSize.ratio << std::endl;
+        std::string asset = text.asset_location.value() + text.text;
         createTextureFromSurface(
             _surfaces[text.asset_location.value() + text.text],
-            text.asset_location.value(),
+            asset,
             text.x * screenSize.ratio,
             text.y * screenSize.ratio,
             text.w * screenSize.ratio,
             text.h * screenSize.ratio);
+        TTF_CloseFont(font);
     }
 }
 
 void SDL2::display_instruction(dimensionInstr &dimension)
 {
-    std::cout << "Dimenstion" << std::endl;
     screenSize.h = dimension.h;
     screenSize.w = dimension.w;
-    screenSize.ratio = (800 / dimension.h);
-    std::cout << "Ratio:" << screenSize.ratio << std::endl;
+    screenSize.ratio = (SCREEN_H / dimension.h);
 }
 
 void SDL2::render(std::queue<AnyInstruction> instructions)
 {
-    SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
-    SDL_RenderClear(_renderer);
+    SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
+    SDL_RenderClear(_renderer.get());
 
     while (!instructions.empty()) {
         std::visit([this](auto &arg){ display_instruction(arg); },
         instructions.front());
         instructions.pop();
     }
-    SDL_RenderPresent(_renderer);
+    SDL_RenderPresent(_renderer.get());
 }
 
 
@@ -239,4 +228,5 @@ extern "C" LIB_TYPE getLibType()
 
 SDL2::~SDL2()
 {
+    SDL_Quit();
 }

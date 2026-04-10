@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['render_0',['render',['../classDisplay.html#a577b1ce6ec9e4168cce731b3a591f6bb',1,'Display::render()'],['../classSDL2.html#ad5a80717c7e27f938b2ef4a2ba09cc67',1,'SDL2::render()'],['../classSFML.html#a3c42dc8d94b81c6f87448aeab514df3c',1,'SFML::render()'],['../classIDisplay.html#a3fa69d2efc5ec1820bcf16d109dd9ffa',1,'IDisplay::render()'],['../classIShape.html#a0730215f9cd7bdc0e5da43bdd5984599',1,'IShape::render()']]],
-  ['resize_1',['resize',['../classGameMatrix.html#a6013c2b9143d534a552a988d40231dd7',1,'GameMatrix']]],
-  ['run_2',['run',['../classCore.html#adcc93b561dfefacfe2bcbd60604ea7a6',1,'Core']]]
+  ['ontileclick_0',['onTileClick',['../classGameMatrix.html#a9f605247154b9b13701363bf0a149b12',1,'GameMatrix']]],
+  ['operator_28_29_1',['operator()',['../classGameMatrix.html#a1a5c3ecc4252d669f4519db307efb8e7',1,'GameMatrix']]],
+  ['operator_3c_2',['operator&lt;',['../structarea__s.html#aec35955d2043d407fb207e6d0fed2e33',1,'area_s']]],
+  ['operator_3d_3',['operator=',['../classDisplay.html#ae77e538416397a9a250ffc01e2deee1d',1,'Display::operator=()'],['../classGame.html#a82aba9627ff823d7e66c62949fd8424d',1,'Game::operator=()'],['../classDlLoader.html#aa537bd60b37029e3184d87677312a5de',1,'DlLoader::operator=()']]]
 ];
