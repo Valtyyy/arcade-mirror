@@ -121,7 +121,7 @@ size_t Core::_findIndex(const std::vector<std::string> &list, const std::string 
 
 std::vector<std::string> Core::getGamesList()
 {
-    return {std::string(LIB_PATH) + "arcade_snake.so"};
+    return {std::string(LIB_PATH) + "arcade_snake.so", std::string(LIB_PATH) + "arcade_minesweeper.so"};
 }
 
 std::vector<std::string> Core::getDisplayList()
