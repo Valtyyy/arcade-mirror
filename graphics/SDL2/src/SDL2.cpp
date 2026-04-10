@@ -74,7 +74,7 @@ SDL_Color SDL2::convert_rgba(int hex_color)
 void SDL2::createTextureFromSurface(SDL_Surface &surface, std::string &assets, int x, int y, int w, int h)
 {
     if (!_textures.contains(assets)) {
-        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer, surface);
+        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(_renderer.get(), &surface);
         if (!textTexture) {
             std::cout << "TEXTURE FAIL" << std::endl;
             throw std::runtime_error(SDL_GetError());
