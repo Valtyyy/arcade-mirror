@@ -39,7 +39,7 @@ The project implement 3 display setting by default :
   - SMFL
   - NCurse
 
-And the user can [implement a new Display Settin](https://github.com/Valtyyy/arcade-mirror/blob/ReadMe/README-DEV-IDISPLAY.md) he created
+And the user can [implement a new Display Setting](https://github.com/Valtyyy/arcade-mirror/blob/ReadMe/README-DEV-IDISPLAY.md) he created
 
 
 ## Documentation
