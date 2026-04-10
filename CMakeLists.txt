@@ -81,6 +81,22 @@ find_package(SFML COMPONENTS graphics audio REQUIRED)
 
 target_link_libraries(arcade_sfml sfml-graphics sfml-audio)
 
+# === Ncurses ===
+set(NCURSES_SRC
+    ${SHARED}
+    graphics/Ncurses/src/Ncurses.cpp;
+)
+
+add_library(arcade_ncurses SHARED ${NCURSES_SRC})
+
+target_include_directories(arcade_ncurses PRIVATE
+    ${PROJECT_SOURCE_DIR}/graphics/Ncurses/include
+)
+
+find_package(Curses REQUIRED)
+
+target_link_libraries(arcade_ncurses PRIVATE ncurses)
+
 # ===== Games =====
 # === Snake ===
 set(SNAKE

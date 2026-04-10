@@ -21,6 +21,7 @@ class Display : public IDisplay {
         void init() override;
         void close() override;
         void clear() override;
+        void reset();
         void render(std::queue<AnyInstruction>) override;
         std::queue<Event> pollEvents() override;
 

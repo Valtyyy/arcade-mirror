@@ -31,7 +31,9 @@ sf::Color SFML::convert_rgba(int hex_color)
 
 SFML::SFML() : _window(sf::VideoMode(SCREEN_W, SCREEN_H), 
         "SFML",
-        sf::Style::Default) {}
+        sf::Style::Default)
+{
+}
 
 void SFML::init()
 {
@@ -167,5 +169,4 @@ extern "C" LIB_TYPE getLibType()
 
 SFML::~SFML()
 {
-    std::cout << "OUI JE DETRUI" << std::endl;
 }
