@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 project(arcade)
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SFML_INCLUDE /opt/sfml2/include)
 
