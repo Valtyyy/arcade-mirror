@@ -53,7 +53,7 @@ jobs:
 
       - name: Run tests
         run: |
-          ./build/test_binary
+          ./test_binary
         continue-on-error: false
 
   mirror:
