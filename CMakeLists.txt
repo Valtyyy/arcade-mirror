@@ -100,6 +100,23 @@ target_include_directories(arcade_snake PRIVATE
 
 set_target_properties(arcade_snake PROPERTIES PREFIX "")
 
+# ===== MineSweeper =====
+SET(MINESWEEPER
+    ${SHARED}
+    games/MineSweeper/src/MineSweeper.cpp
+)
+
+add_library(arcade_minesweeper SHARED
+    ${MINESWEEPER}
+    games/MineSweeper/src/symEntry.cpp
+)
+
+target_include_directories(arcade_minesweeper PRIVATE
+    ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
+)
+
+set_target_properties(arcade_minesweeper PROPERTIES PREFIX "")
+
 # === Menu ===
 set(MENU
     ${SHARED}
@@ -117,7 +134,6 @@ target_compile_definitions(arcade_menu PRIVATE
 )
 
 set_target_properties(arcade_menu PROPERTIES PREFIX "")
-
 
 # ===== Tests =====
 
