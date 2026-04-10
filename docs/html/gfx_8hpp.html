@@ -92,7 +92,7 @@ Include dependency graph for gfx.hpp:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="gfx_8hpp__dep__incl.svg" width="2362" height="462"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="gfx_8hpp__dep__incl.svg" width="2824" height="462"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="gfx_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -100,6 +100,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpoint__s.html">point_s</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structarea__s.html">area_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGfxInstruction.html">GfxInstruction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,6 +120,8 @@ Typedefs</h2></td></tr>
 <tr class="separator:a41e7d658f3f7543f80ce99a139020702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a32041ee7d3fa5ba3a4808b42ed8a8d" id="r_a8a32041ee7d3fa5ba3a4808b42ed8a8d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpoint__s.html">point_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a></td></tr>
 <tr class="separator:a8a32041ee7d3fa5ba3a4808b42ed8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaa63d544613662c28eee378242e302d" id="r_aaaa63d544613662c28eee378242e302d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structarea__s.html">area_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#aaaa63d544613662c28eee378242e302d">area_t</a></td></tr>
+<tr class="separator:aaaa63d544613662c28eee378242e302d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fcc0447043b86bc6e45cab2818d3cbb" id="r_a5fcc0447043b86bc6e45cab2818d3cbb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#a5fcc0447043b86bc6e45cab2818d3cbb">Event</a> = std::variant&lt; <a class="el" href="Keys_8hpp.html#aca064e9d0e2325f89d8aca2f544edb2b">CommonKey</a>, <a class="el" href="gfx_8hpp.html#a8a32041ee7d3fa5ba3a4808b42ed8a8d">point_t</a> &gt;</td></tr>
 <tr class="separator:a5fcc0447043b86bc6e45cab2818d3cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dc162b955e03805fd28d7c8c19e29e2" id="r_a5dc162b955e03805fd28d7c8c19e29e2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gfx_8hpp.html#a5dc162b955e03805fd28d7c8c19e29e2">AnyInstruction</a> = std::variant&lt; <a class="el" href="structrectInstr.html">rectInstr</a>, <a class="el" href="structcircleInstr.html">circleInstr</a>, <a class="el" href="structtextInstr.html">textInstr</a>, <a class="el" href="structdimensionInstr.html">dimensionInstr</a> &gt;</td></tr>
@@ -132,6 +136,20 @@ Typedefs</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="gfx_8hpp.html#a5dc162b955e03805fd28d7c8c19e29e2">AnyInstruction</a> =  std::variant&lt;<a class="el" href="structrectInstr.html">rectInstr</a>, <a class="el" href="structcircleInstr.html">circleInstr</a>, <a class="el" href="structtextInstr.html">textInstr</a>, <a class="el" href="structdimensionInstr.html">dimensionInstr</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaaa63d544613662c28eee378242e302d" name="aaaa63d544613662c28eee378242e302d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaaa63d544613662c28eee378242e302d">&#9670;&#160;</a></span>area_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structarea__s.html">area_s</a> <a class="el" href="gfx_8hpp.html#aaaa63d544613662c28eee378242e302d">area_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">

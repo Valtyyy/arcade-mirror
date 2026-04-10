@@ -11,10 +11,10 @@
 #include "gfx.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_test_font.h>
-#include <cstddef>
 #include <DisplayVariable.hpp>
 #include <cstdio>
 #include <map>
+#include <memory>
 
 
 class SDL2 : public IDisplay {
@@ -28,17 +28,17 @@ public:
     ~SDL2();
 
 private:
-    SDL_Window *_window;
-    SDL_Renderer* _renderer;
-    std::map<std::string, SDL_Surface *> _surfaces;
+    std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
+    std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
+    std::map<std::string, SDL_Surface> _surfaces;
     std::map<std::string, SDL_Texture*> _textures;
     std::queue<Event> _events;
     screen screenSize;
     void addEvents(SDL_KeyboardEvent &);
     void addEvents(SDL_MouseButtonEvent &);
-    void DrawCircle(int x, int y, float radius, SDL_Renderer *renderer);
+    void DrawCircle(int x, int y, float radius);
     SDL_Color convert_rgba(int hexValue);
-    void createTextureFromSurface(SDL_Surface *surface, std::string &assets,
+    void createTextureFromSurface(SDL_Surface &surface, std::string &assets,
         int x, int y, int w, int h);
     CommonKey sdlToCommonKey(SDL_Keycode sdlKey);
     void display_instruction(rectInstr &);

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_5fs_0',['point_s',['../structpoint__s.html',1,'']]]
+  ['ncurses_0',['Ncurses',['../classNcurses.html',1,'']]]
 ];

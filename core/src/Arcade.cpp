@@ -83,13 +83,12 @@ int Core::_apply_command(CommonKey cmd, bool &switched)
 {
     switch (cmd) {
         case CommonKey::P:
-        {
-            _display.close();
+            _display.reset();
             _currentDisplay = (_currentDisplay + 1) % _displayList.size();
             _display = Display(_displayList[_currentDisplay]);
+            _display.init();
             switched = true;
             break;
-        }
         case CommonKey::M:
             _currentGame = (_currentGame + 1) % _gamesList.size();
             _game = Game(_gamesList[_currentGame]);
@@ -127,7 +126,7 @@ std::vector<std::string> Core::getGamesList()
 
 std::vector<std::string> Core::getDisplayList()
 {
-    return {std::string(LIB_PATH) + "arcade_sfml.so", std::string(LIB_PATH) + "arcade_sdl2.so"};
+    return {std::string(LIB_PATH) + "libarcade_sfml.so", std::string(LIB_PATH) + "libarcade_sdl2.so", std::string(LIB_PATH) + "libarcade_ncurses.so"};
 }
 
 void Core::_handle_gameEvent(std::queue<GameEvent> events)

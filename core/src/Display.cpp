@@ -31,8 +31,6 @@ Display::Display(const std::string &_lib_location) : _lib(_lib_location)
 Display &Display::operator=(Display &&other) noexcept
 {
     if (this != &other) {
-        if (_lib.is_loaded())
-            close();
         _self.reset();
         _lib = std::move(other._lib);
         _self = std::move(other._self);
@@ -67,6 +65,11 @@ void Display::clear()
 void Display::render(std::queue<AnyInstruction> instructions)
 {
     _self->render(instructions);
+}
+
+void Display::reset()
+{
+    _self.reset();
 }
 
 std::queue<Event> Display::pollEvents()

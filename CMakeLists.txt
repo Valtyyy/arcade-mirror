@@ -98,29 +98,8 @@ target_include_directories(arcade_snake PRIVATE
     ${PROJECT_SOURCE_DIR}/games/Snake/include
 )
 
-<<<<<<< fix/cmake
 set_target_properties(arcade_snake PROPERTIES PREFIX "")
 
-=======
-# ===== MineSweeper =====
-SET(MINESWEEPER
-    ${SHARED}
-    games/MineSweeper/src/MineSweeper.cpp
-)
-
-add_library(arcade_minesweeper SHARED
-    ${MINESWEEPER}
-    games/MineSweeper/src/symEntry.cpp
-)
-
-target_include_directories(arcade_minesweeper PRIVATE
-    ${PROJECT_SOURCE_DIR}/games/MineSweeper/include
-)
-
-if(DEBUG)
-    target_compile_options(arcade PRIVATE -g3)
-endif()
->>>>>>> main
 # === Menu ===
 set(MENU
     ${SHARED}

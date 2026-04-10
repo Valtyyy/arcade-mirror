@@ -6,6 +6,7 @@
 */
 
 #include <queue>
+#include "gfx.hpp"
 
 class Utils {
     public:
